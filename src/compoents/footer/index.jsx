@@ -19,7 +19,6 @@ function Footer() {
         dispatch(setPopupModal(true))
     };
 
-
     return (
         <div className={`footer-container ${popupModel ? 'footer-container__opacity' : ''}`}>
             <div className='footer-container'>

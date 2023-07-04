@@ -2,14 +2,20 @@ import React from 'react';
 
 import { Space, Switch } from 'antd';
 import { FaTrashAlt } from 'react-icons/fa';
-
+import { setDoingTask } from '../../configure';
 import './index.scss';
+import { useDispatch, useSelector } from 'react-redux';
 
 function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTasks }) {
+
+  const doingTask = useSelector((state) => state.doing.doingTask);
+
+  const dispatch = useDispatch()
 
   const handleDeleteTask = (index) => {
     const updatedSelectedTasks = selectedTasks.filter((_, taskIndex) => taskIndex !== index);
     setSelectedTasks(updatedSelectedTasks);
+    dispatch(setDoingTask(updatedSelectedTasks))
   };
 
   const handleTaskDoneChange = (index, checked) => {
