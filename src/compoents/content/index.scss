@@ -84,10 +84,26 @@
             width: 360px !important;
             padding: 10px;
             position: relative;
+            overflow: auto;
 
-            .middlecontent__list__todoCheck {
-                background: grey;
+            .middleContent__box {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                background: blue;
                 height: 55px;
+                color: white;
+
+                li {
+                    list-style: none;
+                }
+                .middleContent__box-icon__left{
+                    font-size: 12px;
+                }
+                .middleContent__box-icon__right{
+                    font-size: 12px;
+                }
+
             }
         }
     }
