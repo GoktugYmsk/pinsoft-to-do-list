@@ -29,21 +29,27 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
 
     return (
         <div className='leftconent'>
+            <div className="headercontent">
             <h2>TODO</h2>
+            </div>
             <div className='leftcontent__list'>
                 <div className='todoCheck'>
                     <ul>
                         {addTask.map((task, index) => (
                             <div className="todoCheck__box" key={index}>
+                                <div>
+                                    <span>{task}</span>
+                                </div>
+                                <div>
                                 <FaTrashAlt
                                     className='todoCheck__box-icon__left'
                                     onClick={() => handleDeleteClick(index)}
-                                />
-                                <li>{task}</li>
+                                />      
                                 <BsCheckCircleFill
                                     className='todoCheck__box-icon__rigth'
                                     onClick={() => handleTaskClick(index)}
                                 />
+                                </div>   
                             </div>
                         ))}
                     </ul>

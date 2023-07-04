@@ -3,45 +3,90 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: rgb(194, 154, 154);
-    height: 400px;
-    width: 400px;
+    background: #242424;
+    height: 450px;
+    width: 450px;
+    border-radius: 20px 20px 0 0;
+    border:solid #121212 5px;
+    box-shadow: 0 2px 2px 4px rgba(0,0,0,0.3);
+
+    .headercontent{
+        width: 460px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFC107;
+        border-radius: 20px 20px 0 0;
+        background-color: #121212;
+    }
 
     .rightcontent__list {
         display: flex;
         align-content: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        width: 360px !important;
-        padding: 10px;
-        position: relative;
+        margin-top: 20px;
+        height: 100%;
         overflow: auto;
+        
+        
 
         .rightcontent__list-box {
             display: flex;
             align-items: center;
             justify-content: space-around;
-            background: blue;
+            background:lightgreen;
+            color: #121212;
+            padding: 10px;
             margin-top: 10px;
-            height: 55px;
-            color: white;
+            position: relative;
+            
+
 
             .rightcontent__list-check {
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
+                
+
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    span{
+                        max-width: 360px;
+                        min-width: 360px;
+                        font-size: 1.2rem;
+                    }
+                }
+
+
 
                 li {
                     list-style: none;
                 }
 
                 .rigthContnent__box-icon__left {
-                    font-size: 12px;
+                    cursor: pointer;
+                    font-size: 18px;
+                    margin-right: 10px;
+                }
+
+                .rigthContnent__box-icon__left:hover{
+                    color: #242424;
+                    opacity: 0.9;
                 }
 
                 .rigthContnent__box-icon__rigth {
-                    font-size: 12px;
+                    cursor: pointer;
+                    font-size: 18px;
                 }
+                
+                .rigthContnent__box-icon__rigth:hover{
+                    color: #242424;
+                    opacity: 0.9;
+                }
+
             }
         }
     }

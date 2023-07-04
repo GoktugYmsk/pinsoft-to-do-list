@@ -3,38 +3,90 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: green;
-    height: 400px;
-    width: 400px;
+    background: #242424;
+    height: 450px;
+    width: 450px;
+    border-radius: 20px 20px 0 0;
+    border:solid #121212 5px;
+    box-shadow: 0 2px 2px 4px rgba(0,0,0,0.3);
+
+
+    .headercontent{
+        width: 460px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFC107;
+        border-radius: 20px 20px 0 0;
+        background-color: #121212;
+    }
 
     .middlecontent__list {
         display: flex;
-        align-content: flex-start;
+        align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        width: 360px !important;
-        padding: 10px;
-        position: relative;
+        margin-top: 13px;
+        height: 100%;
         overflow: auto;
+        
+        
 
         .middleContent__box {
             display: flex;
             align-items: center;
             justify-content: space-around;
-            background: blue;
-            height: 55px;
-            color: white;
+            background-color: orange;  
+            color: #121212;
+            padding: 10px;
+            margin-top: 2px;
+            position: relative;
+            right: 15px !important;
+            
+            .iconcontainer{
+                max-width: 100px;
+                min-width: 100px;
+
+                .switch-label{
+                    font-size: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            div{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                span{
+                    max-width: 300px;
+                    min-width: 300px;
+                    font-size: 1.2rem;
+                }
+            }
 
             li {
                 list-style: none;
             }
 
             .middleContent__box-icon__left {
-                font-size: 12px;
+                cursor: pointer;
+                font-size: 18px;
+                margin-right: 10px;
             }
 
-            .middleContent__box-icon__right {
-                font-size: 12px;
+            .middleContent__box-icon__left:hover{
+                color: #242424;
+                opacity: 0.9;
+            }
+
+            .container__altBox-switch{
+                cursor: pointer;
+                width: 30px;
+                max-width: 30px;
+                height: 20px;
+            
             }
 
         }

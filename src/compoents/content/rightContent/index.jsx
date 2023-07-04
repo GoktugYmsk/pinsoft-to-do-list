@@ -16,20 +16,27 @@ function RightContent({ doneTasks, setDoneTasks }) {
 
   return (
     <div className='rightconent'>
-      <h2>DONE</h2>
+      <div className="headercontent">
+            <h2>DONE</h2>
+       </div>
       <div className='rightcontent__list'>
         {doneTasks.map((tasks, index) => (
           tasks && (
             <div key={index} className='rightcontent__list-box'>
               <div className='rightcontent__list-check' >
+                <div>
+                  <span>{tasks}</span>
+                </div>
+                <div>
                 <FaTrashAlt
                   className='rigthContnent__box-icon__left'
                   onClick={() => handleDeleteDone(index)}
                 />
-                <li >{tasks}</li>
                 <BsCheckCircleFill
                   className='rigthContnent__box-icon__rigth'
                 />
+                </div>
+                
               </div>
             </div>
           )

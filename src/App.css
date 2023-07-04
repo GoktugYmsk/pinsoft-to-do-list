@@ -4,6 +4,13 @@
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  background-color: #242424;
+
+
+}
+
+h1{
+  color: white;
 }
 
 /* popup */
