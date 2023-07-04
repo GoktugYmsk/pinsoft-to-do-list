@@ -38,8 +38,10 @@
             background:lightgreen;
             color: #121212;
             padding: 10px;
+            border-radius: 15px;
             margin-top: 10px;
             position: relative;
+            width: 425.48px;
             
 
 
@@ -54,17 +56,16 @@
                     align-items: center;
                     justify-content: center;
                     span{
-                        max-width: 360px;
-                        min-width: 360px;
+                        max-width: 350px;
+                        min-width: 350px;
                         font-size: 1.2rem;
+                        text-decoration: line-through;
                     }
                 }
 
 
 
-                li {
-                    list-style: none;
-                }
+                
 
                 .rigthContnent__box-icon__left {
                     cursor: pointer;

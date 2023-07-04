@@ -61,10 +61,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                 <div className="middleContent__box ">
                   {editingIndex === index ? (
                     <>
-                      <FaEdit
-                        className='middleContent__box__edit-icon'
-                        onClick={() => handleSaveEdit()}
-                      />
+                     
                       <input
                         type="text"
                         value={editedTask}
@@ -77,10 +74,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                     </>
                   ) : (
                     <>
-                      <FaEdit
-                        className='middleContent__box__edit-icon'
-                        onClick={() => handleEditClick(index)}
-                      />
+                      
                       <div>
                         <span style={{ textDecoration: doneTasks.includes(task) ? 'line-through' : 'none' }}>{task}</span>
                       </div>
@@ -89,6 +83,10 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                           className='middleContent__box-icon__left'
                           onClick={() => handleDeleteTask(index)}
                         />
+
+<FaEdit               className='middleContent__box__edit-icon'
+                        onClick={() => handleEditClick(index)}
+                      />
                         <Space direction='vertical'>
                           <Switch
                             className='container__altBox-switch'
