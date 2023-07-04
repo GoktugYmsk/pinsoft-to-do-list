@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: green;
+    background: #242424;
     width: 100%;
     height: 120px;
     position: absolute;
@@ -13,11 +13,28 @@
         border-radius: 20px;
         border-style: none;
         width: 300px;
+        height: 40px;
+        background-color: #121212;
+        color: white;
+        font-size: 1.2rem;
+        border: 1px solid #FFC107;
+    }
 
+    input::placeholder{
+        font-size: 1.2rem;
     }
 
     button {
         cursor: pointer;
         width: 200px;
+        height: 40px;
+        background-color:#FFC107 ;
+        margin-top: 10px;
+        border-radius: 50px;
+        font-size: 1.2rem;
+    }
+
+    button:hover{
+        opacity: 0.9;
     }
 }

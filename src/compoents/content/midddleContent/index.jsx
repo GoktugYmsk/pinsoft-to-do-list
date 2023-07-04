@@ -25,26 +25,32 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
 
   return (
     <div className='middleconent'>
-      <h2>DOING</h2>
+      <div className="headercontent">
+            <h2>DOING</h2>
+       </div>
       <div className='middlecontent__list'>
         {selectedTasks.map((task, index) => (
           task && (
             <div className='middlecontent__list__todoCheck' key={index}>
               <ul>
                 <div className="middleContent__box ">
+                  <div>
+                    <span style={{ textDecoration: doneTasks.includes(task) ? 'line-through' : 'none' }}>{task}</span>
+                  </div>
+                  <div className='iconcontainer'>
                   <FaTrashAlt className='middleContent__box-icon__left' onClick={() => handleDeleteTask(index)} />
-                  <li style={{ textDecoration: doneTasks.includes(task) ? 'line-through' : 'none' }}>
-                    {task}
-                  </li>
                   <Space direction='vertical'>
-                    <Switch
+                    <Switch 
                       className='container__altBox-switch'
-                      checkedChildren='Done'
-                      unCheckedChildren='Incomplete'
+                     
                       checked={doneTasks.includes(task)}
                       onChange={(checked) => handleTaskDoneChange(index, checked)}
                     />
+                    <div className="switch-label">
+                       {doneTasks.includes(task) ? "Done" : "Incomplete"}
+                     </div>
                   </Space>
+                  </div>
                 </div>
               </ul>
             </div>
