@@ -10,8 +10,8 @@ import './index.scss';
 
 function LeftContent({ selectedTasks, setSelectedTasks }) {
     const addTask = useSelector((state) => state.addTodo.addTask);
+
     const dispatch = useDispatch();
-    console.log('leftContent', addTask);
 
     const handleDeleteClick = (index) => {
         const updatedAddTask = addTask.filter((_, idx) => idx !== index);
@@ -19,8 +19,9 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
     };
 
     const handleTaskClick = (index) => {
+        const updatedAddTask = addTask.filter((_, idx) => idx !== index);
+        dispatch(setAddTasks(updatedAddTask));
         const optionTask = addTask[index];
-
         if (!selectedTasks.includes(optionTask)) {
             setSelectedTasks([...selectedTasks, optionTask]);
         }
