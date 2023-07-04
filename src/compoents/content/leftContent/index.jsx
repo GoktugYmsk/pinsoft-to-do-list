@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FaTrashAlt } from 'react-icons/fa';
@@ -6,27 +6,25 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 
 import { setAddTasks } from '../../configure';
 
-import './index.scss'
+import './index.scss';
 
 function LeftContent({ selectedTasks, setSelectedTasks }) {
-
     const addTask = useSelector((state) => state.addTodo.addTask);
     const dispatch = useDispatch();
-
-    const handleTaskClick = (index) => {
-        if (selectedTasks.includes(index)) {
-            setSelectedTasks(selectedTasks.filter((item) => item !== index));
-        } else {
-            setSelectedTasks([...selectedTasks, index]);
-        }
-    };
-
+    console.log('leftContent', addTask);
 
     const handleDeleteClick = (index) => {
-        const updatedAddTask = addTask.filter((item, idx) => idx !== index);
+        const updatedAddTask = addTask.filter((_, idx) => idx !== index);
         dispatch(setAddTasks(updatedAddTask));
     };
 
+    const handleTaskClick = (index) => {
+        const optionTask = addTask[index];
+
+        if (!selectedTasks.includes(optionTask)) {
+            setSelectedTasks([...selectedTasks, optionTask]);
+        }
+    };
 
     return (
         <div className='leftconent'>
@@ -35,10 +33,7 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                 <div className='todoCheck'>
                     <ul>
                         {addTask.map((task, index) => (
-                            <div
-                                className="todoCheck__box "
-                                key={index}
-                            >
+                            <div className="todoCheck__box" key={index}>
                                 <FaTrashAlt
                                     className='todoCheck__box-icon__left'
                                     onClick={() => handleDeleteClick(index)}
@@ -54,7 +49,7 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default LeftContent
+export default LeftContent;

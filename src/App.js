@@ -12,7 +12,7 @@ function App() {
       <Helmet>
         <title>Pinsoft To-Do-List</title>
       </Helmet>
-      <h1>TO Do List</h1>
+      <h1>To Do List</h1>
       <Content />
       <Footer />
     </div>
