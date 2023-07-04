@@ -10,7 +10,6 @@ function Content() {
   const [selectedTasks, setSelectedTasks] = useState([]);
   const [doneTasks, setDoneTasks] = useState([]);
 
-
   return (
     <div className='container-content'>
       <LeftContent selectedTasks={selectedTasks} setSelectedTasks={setSelectedTasks} />
