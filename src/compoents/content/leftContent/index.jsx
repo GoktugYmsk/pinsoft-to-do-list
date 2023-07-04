@@ -1,8 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { FaTrashAlt } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
+
 import { setAddTasks } from '../../configure';
+
 import './index.scss';
 
 function LeftContent({ selectedTasks, setSelectedTasks }) {

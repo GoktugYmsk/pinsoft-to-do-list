@@ -1,15 +1,23 @@
 import React from 'react';
+
 import { FaTrashAlt } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
-import './index.scss';
-import { useSelector } from 'react-redux';
 
-function MiddleContent({ selectedTasks, setDoneTasks }) {
-    const addTask = useSelector((state) => state.addTodo.addTask);
+import './index.scss';
+
+function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTasks }) {
 
     const handleTaskClick = (index) => {
-        const optionTask = addTask[index];
-        setDoneTasks((prevDoneTasks) => [...prevDoneTasks, optionTask]);
+        const clickedTask = selectedTasks[index];
+
+        if (!doneTasks.includes(clickedTask)) {
+            setDoneTasks([...doneTasks, clickedTask]);
+        }
+    };
+
+    const handleDeleteTask = (index) => {
+        const updatedSelectedTasks = selectedTasks.filter((_, taskIndex) => taskIndex !== index);
+        setSelectedTasks(updatedSelectedTasks);
     };
 
     return (
@@ -21,7 +29,7 @@ function MiddleContent({ selectedTasks, setDoneTasks }) {
                         <div className='middlecontent__list__todoCheck' key={index}>
                             <ul>
                                 <div className="middleContent__box ">
-                                    <FaTrashAlt className='middleContent__box-icon__left' />
+                                    <FaTrashAlt className='middleContent__box-icon__left' onClick={() => handleDeleteTask(index)} />
                                     <li>{task}</li>
                                     <BsCheckCircleFill
                                         onClick={() => handleTaskClick(index)}
@@ -38,19 +46,3 @@ function MiddleContent({ selectedTasks, setDoneTasks }) {
 }
 
 export default MiddleContent;
-
-
-
-// const handleTaskClick = (index) => {
-//     if (selectedTasks.includes(index)) {
-//         setSelectedTasks(selectedTasks.filter((item) => item !== index));
-//     } else {
-//         setSelectedTasks([...selectedTasks, index]);
-//     }
-// };
-
-
-// const handleDeleteClick = (index) => {
-//     const updatedAddTask = addTask.filter((item, idx) => idx !== index);
-//     dispatch(setAddTasks(updatedAddTask));
-// };
