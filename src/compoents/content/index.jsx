@@ -16,7 +16,7 @@ function Content({selectedTasks,setSelectedTasks}) {
     <div className={`container-content ${popupModel ? 'container-content__opacity' : ''}`}>
       <LeftContent selectedTasks={selectedTasks} setSelectedTasks={setSelectedTasks} />
       <MiddleContent selectedTasks={selectedTasks} setSelectedTasks={setSelectedTasks} doneTasks={doneTasks} setDoneTasks={setDoneTasks} />
-      <RightContent doneTasks={doneTasks} setDoneTasks={setDoneTasks} />
+      <RightContent doneTasks={doneTasks} selectedTasks={selectedTasks} setDoneTasks={setDoneTasks} />
     </div>
   );
 }

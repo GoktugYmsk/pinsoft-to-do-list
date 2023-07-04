@@ -1,10 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Space, Switch } from 'antd';
 import { FaTrashAlt } from 'react-icons/fa';
 import { setDoingTask } from '../../configure';
+
 import './index.scss';
-import { useDispatch, useSelector } from 'react-redux';
 
 function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTasks }) {
 
@@ -48,7 +49,6 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                   <Space direction='vertical'>
                     <Switch 
                       className='container__altBox-switch'
-                     
                       checked={doneTasks.includes(task)}
                       onChange={(checked) => handleTaskDoneChange(index, checked)}
                     />
