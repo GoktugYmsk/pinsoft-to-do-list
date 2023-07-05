@@ -14,12 +14,15 @@ import './index.scss';
 function LeftContent({ selectedTasks, setSelectedTasks }) {
     const addTask = useSelector((state) => state.addTodo.addTask);
 
+    console.log('adddtassk',addTask)
+
     const dispatch = useDispatch();
 
     const [editingIndex, setEditingIndex] = useState(-1);
     const [editedTask, setEditedTask] = useState('');
 
     const taskList = useTodoLister();
+    console.log('tasklist', taskList)
 
     const handleDeleteClick = (taskID) => {
         const updatedAddTask = addTask.filter((task) => task.id !== taskID);
@@ -27,15 +30,13 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
         deleteTodo(taskID);
     };
 
-    const handleTaskClick = (index) => {
-        const updatedAddTask = addTask.filter((_, idx) => idx !== index);
-        dispatch(setAddTasks(updatedAddTask));
-        const optionTask = addTask[index];
-        if (!selectedTasks.includes(optionTask)) {
-            setSelectedTasks([...selectedTasks, optionTask]);
+    const handleTaskClick = (TaskId) => {
+        console.log('taskid', TaskId)
+        if (!selectedTasks.includes(TaskId)) {
+            setSelectedTasks([...selectedTasks, TaskId]);
         }
     };
-
+    
     const handleEditClick = (index) => {
         setEditingIndex(index);
         setEditedTask(addTask[index]);
@@ -50,8 +51,6 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
             setEditingIndex(-1);
         }
     };
-
-    console.log(" --------- ", taskList);
 
     return (
         <div className="row">
@@ -96,7 +95,7 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                                             />
                                             <BsCheckCircleFill
                                                 className='todoCheck__box-icon__rigth'
-                                                onClick={() => handleTaskClick(index)}
+                                                onClick={() => handleTaskClick(task.id)}
                                             />
                                         </div>
                                     </>
