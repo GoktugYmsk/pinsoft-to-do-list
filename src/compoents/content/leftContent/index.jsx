@@ -52,8 +52,6 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
         }
     };
 
-    console.log(" --------- ", taskList);
-
     return (
         <div className='leftconent'>
             <div className="headercontent">
