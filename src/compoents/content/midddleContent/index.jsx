@@ -58,11 +58,11 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
         <h2>DOING</h2>
       </div>
       <div className='middlecontent__list'>
+      <div className='middlecontent__list__todoCheck mb-3'>
+              <ul>
         {selectedTasks.map((task, index) => (
           task && (
-            <div className='middlecontent__list__todoCheck' key={index}>
-              <ul>
-                <div className="middleContent__box ">
+                <div className="middleContent__box "  key={index}>
                   {editingIndex === index ? (
                     <>
                       <input
@@ -98,10 +98,13 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                     </>
                   )}
                 </div>
-              </ul>
-            </div>
+             
+            
+
           )
         ))}
+          </ul>
+           </div>
       </div>
     </div>
   );
