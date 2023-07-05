@@ -70,10 +70,7 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                                     </>
                                 ) : (
                                     <>
-                                        <FaEdit
-                                            className='todoCheck__box__edit-icon'
-                                            onClick={() => handleEditClick(index)}
-                                        />
+                                       
                                         <div>
                                             <span>{task}</span>
                                         </div>
@@ -82,6 +79,10 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                                                 className='todoCheck__box-icon__left'
                                                 onClick={() => handleDeleteClick(index)}
                                             />
+                                             <FaEdit
+                                            className='todoCheck__box__edit-icon'
+                                            onClick={() => handleEditClick(index)}
+                                        />
                                             <BsCheckCircleFill
                                                 className='todoCheck__box-icon__rigth'
                                                 onClick={() => handleTaskClick(index)}

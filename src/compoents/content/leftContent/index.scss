@@ -20,6 +20,10 @@
         background-color: #121212;
     }
 
+    .active{
+        background-color: aqua;
+    }
+
     .leftcontent__list {
         display: flex;
         flex-direction: column;
@@ -33,37 +37,46 @@
 
     .todoCheck {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: flex-start !important;
         height: 40px;
         color: #121212;
+        
+
+        input{
+            background-color: #121212;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            border-style: none;
+            height: 30px;
+            border-radius: 20px;
+            width: 415px;
+            
+        }
+
+        input::placeholder{
+            text-align: center;
+        }
 
         div{
             display: flex;
             align-items: center;
             justify-content: center;
             span{
-                max-width: 360px;
-                min-width: 360px;
+                max-width: 351.48px;
+                min-width: 351.48px;
                 font-size: 1.2rem;
             }
         }
 
-        li {
-            display: flex;
-            justify-content: flex-start;
-            list-style: none;
-            margin-top: 10px;
-            min-width: 320px;
-            margin-left: 20px;
-        }
 
         .todoCheck__box {
             display: flex;
             align-content: flex-start;
             justify-content: flex-start;
-            
-            background: red;
+            border-radius: 15px;
+            background: rgb(245, 56, 56);
             padding: 10px;
             margin-top: 10px;
             position: relative;
@@ -93,6 +106,13 @@
 
             .todoCheck__box__edit-icon{
                 cursor: pointer;
+                font-size: 18px;
+                margin-right: 10px;
+            }
+
+            .todoCheck__box__edit-icon:hover{
+                color: #242424;
+                opacity: 0.9;
             }
 
         }
