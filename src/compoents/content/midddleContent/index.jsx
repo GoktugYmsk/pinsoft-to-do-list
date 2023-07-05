@@ -60,13 +60,13 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
         <h2>DOING</h2>
       </div>
       <div className='middlecontent__list'>
+      <div className='middlecontent__list__todoCheck'>
+        <ul>
         {selectedTasks.map((selectedTask, index) => {
           const task = taskList.find(task => task.id === selectedTask);
           if (task) {
             return (
-              <div className='middlecontent__list__todoCheck' key={index}>
-                <ul>
-                  <div className="middleContent__box ">
+                  <div className="middleContent__box" key={index}>
                     {editingIndex === index ? (
                       <>
                         <input
@@ -103,14 +103,15 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                       </>
                     )}
                   </div>
-                </ul>
-              </div>
+              
             );
           } else {
             // Eğer `task` bulunamazsa geçerli bir görevi ekrana yazdırmak yerine boş bir `<div>` döndürebiliriz
             return <div key={index}>Invalid task</div>;
           }
         })}
+        </ul>
+      </div>
       </div>
     </div>
   );
