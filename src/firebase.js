@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBu2wpztORPvJddauKQYMLih83v1GZN5gE",
@@ -13,3 +14,25 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
+
+
+const todoRef = collection(database, "todo list");
+
+export const useTodoLister = () => {
+
+  const [todo, setTodo] = useState([]);
+
+  useEffect(() => {
+    return onSnapshot(todoRef, snapshot => {
+      setTodo(
+        snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+      )
+    });
+  }, []);
+
+  return todo;
+};
+
+export const deleteTodo = (id) => {
+  deleteDoc(doc(database, "todo list", id))
+}
