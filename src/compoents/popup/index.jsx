@@ -4,9 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setPopupModal, setAddTasks, setDoingTask } from '../configure';
 
+import {app,database} from "../../firebase";
+
+import { collection, addDoc } from 'firebase/firestore';
+
 import './index.scss'
 
 function Popup({setSelectedTasks}) {
+    const [data , setData] = useState({});
+
     const [input, setInput] = useState('');
 
     const popupModel = useSelector((state) => state.modal.popupModal);
@@ -17,6 +23,8 @@ function Popup({setSelectedTasks}) {
 
     const handleChange = (event) => {
         setInput(event.target.value);
+        let newInput = {[event.target.name]: event.target.value};
+        setData({ ...data, ...newInput});
     };
 
     const handleToDoClick = () => {
@@ -25,6 +33,11 @@ function Popup({setSelectedTasks}) {
             dispatch(setAddTasks(updatedTasks));
             setInput('');
             console.log('Todo',updatedTasks)
+
+            const collectionRef = collection(database, "todo list"); 
+            addDoc(collectionRef, {
+                task: data.task
+            })
         }
     }
 
@@ -34,6 +47,11 @@ function Popup({setSelectedTasks}) {
             dispatch(setDoingTask(updatedDoingTasks))
             setSelectedTasks(updatedDoingTasks)
             setInput('');
+
+            const collectionRef = collection(database, "doing list"); 
+            addDoc(collectionRef, {
+                task: data.task
+            })
         }
     }
 
@@ -55,6 +73,7 @@ function Popup({setSelectedTasks}) {
         };
     }, []);
 
+
     return (
         <>
             {popupModel && (
@@ -63,7 +82,7 @@ function Popup({setSelectedTasks}) {
                         <span className="modal-close" onClick={handleHideModal}>
                             &times;
                         </span>
-                        <input onChange={handleChange} value={input} placeholder='New Item' />
+                        <input name='task' onChange={handleChange} value={input} placeholder='New Item' />
                         <div className='modal-content__options' >
                             <button onClick={handleToDoClick} >ToDo </button>
                             <button onClick={handleDoingClick}> Doing</button>
