@@ -9,6 +9,7 @@
     border-radius: 20px 20px 0 0;
     border: solid #121212 5px;
     box-shadow: 0 2px 2px 4px rgba(0, 0, 0, 0.3);
+    
 
 
     .headercontent {
@@ -26,14 +27,20 @@
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        margin-top: 10px;
+        margin-top: 5px;
         height: 100%;
         overflow-x: none;
         overflow-y: auto !important;
 
         .middlecontent__list__todoCheck {
-            height: 30px;
-            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start !important;
+            height: 40px;
+            color: #121212;
+            margin-top: 7px;
+            margin-bottom: 10px;
+            
         }
 
         .middleContent__box {
@@ -49,8 +56,8 @@
 
             input {
                 background-color: #121212;
-                height: 30px;
-                width: 415px;
+                height: 26px;
+                width: 417.47px;
                 color: white;
                 text-align: center;
                 font-size: 1.2rem;
@@ -80,8 +87,8 @@
                 justify-content: center;
 
                 span {
-                    max-width: 310px;
-                    min-width: 310px;
+                    max-width: 351.48px;
+                    min-width: 351.48px;
                     font-size: 1.2rem;
                 }
             }
@@ -113,13 +120,19 @@
             }
 
             .container__altBox-doneClick {
-                display: flex;
                 cursor: pointer;
-                width: 20px;
-                max-width: 20px;
-                height: 20px;
+                font-size: 18px;
 
             }
+
+
+
+            .container__altBox-doneClick:hover{
+                color: #242424;
+                opacity: 0.9;
+            }
+
+            
 
         }
     }
