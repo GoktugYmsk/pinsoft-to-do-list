@@ -37,10 +37,13 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
       setDoneTasks(updatedDoneTasks);
     }
   };
-
+  
   const handleEditClick = (index) => {
     setEditingIndex(index);
-    setEditedTask(selectedTasks[index]);
+    const task = taskList.find(task => task.id === selectedTasks[index]);
+    if (task) {
+      setEditedTask(task.task);
+    }
   };
 
   const handleSaveEdit = () => {
