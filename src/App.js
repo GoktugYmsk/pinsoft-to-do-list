@@ -28,7 +28,10 @@ function App() {
         setSelectedTasks={setSelectedTasks}
       />
       <Footer />
+      <div className="popup-container">
       <Popup setSelectedTasks={setSelectedTasks} />
+      </div>
+      
     </div>
   );
 }

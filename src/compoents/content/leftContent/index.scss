@@ -119,3 +119,49 @@
 
     }
 }
+
+
+@media (max-width:450px) {
+    
+    .leftconent{
+        width: 350px;
+        margin-left: 3%;
+
+        .headercontent{
+            width: 350px;
+        }
+
+        .todoCheck__box{
+            padding: 10px;
+            margin-top: 10px;
+            position: relative;
+            right: 15px !important;
+
+
+            input{
+                background-color: #121212;
+                text-align: center;
+                color: white;
+                font-size: 1.2rem;
+                border-style: none;
+                height: 30px;
+                border-radius: 20px;
+                width: 280.47px;
+                
+            }
+
+            div{
+                span{
+                    max-width: 220.48px;
+                    min-width: 220.48px;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+       
+
+       
+    }
+
+}

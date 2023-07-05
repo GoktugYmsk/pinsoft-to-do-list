@@ -93,3 +93,42 @@
         }
     }
 }
+
+
+
+
+@media (max-width:450px) {
+
+    .rightconent{
+        width: 350px;
+        margin-left: 3%;
+
+        .headercontent{
+            width: 350px;
+        }
+
+        .rightcontent__list{
+
+            .rightcontent__list-box{
+
+                width: 314.47px;
+                .rightcontent__list-check {
+
+    
+                    div{
+                        span{
+                            max-width: 220.48px;
+                            min-width: 220.48px;
+                            font-size: 1rem;
+                        }
+                    }
+
+            }
+        }
+    }
+
+
+
+
+}
+}
