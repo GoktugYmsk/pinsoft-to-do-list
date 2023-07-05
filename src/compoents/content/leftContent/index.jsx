@@ -20,11 +20,11 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
     const [editedTask, setEditedTask] = useState('');
 
     const taskList = useTodoLister();
-    const handleDeleteClick = (index) => {
-        const updatedAddTask = addTask.filter((_, idx) => idx !== index);
-        dispatch(setAddTasks(updatedAddTask));
 
-        deleteTodo();
+    const handleDeleteClick = (taskID) => {
+        const updatedAddTask = addTask.filter((task) => task.id !== taskID);
+        dispatch(setAddTasks(updatedAddTask));
+        deleteTodo(taskID);
     };
 
     const handleTaskClick = (index) => {
@@ -51,9 +51,8 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
         }
     };
 
+    console.log(" --------- ", taskList);
 
-    
-    console.log(" --------- ",taskList);
     return (
         <div className='leftconent'>
             <div className="headercontent">
@@ -78,19 +77,19 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                                     </>
                                 ) : (
                                     <>
-                                       
+
                                         <div>
                                             <span>{task.task}</span>
                                         </div>
                                         <div>
                                             <FaTrashAlt
                                                 className='todoCheck__box-icon__left'
-                                                onClick={() => handleDeleteClick(index)}
+                                                onClick={() => handleDeleteClick(task.id)}
                                             />
-                                             <FaEdit
-                                            className='todoCheck__box__edit-icon'
-                                            onClick={() => handleEditClick(index)}
-                                        />
+                                            <FaEdit
+                                                className='todoCheck__box__edit-icon'
+                                                onClick={() => handleEditClick(index)}
+                                            />
                                             <BsCheckCircleFill
                                                 className='todoCheck__box-icon__rigth'
                                                 onClick={() => handleTaskClick(index)}
