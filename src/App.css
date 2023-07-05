@@ -6,14 +6,18 @@
   height: 100vh;
   background-color: #242424;
 
+  .header-container{
+    width: 100%;
+    text-align: center;
+  }
+
+  #header{
+    color: white;
+    font-size: 3rem;
+    text-shadow: 0 4px 8px 8px;
+  }
+  
 
 }
 
-h1{
-  position: absolute;
-  top: 50px;
-  color: white;
-  font-size: 3rem;
-  text-shadow: 0 4px 8px 8px;
-}
 

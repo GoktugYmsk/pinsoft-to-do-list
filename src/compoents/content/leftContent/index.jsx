@@ -55,15 +55,19 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
     
     console.log(" --------- ",taskList);
     return (
-        <div className='leftconent'>
-            <div className="headercontent">
-                <h2>TODO</h2>
-            </div>
+        <div className="row">
+            <div className="col-md-12">
+            <div className='leftconent'>
+               <div className="headercontent">
+                  <h2>TODO</h2>
+                </div>
+            
             <div className='leftcontent__list'>
                 <div className='todoCheck'>
                     <ul>
                         {taskList.map((task, index) => (
                             <div className="todoCheck__box" key={index}>
+                                
                                 {editingIndex === index ? (
                                     <>
                                         <input
@@ -98,10 +102,12 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                                         </div>
                                     </>
                                 )}
-                            </div>
+                                </div>
                         ))}
                     </ul>
                 </div>
+            </div>
+        </div>
             </div>
         </div>
     );

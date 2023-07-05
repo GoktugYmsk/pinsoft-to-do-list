@@ -1,31 +1,39 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setAddTasks } from '../configure';
-import { setPopupModal } from '../configure';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAddTasks } from "../configure";
+import { setPopupModal } from "../configure";
 
 import { app, database } from "../../firebase";
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from "firebase/firestore";
 
-import './index.scss';
+import "./index.scss";
 
 function Footer() {
-    const [data, setData] = useState({});
-    const collectionRef = collection(database, "todo");
+  const [data, setData] = useState({});
+  const collectionRef = collection(database, "todo");
 
-    const dispatch = useDispatch();
-    const popupModel = useSelector((state) => state.modal.popupModal);
+  const dispatch = useDispatch();
+  const popupModel = useSelector((state) => state.modal.popupModal);
 
-    const handleSubmit = () => {
-        dispatch(setPopupModal(true))
-    };
+  const handleSubmit = () => {
+    dispatch(setPopupModal(true));
+  };
 
-    return (
-        <div className={`footer-container ${popupModel ? 'footer-container__opacity' : ''}`}>
-            <div className='footer-container'>
-                <button onClick={handleSubmit}>Add Task</button>
-            </div>
+  return (
+    <div className="row">
+      <div className="col-md-12">
+        <div
+          className={`footer-container ${
+            popupModel ? "footer-container__opacity" : ""
+          }`}
+        >
+          <div className="footer-container">
+            <button onClick={handleSubmit}>Add Task</button>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default Footer;
