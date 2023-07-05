@@ -27,7 +27,7 @@
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        margin-top: 5px;
+        
         height: 100%;
         overflow-x: none;
         overflow-y: auto !important;
@@ -38,9 +38,6 @@
             align-items: flex-start !important;
             height: 40px;
             color: #121212;
-            margin-top: 7px;
-            margin-bottom: 10px;
-            
         }
 
         .middleContent__box {
@@ -51,6 +48,7 @@
             color: #121212;
             border-radius: 15px;
             padding: 10px;
+            margin-top: 10px;
             position: relative;
             right: 20px !important;
 
