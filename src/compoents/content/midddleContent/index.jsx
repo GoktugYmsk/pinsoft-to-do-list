@@ -90,7 +90,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                           onClick={() => handleDeleteTask(index)}
                         />
                         <BsCheckCircleFill
-                          className='container__altBox-switch'
+                          className='container__altBox-doneClick'
                           onClick={() => handleTaskDoneClick(index)}
                         />
                       </div>
