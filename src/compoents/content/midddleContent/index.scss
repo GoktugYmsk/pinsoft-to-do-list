@@ -28,10 +28,9 @@
         flex-direction: column;
         margin-top: 13px;
         height: 100%;
-        overflow: auto;
+        overflow-x: none;
+        overflow-y: auto !important;
         
-        
-
         .middleContent__box {
             display: flex;
             align-items: center;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Space, Switch } from 'antd';
+import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { setDoingTask } from '../../configure';
 
@@ -21,12 +21,16 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
     dispatch(setDoingTask(updatedSelectedTasks));
   };
 
-  const handleTaskDoneChange = (index, checked) => {
+  const handleTaskDoneClick = (index) => {
     const task = selectedTasks[index];
+    
+    const updatedSelectedTasks = selectedTasks.filter((_, taskIndex) => taskIndex !== index);
+    setSelectedTasks(updatedSelectedTasks);
+    dispatch(setDoingTask(updatedSelectedTasks));
 
-    if (checked && !doneTasks.includes(task)) {
+    if (!doneTasks.includes(task)) {
       setDoneTasks([...doneTasks, task]);
-    } else if (!checked && doneTasks.includes(task)) {
+    } else if (doneTasks.includes(task)) {
       const updatedDoneTasks = doneTasks.filter((doneTask) => doneTask !== task);
       setDoneTasks(updatedDoneTasks);
     }
@@ -61,10 +65,6 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                 <div className="middleContent__box ">
                   {editingIndex === index ? (
                     <>
-                      <FaEdit
-                        className='middleContent__box__edit-icon'
-                        onClick={() => handleSaveEdit()}
-                      />
                       <input
                         type="text"
                         value={editedTask}
@@ -89,16 +89,10 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                           className='middleContent__box-icon__left'
                           onClick={() => handleDeleteTask(index)}
                         />
-                        <Space direction='vertical'>
-                          <Switch
-                            className='container__altBox-switch'
-                            checked={doneTasks.includes(task)}
-                            onChange={(checked) => handleTaskDoneChange(index, checked)}
-                          />
-                          <div className="switch-label">
-                            {doneTasks.includes(task) ? "Done" : "Incomplete"}
-                          </div>
-                        </Space>
+                        <BsCheckCircleFill
+                          className='container__altBox-switch'
+                          onClick={() => handleTaskDoneClick(index)}
+                        />
                       </div>
                     </>
                   )}

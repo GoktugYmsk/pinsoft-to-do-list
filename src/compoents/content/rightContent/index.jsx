@@ -5,29 +5,24 @@ import { IoReturnDownBack } from 'react-icons/io5';
 
 import './index.scss'
 
-function RightContent({ doneTasks, setDoneTasks,selectedTasks }) {
+function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks }) {
 
   const handleDeleteDone = (index) => {
-
     const updateSelectedTasks = doneTasks.filter((_, taskIndex) => taskIndex !== index)
     setDoneTasks(updateSelectedTasks)
-
-
-
   }
 
   const handleTurnClick = (index) => {
+    const task = doneTasks[index];
 
-    const task = selectedTasks[index];
-
-    if (!doneTasks.includes(task)) {
-      setDoneTasks([...doneTasks, task]);
+    if (!selectedTasks.includes(task)) {
+      setSelectedTasks([...selectedTasks, task]);
     } else {
-      const updatedDoneTasks = doneTasks.filter((doneTask) => doneTask !== task);
-      setDoneTasks(updatedDoneTasks);
+      const updatedSelectedTasks = selectedTasks.filter((selectedTask) => selectedTask !== task);
+      setSelectedTasks(updatedSelectedTasks);
     }
+  };
 
-  }
 
   return (
     <div className='rightconent'>

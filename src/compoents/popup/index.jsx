@@ -24,6 +24,7 @@ function Popup({setSelectedTasks}) {
             const updatedTasks = [...addTask, input];
             dispatch(setAddTasks(updatedTasks));
             setInput('');
+            console.log('Todo',updatedTasks)
         }
     }
 
@@ -53,7 +54,6 @@ function Popup({setSelectedTasks}) {
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, []);
-
 
     return (
         <>
