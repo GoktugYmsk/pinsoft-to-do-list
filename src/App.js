@@ -5,7 +5,7 @@ import Components from "./compoents";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const active = useSelector((state) => state.darkActive.active);

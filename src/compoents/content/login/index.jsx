@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Form from 'react-bootstrap/Form';
+
 import './index.scss'
 
-import Form from 'react-bootstrap/Form';
 
 function Login() {
     const [user, setUser] = useState("");
@@ -14,7 +15,7 @@ function Login() {
     const navigate = useNavigate();
 
     const switchClickActive = () => {
-setActive(!active)
+        setActive(!active)
     }
 
 

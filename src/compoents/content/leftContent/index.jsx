@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FaTrashAlt } from 'react-icons/fa';
@@ -15,24 +15,18 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
     const addTask = useSelector((state) => state.addTodo.addTask);
     const active = useSelector((state) => state.darkActive.active);
 
-    console.log('adddtassk', addTask)
-
     const dispatch = useDispatch();
 
     const [editingIndex, setEditingIndex] = useState(-1);
     const [editedTask, setEditedTask] = useState('');
 
     const taskList = useTodoLister();
-    console.log('tasklist', taskList)
 
     const handleDeleteClick = (taskID) => {
         const updatedAddTask = addTask.filter((task) => task.id !== taskID);
         dispatch(setAddTasks(updatedAddTask));
         deleteTodo(taskID);
     };
-    useEffect(() => {
-        console.log('deneme şlasmclşasmclş')
-    }, [])
 
     const handleTaskClick = (TaskId) => {
         console.log('taskid', TaskId)

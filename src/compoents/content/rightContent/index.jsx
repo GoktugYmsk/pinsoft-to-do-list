@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
-import { IoReturnDownBack } from 'react-icons/io5';
-import { useTodoLister } from '../../../firebase';
 import { useSelector } from 'react-redux';
+
+import { useTodoLister } from '../../../firebase';
+import { IoReturnDownBack } from 'react-icons/io5';
 
 import './index.scss';
 
@@ -53,9 +54,6 @@ function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks
                 </div>
               </div>
             );
-          } else {
-            // Eğer `task` bulunamazsa, geçerli bir görevi ekrana yazdırmak yerine boş bir `<div>` döndürebiliriz.
-            return <div key={index}>Invalid task</div>;
           }
         })}
       </div>

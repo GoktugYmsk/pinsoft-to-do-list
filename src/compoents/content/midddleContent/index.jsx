@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { setDoingTask } from '../../configure';
 
-import './index.scss';
 import { useTodoLister } from '../../../firebase';
+
+import './index.scss';
 
 function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTasks }) {
   const active = useSelector((state) => state.darkActive.active);
@@ -37,7 +38,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
       setDoneTasks(updatedDoneTasks);
     }
   };
-  
+
   const handleEditClick = (index) => {
     setEditingIndex(index);
     const task = taskList.find(task => task.id === selectedTasks[index]);
@@ -63,12 +64,12 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
         <h2>DOING</h2>
       </div>
       <div className='middlecontent__list'>
-      <div className='middlecontent__list__todoCheck'>
-        <ul>
-        {selectedTasks.map((selectedTask, index) => {
-          const task = taskList.find(task => task.id === selectedTask);
-          if (task) {
-            return (
+        <div className='middlecontent__list__todoCheck'>
+          <ul>
+            {selectedTasks.map((selectedTask, index) => {
+              const task = taskList.find(task => task.id === selectedTask);
+              if (task) {
+                return (
                   <div className="middleContent__box" key={index}>
                     {editingIndex === index ? (
                       <>
@@ -106,15 +107,12 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
                       </>
                     )}
                   </div>
-              
-            );
-          } else {
-            // Eğer `task` bulunamazsa geçerli bir görevi ekrana yazdırmak yerine boş bir `<div>` döndürebiliriz
-            return <div key={index}>Invalid task</div>;
-          }
-        })}
-        </ul>
-      </div>
+
+                );
+              }
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );
