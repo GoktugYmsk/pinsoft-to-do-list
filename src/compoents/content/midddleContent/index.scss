@@ -1,3 +1,54 @@
+.middle-conent-active{
+    background-color: #dfe2e7  !important;
+    border: solid #2a52f0  5px !important;
+    box-shadow: 0 2px 2px 4px rgb(42,82,240,0.3) !important;
+
+
+    .headercontent{
+        background-color: #2a52f0 !important ;
+        color: #dfe2e7 !important;
+    }
+
+
+    .middlecontent__list{
+
+        .middlecontent__list__todoCheck {
+            color: #dfe2e7 !important;
+        }
+
+        .middleContent__box {
+            background-color: #777879 !important;
+            color: #dfe2e7 !important;
+        
+            input {
+                background-color:#7ea2e0 !important ;
+                color: #dfe2e7;
+                
+            }
+
+            
+
+            .middleContent__box-icon__left:hover {
+                color: #7ea2e0 !important;
+                opacity: 0.7;
+            }
+
+          
+            .middleContent__box__edit-icon:hover {
+                color: #7ea2e0 !important;
+                opacity: 0.7;
+            }
+
+            .container__altBox-doneClick:hover{
+                color: #7ea2e0 !important; 
+                opacity: 0.7;
+            }
+    }
+}
+}
+
+
+
 .middleconent {
     display: flex;
     flex-direction: column;

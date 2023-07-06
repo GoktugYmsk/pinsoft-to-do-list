@@ -60,7 +60,7 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
     return (
         <div className="row">
             <div className="col-md-12">
-                <div className={`leftconent ${active ? 'leftconentLight' : 'leftconent'}`}>
+                <div className={`leftconent leftconent-active ${active ? 'leftconentLight' : 'leftconent'}`}>
                     <div className="headercontent">
                         <h2>TODO</h2>
                     </div>

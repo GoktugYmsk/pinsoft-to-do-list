@@ -1,3 +1,42 @@
+.leftconent-active{
+    background-color: #dfe2e7 !important;
+    border:solid #2a52f0  5px !important;
+    box-shadow: 0 2px 2px 4px rgb(42,82,240,0.3) !important;
+    
+    .headercontent{
+        background-color: #2a52f0   !important;
+        color: #dfe2e7  !important ;
+    }
+
+    .todoCheck{
+        color: #dfe2e7 !important;
+
+        input{
+            background-color: #7ea2e0 !important;
+            color: #dfe2e7   !important;
+            outline: none !important;
+        }
+
+        .todoCheck__box{
+            background-color: #57585a !important;
+
+
+            .todoCheck__box-icon__left:hover{
+                color: #7ea2e0 !important;
+               
+            }
+          
+            .todoCheck__box-icon__rigth:hover{
+                color: #7ea2e0 !important;
+            }
+
+            .todoCheck__box__edit-icon:hover{
+                color:#7ea2e0  !important;
+            }
+        }
+    }
+}
+
 .leftconent {
     display: flex;
     flex-direction: column;

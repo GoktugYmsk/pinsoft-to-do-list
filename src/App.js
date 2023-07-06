@@ -30,14 +30,13 @@ const switchClick = () =>{
 
 
   return (
-    <div className="App">
+    <div className="App app-active">
       <Helmet>
         <title>Pinsoft To-Do-List</title>
       </Helmet>
       <Form.Check 
         type="switch"
         id="custom-switch"
-        label="Check this switch"
         onClick={switchClick}
       />
       <div className="row header-container mb-3">

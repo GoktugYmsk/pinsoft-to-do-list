@@ -25,7 +25,7 @@ function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks
   };
 
   return (
-    <div className='rightconent'>
+    <div className='rightconent right-conent-active'>
       <div className="headercontent">
         <h2>DONE</h2>
       </div>
