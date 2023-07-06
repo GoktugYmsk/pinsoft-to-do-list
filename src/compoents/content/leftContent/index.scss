@@ -330,6 +330,38 @@
 
 }
 
+@media (max-width:376px) {
+    
+    .leftconent{
+        width: 325px;
+        margin-left: 1%;
+
+        .headercontent{
+            width: 325px;
+        }
+
+        .todoCheck__box{
+
+             
+            input{
+                width: 255.47px;
+                
+            }
+
+            div{
+                span{
+                    max-width: 195.48px;
+                    min-width: 195.48px;
+                    font-size: 1rem;
+                }
+            }
+        }
+
+    }
+
+}
+
+
 
 
 

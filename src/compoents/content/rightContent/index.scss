@@ -279,8 +279,38 @@
         }
     }
 
+}
+}
 
+@media (max-width:376px) {
 
+    .rightconent{
+        width: 325px;
+        margin-left: 1%;
+
+        .headercontent{
+            width: 325px;
+        }
+
+        .rightcontent__list{
+
+            .rightcontent__list-box{
+
+                width: 289.47px;
+                .rightcontent__list-check {
+
+    
+                    div{
+                        span{
+                            max-width: 195.48px;
+                            min-width: 195.48px;
+                            font-size: 1rem;
+                        }
+                    }
+
+            }
+        }
+    }
 
 }
 }

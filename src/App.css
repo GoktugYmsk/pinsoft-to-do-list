@@ -75,6 +75,15 @@ body{
   }
 }
 
+@media (max-width:376px){
+  .App{
+    #custom-switch{
+      font-size: 2rem;
+      right: 10px;
+    }
+  }
+}
+
 @media (max-width:321px){
   .App{
     #custom-switch{
