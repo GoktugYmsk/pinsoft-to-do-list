@@ -11,16 +11,16 @@ import "./index.scss";
 function Footer() {
   const [data, setData] = useState({});
   const collectionRef = collection(database, "todo");
-
+  const active = useSelector((state) => state.darkActive.active);
   const dispatch = useDispatch();
   const popupModel = useSelector((state) => state.modal.popupModal);
 
   const handleSubmit = () => {
     dispatch(setPopupModal(true));
   };
-
+  
   return (
-    <div className="row row-active">
+    <div className={`row  ${active ? 'row-active' : 'row'}`}>
       <div className="col-md-12">
         <div
           className={`footer-container ${

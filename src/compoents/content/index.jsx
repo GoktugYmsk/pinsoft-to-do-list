@@ -9,11 +9,13 @@ import './index.scss';
 
 function Content({selectedTasks,setSelectedTasks}) {
   const [doneTasks, setDoneTasks] = useState([]);
-
+  const active = useSelector((state) => state.darkActive.active);
   const popupModel = useSelector((state) => state.modal.popupModal);
 
+
+  
   return (
-    <div className={`container-content container-content-active ${popupModel ? 'container-content__opacity' : ''}`}>
+    <div className={`container-content  ${active ? 'container-content-active' : 'container-content'}    ${popupModel ? 'container-content__opacity' : ''}`}>
       <div className="row justify-content-center">
         <div className="col-xl-4 col-lg-6 col-md-12 mb-5 mr-1">
         <LeftContent selectedTasks={selectedTasks} setSelectedTasks={setSelectedTasks} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
@@ -9,7 +9,7 @@ import './index.scss';
 import { useTodoLister } from '../../../firebase';
 
 function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTasks }) {
-
+  const active = useSelector((state) => state.darkActive.active);
   const dispatch = useDispatch();
 
   const taskList = useTodoLister();
@@ -58,7 +58,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
   };
 
   return (
-    <div className='middleconent middle-conent-active'>
+    <div className={`middleconent  ${active ? 'middle-conent-active' : 'middleconent'}`}>
       <div className="headercontent">
         <h2>DOING</h2>
       </div>

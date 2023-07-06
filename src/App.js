@@ -30,7 +30,7 @@ const switchClick = () =>{
 
 
   return (
-    <div className="App app-active">
+    <div className={`App  ${active ? 'app-active ' : 'App'}`}>
       <Helmet>
         <title>Pinsoft To-Do-List</title>
       </Helmet>

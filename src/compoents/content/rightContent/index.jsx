@@ -2,12 +2,13 @@ import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { IoReturnDownBack } from 'react-icons/io5';
 import { useTodoLister } from '../../../firebase';
+import { useSelector } from 'react-redux';
 
 import './index.scss';
 
 function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks }) {
   const taskList = useTodoLister();
-
+  const active = useSelector((state) => state.darkActive.active);
   const handleDeleteDone = (index) => {
     const updatedDoneTasks = doneTasks.filter((_, taskIndex) => taskIndex !== index);
     setDoneTasks(updatedDoneTasks);
@@ -25,7 +26,7 @@ function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks
   };
 
   return (
-    <div className='rightconent right-conent-active'>
+    <div className={`rightconent  ${active ? 'right-conent-active' : 'rightconent'}`}>
       <div className="headercontent">
         <h2>DONE</h2>
       </div>

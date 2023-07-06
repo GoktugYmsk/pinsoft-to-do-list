@@ -14,7 +14,7 @@ function Popup({setSelectedTasks}) {
     const [data , setData] = useState({});
 
     const [input, setInput] = useState('');
-
+    const active = useSelector((state) => state.darkActive.active);
     const popupModel = useSelector((state) => state.modal.popupModal);
     const addTask = useSelector((state) => state.addTodo.addTask);
     const doingTask = useSelector((state) => state.doing.doingTask);
@@ -77,7 +77,7 @@ function Popup({setSelectedTasks}) {
     return (
         <>
             {popupModel && (
-                <div className="modal-container modal-container-active">
+                <div className={`modal-container  ${active ? 'modal-container-active' : 'modal-container'}`}>
                     <div className="modal-content">
                         <span className="modal-close" onClick={handleHideModal}>
                             &times;
