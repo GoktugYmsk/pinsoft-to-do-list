@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FaTrashAlt } from 'react-icons/fa';
@@ -29,6 +29,9 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
         dispatch(setAddTasks(updatedAddTask));
         deleteTodo(taskID);
     };
+    useEffect(() => {
+console.log('deneme şlasmclşasmclş')
+    }, [])
 
     const handleTaskClick = (TaskId) => {
         console.log('taskid', TaskId)
@@ -39,8 +42,8 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
 
     const handleEditClick = (taskId) => {
         const taskToEdit = addTask.find((task) => task.id === taskId);
-            setEditingIndex(addTask.findIndex((task) => task.id === taskId));
-            setEditedTask(taskToEdit.task);
+        setEditingIndex(addTask.findIndex((task) => task.id === taskId));
+        setEditedTask(taskToEdit.task);
     };
 
     const handleSaveEdit = () => {
