@@ -126,6 +126,7 @@
                 cursor: pointer;
                 font-size: 18px !important;
                 margin-right: 10px;
+                transition: 0.3s;
             }
 
             .todoCheck__box-icon__left:hover{
@@ -136,6 +137,7 @@
             .todoCheck__box-icon__rigth {
                 cursor: pointer;
                 font-size: 18px !important;
+                transition: 0.3s;
             }
 
             .todoCheck__box-icon__rigth:hover{
@@ -147,6 +149,7 @@
                 cursor: pointer;
                 font-size: 18px;
                 margin-right: 10px;
+                transition: 0.3s;
             }
 
             .todoCheck__box__edit-icon:hover{
@@ -159,23 +162,6 @@
     }
 }
 
-// Ligth mod
-
-.leftconentLight{
-
-
-
-    .headercontent{
-        width: 450px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        border-radius: 20px 20px 0 0;
-        background-color: #121212;
-    }
-
-}
 
 
 @media (max-width:1367px) {
