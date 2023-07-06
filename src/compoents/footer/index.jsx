@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAddTasks } from "../configure";
 import { setPopupModal } from "../configure";
 
-import { app, database } from "../../firebase";
-import { collection, addDoc } from "firebase/firestore";
 
 import "./index.scss";
 
 function Footer() {
-  const [data, setData] = useState({});
-  const collectionRef = collection(database, "todo");
   const active = useSelector((state) => state.darkActive.active);
   const dispatch = useDispatch();
   const popupModel = useSelector((state) => state.modal.popupModal);

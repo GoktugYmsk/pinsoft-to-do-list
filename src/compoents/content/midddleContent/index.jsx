@@ -5,15 +5,14 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { setDoingTask } from '../../configure';
 
-import { useTodoLister } from '../../../firebase';
 
 import './index.scss';
 
 function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTasks }) {
   const active = useSelector((state) => state.darkActive.active);
+  const doingTask = useSelector((state) => state.doing.doingTask);
   const dispatch = useDispatch();
 
-  const taskList = useTodoLister();
 
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
@@ -41,7 +40,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
 
   const handleEditClick = (index) => {
     setEditingIndex(index);
-    const task = taskList.find(task => task.id === selectedTasks[index]);
+    const task = doingTask.find(task => task.id === selectedTasks[index]);
     if (task) {
       setEditedTask(task.task);
     }
@@ -67,7 +66,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
         <div className='middlecontent__list__todoCheck'>
           <ul>
             {selectedTasks.map((selectedTask, index) => {
-              const task = taskList.find(task => task.id === selectedTask);
+              const task = doingTask.find(task => task.id === selectedTask);
               if (task) {
                 return (
                   <div className="middleContent__box" key={index}>

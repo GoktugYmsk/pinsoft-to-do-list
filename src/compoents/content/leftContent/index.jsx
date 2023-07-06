@@ -7,8 +7,6 @@ import { FaEdit } from 'react-icons/fa';
 
 import { setAddTasks } from '../../configure';
 
-import { deleteTodo, useTodoLister } from "../../../firebase";
-
 import './index.scss';
 
 function LeftContent({ selectedTasks, setSelectedTasks }) {
@@ -20,12 +18,11 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
     const [editingIndex, setEditingIndex] = useState(-1);
     const [editedTask, setEditedTask] = useState('');
 
-    const taskList = useTodoLister();
 
     const handleDeleteClick = (taskID) => {
         const updatedAddTask = addTask.filter((task) => task.id !== taskID);
         dispatch(setAddTasks(updatedAddTask));
-        deleteTodo(taskID);
+
     };
 
     const handleTaskClick = (TaskId) => {
@@ -61,7 +58,7 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
                     <div className='leftcontent__list'>
                         <div className='todoCheck'>
                             <ul>
-                                {taskList.map((task, index) => (
+                                {addTask.map((task, index) => (
                                     <div className="todoCheck__box" key={index}>
 
                                         {editingIndex === index ? (

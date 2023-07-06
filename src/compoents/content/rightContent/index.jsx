@@ -2,13 +2,11 @@ import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 
-import { useTodoLister } from '../../../firebase';
 import { IoReturnDownBack } from 'react-icons/io5';
 
 import './index.scss';
 
 function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks }) {
-  const taskList = useTodoLister();
   const active = useSelector((state) => state.darkActive.active);
   const handleDeleteDone = (index) => {
     const updatedDoneTasks = doneTasks.filter((_, taskIndex) => taskIndex !== index);
@@ -32,8 +30,8 @@ function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks
         <h2>DONE</h2>
       </div>
       <div className='rightcontent__list'>
-        {doneTasks.map((task, index) => {
-          const matchedTask = taskList.find((item) => item.id === task);
+        {selectedTasks.map((task, index) => {
+          const matchedTask = selectedTasks.find((item) => item.id === task);
           if (matchedTask) {
             return (
               <div key={index} className='rightcontent__list-box'>
