@@ -134,13 +134,126 @@
 }
 
 
+@media (max-width:1367px) {
+
+    .rightconent{
+        width: 430px;
+       
+
+        .headercontent{
+            width: 430px;
+        }
+
+        .rightcontent__list{
+
+            .rightcontent__list-box{
+
+                width: 394.47px;
+                height: 48.8px;
+                .rightcontent__list-check {
+
+    
+                    div{
+                        span{
+                            max-width: 220.48px;
+                            min-width: 220.48px;
+                            font-size: 1rem;
+                        }
+                    }
+
+            }
+        }
+    }
 
 
-@media (max-width:450px) {
+
+
+}
+}
+
+
+@media (max-width:1281px) {
+
+    .rightconent{
+        width: 400px;
+       
+
+        .headercontent{
+            width: 400px;
+        }
+
+        .rightcontent__list{
+
+            .rightcontent__list-box{
+
+                width: 364.47px;
+                .rightcontent__list-check {
+
+    
+                    div{
+                        span{
+                            max-width: 190.48px;
+                            min-width: 190.48px;
+                            font-size: 1rem;
+                        }
+                    }
+
+            }
+        }
+    }
+
+
+
+
+}
+}
+
+
+@media (max-width:992px) {
+
+    .rightconent{
+       
+        margin-left: 25%;
+
+}
+}
+
+
+@media (max-width:769px) {
+
+    .rightconent{
+        margin-left: 6%;
+}
+}
+
+
+
+
+
+@media (max-width:601px) {
+
+    .rightconent{
+        margin-left: 6%;
+}
+}
+
+@media (max-width:481px) {
+
+    .rightconent{
+        margin-left: 1.8%;
+}
+}
+
+
+
+
+
+
+@media (max-width:415px) {
 
     .rightconent{
         width: 350px;
-        margin-left: 3%;
+        margin-left: 1%;
 
         .headercontent{
             width: 350px;
@@ -158,6 +271,43 @@
                         span{
                             max-width: 220.48px;
                             min-width: 220.48px;
+                            font-size: 1rem;
+                        }
+                    }
+
+            }
+        }
+    }
+
+
+
+
+}
+}
+
+
+@media (max-width:321px) {
+
+    .rightconent{
+        width: 270px;
+        
+
+        .headercontent{
+            width: 270px;
+        }
+
+        .rightcontent__list{
+
+            .rightcontent__list-box{
+
+                width: 234.47px;
+                .rightcontent__list-check {
+
+    
+                    div{
+                        span{
+                            max-width: 140.48px;
+                            min-width: 140.48px;
                             font-size: 1rem;
                         }
                     }

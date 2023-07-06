@@ -178,21 +178,21 @@
 }
 
 
-@media (max-width:450px) {
-    
+@media (max-width:1367px) {
+
     .leftconent{
-        width: 350px;
-        margin-left: 3%;
+        width: 430px;
+        
 
         .headercontent{
-            width: 350px;
+            width: 430px;
         }
 
         .todoCheck__box{
             padding: 10px;
             margin-top: 10px;
             position: relative;
-            right: 15px !important;
+            right: 20px !important;
 
              
             input{
@@ -203,6 +203,116 @@
                 border-style: none;
                 height: 30px;
                 border-radius: 20px;
+                width: 360.47px;
+                
+            }
+
+            div{
+                span{
+                    max-width: 300.48px;
+                    min-width: 300.48px;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+       
+
+       
+    }
+
+}
+
+@media (max-width:1281px) {
+
+    .leftconent{
+        width: 400px;
+        
+
+        .headercontent{
+            width: 400px;
+        }
+
+        .todoCheck__box{
+             
+            input{
+                width: 330.47px;
+                
+            }
+
+            div{
+                span{
+                    max-width: 270.48px;
+                    min-width: 270.48px;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+       
+
+       
+    }
+
+}
+
+
+@media (max-width:992px) {
+
+    .leftconent{
+       
+        margin-left: 25%;
+        
+    }
+}
+
+
+@media (max-width:769px) {
+
+    .leftconent{
+        margin-left: 6%;
+       
+    }
+
+}
+
+
+
+
+@media (max-width:601px) {
+
+    .leftconent{
+        margin-left: 6%;
+       
+    }
+
+}
+
+@media (max-width:481px) {
+
+    .leftconent{
+        margin-left: 1.8%;      
+    }
+
+}
+
+
+
+
+@media (max-width:415px) {
+    
+    .leftconent{
+        width: 350px;
+        margin-left: 1%;
+
+        .headercontent{
+            width: 350px;
+        }
+
+        .todoCheck__box{
+
+             
+            input{
                 width: 280.47px;
                 
             }
@@ -216,9 +326,40 @@
             }
         }
 
-       
-
-       
     }
 
 }
+
+
+
+
+@media (max-width:321px) {
+    
+    .leftconent{
+        width: 270px;
+        
+
+        .headercontent{
+            width: 270px;
+        }
+
+        .todoCheck__box{
+
+             
+            input{
+                width: 200.47px;
+                
+            }
+
+            div{
+                span{
+                    max-width: 140.48px;
+                    min-width: 140.48px;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+}
+

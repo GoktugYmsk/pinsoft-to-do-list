@@ -58,9 +58,30 @@ body{
   #custom-switch{
     font-size: 2rem;
     position: absolute;
-    top: 40px;
+    top: 50px;
     right: 40px;
+    cursor: pointer;
   }
 }
 
+
+
+@media (max-width:415px){
+  .App{
+    #custom-switch{
+      font-size: 2rem;
+      right: 20px;
+    }
+  }
+}
+
+@media (max-width:321px){
+  .App{
+    #custom-switch{
+      font-size: 2rem;
+      top: 5px;
+      right: 120px;
+    }
+  }
+}
 
