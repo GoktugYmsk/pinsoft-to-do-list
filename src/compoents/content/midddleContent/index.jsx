@@ -58,7 +58,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks, doneTasks, setDoneTask
   };
 
   return (
-    <div className='middleconent'>
+    <div className='middleconent middle-conent-active'>
       <div className="headercontent">
         <h2>DOING</h2>
       </div>

@@ -77,7 +77,7 @@ function Popup({setSelectedTasks}) {
     return (
         <>
             {popupModel && (
-                <div className="modal-container">
+                <div className="modal-container modal-container-active">
                     <div className="modal-content">
                         <span className="modal-close" onClick={handleHideModal}>
                             &times;

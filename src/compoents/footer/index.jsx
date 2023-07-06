@@ -20,7 +20,7 @@ function Footer() {
   };
 
   return (
-    <div className="row">
+    <div className="row row-active">
       <div className="col-md-12">
         <div
           className={`footer-container ${

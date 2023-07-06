@@ -1,3 +1,27 @@
+.row-active{
+    background-color: #dfe2e7 !important;
+
+
+    .footer-container
+    {
+        background-color: #dfe2e7 !important;
+
+        button{
+            background-color: #2a52f0   !important;
+            box-shadow: 0px 0px 4px 3px #2a52f0   !important ;
+            color: #dfe2e7 !important;
+            
+        }
+
+        button:hover{
+            opacity: 0.9 !important;
+        }
+
+
+    }
+}
+
+
 .row{
     background-color: #242424;
 

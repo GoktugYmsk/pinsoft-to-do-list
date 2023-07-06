@@ -1,3 +1,19 @@
+.app-active{
+  background-color: #dfe2e7 !important;
+
+  .header-container{
+    background-color: #dfe2e7 !important;
+  }
+
+  #header{
+    color: #1c1c24 !important;
+  }
+}
+
+
+
+
+
 .App {
   display: flex;
   align-items: center;
@@ -33,6 +49,12 @@
     
   }
 
+  #custom-switch{
+    font-size: 2rem;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
 }
 
 
