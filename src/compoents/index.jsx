@@ -27,7 +27,6 @@ function Components() {
             <Form.Check
                 type="switch"
                 id="custom-switch"
-                label="Check this switch"
                 onClick={switchClick}
             />
             <div className="row header-container mb-3">
