@@ -98,35 +98,38 @@
                 cursor: pointer;
                 font-size: 18px;
                 margin-right: 10px;
+                transition: 0.3s;
             }
 
             .middleContent__box-icon__left:hover {
-                color: #242424;
-                opacity: 0.9;
+                color: white;
+                opacity: 0.7;
             }
 
             .middleContent__box__edit-icon {
                 font-size: 18px;
                 margin-right: 10px;
                 cursor: pointer;
+                transition: 0.3s;
             }
 
             .middleContent__box__edit-icon:hover {
-                color: #242424;
-                opacity: 0.9;
+                color: white;
+                opacity: 0.7;
             }
 
             .container__altBox-doneClick {
                 cursor: pointer;
                 font-size: 18px;
+                transition: 0.3s;
 
             }
 
 
 
             .container__altBox-doneClick:hover{
-                color: #242424;
-                opacity: 0.9;
+                color: white;
+                opacity: 0.7;
             }
 
             
