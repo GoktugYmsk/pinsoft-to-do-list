@@ -1,38 +1,17 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBu2wpztORPvJddauKQYMLih83v1GZN5gE",
-  authDomain: "pinsoft-to-do-list.firebaseapp.com",
-  projectId: "pinsoft-to-do-list",
-  storageBucket: "pinsoft-to-do-list.appspot.com",
-  messagingSenderId: "621607766162",
-  appId: "1:621607766162:web:11cfc66678f3c14a9ebe4b",
-  measurementId: "G-LNE9MQHRH9"
+  apiKey: "AIzaSyBwv1DHDrtJg9334Au1vFn_bmc2rT-4TVg",
+  authDomain: "todos-e93b3.firebaseapp.com",
+  projectId: "todos-e93b3",
+  storageBucket: "todos-e93b3.appspot.com",
+  messagingSenderId: "17450222934",
+  appId: "1:17450222934:web:c4e6e60d9239a34fdcc2f7"
 };
 
-export const app = initializeApp(firebaseConfig);
-export const database = getFirestore(app);
-
-
-const todoRef = collection(database, "todo list");
-
-export const useTodoLister = () => {
-
-  const [todo, setTodo] = useState([]);
-
-  useEffect(() => {
-    return onSnapshot(todoRef, snapshot => {
-      setTodo(
-        snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-      )
-    });
-  }, []);
-
-  return todo;
-};
-
-export const deleteTodo = (id) => {
-  deleteDoc(doc(database, "todo list", id))
-}
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);  
