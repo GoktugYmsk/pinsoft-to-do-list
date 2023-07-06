@@ -6,5 +6,6 @@ export const store = configureStore({
         addTodo: configure,
         modal: configure,
         doing:configure,
+        darkActive: configure,
     },
 })

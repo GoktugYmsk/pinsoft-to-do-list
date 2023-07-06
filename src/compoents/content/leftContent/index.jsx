@@ -13,6 +13,7 @@ import './index.scss';
 
 function LeftContent({ selectedTasks, setSelectedTasks }) {
     const addTask = useSelector((state) => state.addTodo.addTask);
+    const active = useSelector((state) => state.darkActive.active);
 
     console.log('adddtassk', addTask)
 
@@ -30,7 +31,7 @@ function LeftContent({ selectedTasks, setSelectedTasks }) {
         deleteTodo(taskID);
     };
     useEffect(() => {
-console.log('deneme şlasmclşasmclş')
+        console.log('deneme şlasmclşasmclş')
     }, [])
 
     const handleTaskClick = (TaskId) => {
@@ -59,7 +60,7 @@ console.log('deneme şlasmclşasmclş')
     return (
         <div className="row">
             <div className="col-md-12">
-                <div className='leftconent'>
+                <div className={`leftconent ${active ? 'leftconentLight' : 'leftconent'}`}>
                     <div className="headercontent">
                         <h2>TODO</h2>
                     </div>

@@ -4,6 +4,7 @@ const initialState = {
     addTask: [],
     popupModal: false,
     doingTask: [],
+    active: [true],
 }
 
 export const configure = createSlice({
@@ -19,9 +20,12 @@ export const configure = createSlice({
         setDoingTask: (state, action) => {
             state.doingTask = action.payload;
         },
+        setActive: (state, action) => {
+            state.active = action.payload;
+        },
     }
 })
 
-export const {setAddTasks,setPopupModal,setDoingTask} = configure.actions
+export const {setAddTasks,setPopupModal,setDoingTask,setActive} = configure.actions
 
 export default configure.reducer

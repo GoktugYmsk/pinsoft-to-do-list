@@ -8,7 +8,7 @@
     background: #242424;
     border-radius: 20px 20px 0 0;
     border:solid #121212 5px;
-    box-shadow: 0 2px 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 2px 4px #0000004d;
 
     .headercontent{
         width: 450px;
@@ -118,6 +118,24 @@
         }
 
     }
+}
+
+// Ligth mod
+
+.leftconentLight{
+
+
+
+    .headercontent{
+        width: 450px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: 20px 20px 0 0;
+        background-color: #121212;
+    }
+
 }
 
 
