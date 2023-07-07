@@ -17,6 +17,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
 
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
+
   const handleDeleteTask = async (taskId) => {
     try {
       const taskDocRef = doc(db, 'todos', taskId);
@@ -65,25 +66,21 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
 
   const handleSaveEdit = async () => {
     if (editedTask.trim() !== '') {
-      const updatedAddTask = addTask.map((task, index) =>
-        index === editingIndex ? { ...task, text: editedTask } : task
-      );
-      dispatch(setAddTasks(updatedAddTask));
-      setSelectedTasks(updatedAddTask.map((task) => task.id));
-      setEditingIndex(-1);
-
       try {
-        const taskDocRef = doc(db, 'todos', selectedTasks[editingIndex]);
+        const taskDocRef = doc(db, 'todos', addTask[editingIndex].id);
         await updateDoc(taskDocRef, {
           text: editedTask
         });
+        const updatedAddTask = addTask.map((task, index) =>
+          index === editingIndex ? { ...task, text: editedTask } : task
+        );
+        dispatch(setAddTasks(updatedAddTask));
+        setEditingIndex(-1);
       } catch (error) {
         console.error('Error updating task: ', error);
       }
     }
   };
-
-
 
   useEffect(() => {
     const fetchTasks = async () => {
