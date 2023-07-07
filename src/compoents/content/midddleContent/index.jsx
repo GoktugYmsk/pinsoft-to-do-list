@@ -53,44 +53,48 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     }
   };
 
-  const handleEditClick = async (index) => {
+  const handleEditClick = (index, taskText) => {
     setEditingIndex(index);
-    const task = addTask.find((task) => task.id === selectedTasks[index]);
-    if (task) {
-      setEditedTask(task.text);
+    setEditedTask(taskText);
+  };
+
+  const handleSaveEdit = async (taskId) => {
+    try {
+      const taskDocRef = doc(db, 'todos', taskId);
+      await updateDoc(taskDocRef, {
+        text: editedTask,
+      });
+
+      const updatedAddTask = addTask.map((task) =>
+        task.id === taskId ? { ...task, text: editedTask } : task
+      );
+      dispatch(setAddTasks(updatedAddTask));
+
+      setEditingIndex(-1);
+      setEditedTask('');
+    } catch (error) {
+      console.error('Error updating task: ', error);
     }
   };
 
-  const handleSaveEdit = async () => {
-    if (editedTask.trim() !== '') {
-      try {
-        const taskDocRef = doc(db, 'todos', addTask[editingIndex].id);
-        await updateDoc(taskDocRef, {
-          text: editedTask
-        });
-        const updatedAddTask = addTask.map((task, index) =>
-          index === editingIndex ? { ...task, text: editedTask } : task
-        );
-        dispatch(setAddTasks(updatedAddTask));
-        setEditingIndex(-1);
-      } catch (error) {
-        console.error('Error updating task: ', error);
-      }
-    }
-  };
+
 
   useEffect(() => {
-    const fetchTasks = async () => {
+    const fetchData = async () => {
       try {
         const todoCollection = collection(db, 'todos');
         const snapshot = await getDocs(todoCollection);
-        const todoList = snapshot.docs.map((doc) => doc.data());
+        const todoList = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        dispatch(setAddTasks(todoList));
       } catch (error) {
         console.error('Error fetching tasks: ', error);
       }
     };
 
-    fetchTasks();
+    fetchData();
   }, []);
 
   const filteredTasks = addTask.filter((task) => task.status === 1);
@@ -111,9 +115,9 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                       type="text"
                       value={editedTask}
                       onChange={(e) => setEditedTask(e.target.value)}
-                      onBlur={handleSaveEdit}
+                      onBlur={() => handleSaveEdit(task.id)}
                       onKeyPress={(e) => {
-                        if (e.key === 'Enter') handleSaveEdit();
+                        if (e.key === 'Enter') handleSaveEdit(task.id);
                       }}
                     />
                   </>
@@ -131,7 +135,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                       />
                       <FaEdit
                         className="middleContent__box__edit-icon"
-                        onClick={() => handleEditClick(index)}
+                        onClick={() => handleEditClick(index, task.text)}
                       />
                       <BsCheckCircleFill
                         className="container__altBox-doneClick"
@@ -150,3 +154,39 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
 }
 
 export default MiddleContent;
+
+
+/*
+
+const handleEditClick = async (id) => {
+  // Firestore'da belgeyi al
+  const todoDocRef = doc(db, 'todos', id);
+  const todoDocSnapshot = await getDoc(todoDocRef);
+  
+  // Belge verisini al
+  if (todoDocSnapshot.exists()) {
+    const todoData = todoDocSnapshot.data();
+    setEditedTask(todoData.text); // Düzenlenen metni ayarla
+    setEditingIndex(id); // Düzenleme indeksini ayarla
+  }
+};
+
+const handleSaveEdit = async () => {
+  try {
+    const todoDocRef = doc(db, 'todos', editingIndex);
+    await updateDoc(todoDocRef, {
+      text: editedTask
+    });
+    
+    // Güncellenen veriyi yerel todo listesinde de güncelle
+    setTodos(todos.map(todo => (todo.id === editingIndex ? { ...todo, text: editedTask } : todo)));
+    
+    // Düzenleme durumunu sıfırla
+    setEditingIndex(-1);
+    setEditedTask('');
+  } catch (error) {
+    console.error('Error updating todo: ', error);
+  }
+};
+
+*/
