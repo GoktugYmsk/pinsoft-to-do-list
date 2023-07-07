@@ -1,57 +1,63 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
-import Form from 'react-bootstrap/Form';
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-import './index.scss'
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
+    try {
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password);
 
-function Login() {
-    const [user, setUser] = useState("");
-    const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
-    const [active, setActive] = useState()
-
-    const navigate = useNavigate();
-
-    const switchClickActive = () => {
-        setActive(!active)
+      console.log('giriş başarılı');
+      navigate('/mainpage');
+    } catch (error) {
+      setError(error.message);
     }
+  };
 
+  const handleUserChange = (e) => {
+    setEmail(e.target.value);
+  };
 
-    const userChange = (e) => {
-        setUser(e.target.value);
-    };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
-    const passwordChange = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const userClick = () => {
-        if (user === "Pinsoft" && password === "1234") {
-            navigate("/mainpage");
-        } else {
-            setErrorMessage("Kullanıcı adı veya şifre yanlış!");
-        }
-    };
-
-    return (
-        <div className={`login__container ${active ? 'login__container-ligth' : 'login__container'}`} >
-            <Form.Check
-                type="switch"
-                id="custom-switch"
-                onClick={switchClickActive}
-            />
-            <div className="input__group" >
-                <input onChange={userChange} type="text" />
-                <input type="password" onChange={passwordChange} />
-                <button onClick={userClick}>
-                    <p>Submit</p>
-                </button>
-                {errorMessage && <p>{errorMessage}</p>}
-            </div>
+  return (
+    <div className="login__container">
+      <form onSubmit={handleLogin}>
+        <div>
+          <label htmlFor="email">E-posta:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={handleUserChange}
+            required
+          />
         </div>
-    );
-}
+        <div>
+          <label htmlFor="password">Şifre:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
+        </div>
+        {error && <div>{error}</div>}
+        <button type="submit">Giriş Yap</button>
+      </form>
+    </div>
+  );
+};
 
 export default Login;

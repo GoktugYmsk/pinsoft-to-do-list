@@ -8,6 +8,10 @@ import './index.scss';
 
 function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks }) {
   const active = useSelector((state) => state.darkActive.active);
+  const addTask = useSelector((state) => state.addTodo.addTask);
+
+  const filteredTasks = addTask.filter((task) => task.status === 2);
+
   const handleDeleteDone = (index) => {
     const updatedDoneTasks = doneTasks.filter((_, taskIndex) => taskIndex !== index);
     setDoneTasks(updatedDoneTasks);
@@ -30,30 +34,25 @@ function RightContent({ doneTasks, setDoneTasks, selectedTasks, setSelectedTasks
         <h2>DONE</h2>
       </div>
       <div className='rightcontent__list'>
-        {selectedTasks.map((task, index) => {
-          const matchedTask = selectedTasks.find((item) => item.id === task);
-          if (matchedTask) {
-            return (
-              <div key={index} className='rightcontent__list-box'>
-                <div className='rightcontent__list-check'>
-                  <div>
-                    <span>{matchedTask.task}</span>
-                  </div>
-                  <div>
-                    <FaTrashAlt
-                      className='rigthContnent__box-icon__left'
-                      onClick={() => handleDeleteDone(index)}
-                    />
-                    <IoReturnDownBack
-                      className='rigthContnent__box-icon__rigth'
-                      onClick={() => handleTurnClick(index)}
-                    />
-                  </div>
-                </div>
+        {filteredTasks.map((task, index) => (
+          <div key={index} className='rightcontent__list-box'>
+            <div className='rightcontent__list-check'>
+              <div>
+                <span>{task.text}</span>
               </div>
-            );
-          }
-        })}
+              <div>
+                <FaTrashAlt
+                  className='rigthContnent__box-icon__left'
+                  onClick={() => handleDeleteDone(index)}
+                />
+                <IoReturnDownBack
+                  className='rigthContnent__box-icon__rigth'
+                  onClick={() => handleTurnClick(index)}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
