@@ -9,7 +9,7 @@ import { getDocs } from 'firebase/firestore';
 import { setAddTasks } from '../../configure';
 import './index.scss';
 
-function LeftContent({ selectedTasks, setSelectedTasks }) {
+function LeftContent({ selectedTasks }) {
   const addTask = useSelector((state) => state.addTodo.addTask);
   const active = useSelector((state) => state.darkActive.active);
   const dispatch = useDispatch();

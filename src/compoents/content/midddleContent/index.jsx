@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-import { collection, updateDoc, doc, getDocs } from 'firebase/firestore';
+import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
 import { setAddTasks } from '../../configure';
 import { db } from '../../../firebase';
-import { deleteDoc } from 'firebase/firestore';
-
 
 import './index.scss';
 
@@ -30,7 +28,6 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       console.error('Error deleting task: ', error);
     }
   };
-
 
   const handleTaskDoneClick = async (taskId) => {
     const taskDocRef = doc(db, 'todos', taskId);
