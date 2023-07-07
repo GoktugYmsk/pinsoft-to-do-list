@@ -60,9 +60,24 @@ body{
     font-size: 2rem;
     position: absolute;
     top: 50px;
-    right: 40px;
+    right: 150px;
     cursor: pointer;
   }
+}
+
+.logout__switch{
+  font-size: 2rem;
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  cursor: pointer;
+}
+.logout__switch__acitive{
+  color: white;
+}
+
+.components__icon__opacity{
+  opacity: 0.2;
 }
 
 

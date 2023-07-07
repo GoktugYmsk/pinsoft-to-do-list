@@ -23,7 +23,7 @@ const Login = () => {
     });
 
     return () => {
-      unsubscribe(); 
+      unsubscribe();
     };
   }, [navigate]);
 
