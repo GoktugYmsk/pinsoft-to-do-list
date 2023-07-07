@@ -60,6 +60,7 @@
     border-radius: 20px 20px 0 0;
     border: solid #121212 5px;
     box-shadow: 0 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
     
 
 
@@ -71,6 +72,7 @@
         color: #FFC107;
         border-radius: 20px 20px 0 0;
         background-color: #121212;
+        transition: 0.3s;
     }
 
     .middlecontent__list {
@@ -101,6 +103,7 @@
             margin-top: 10px;
             position: relative;
             right: 20px !important;
+            transition: 0.3s;
 
             input {
                 background-color: #121212;
@@ -149,7 +152,7 @@
                 cursor: pointer;
                 font-size: 18px;
                 margin-right: 10px;
-                transition: 0.3s;
+                transition: 0.15s;
             }
 
             .middleContent__box-icon__left:hover {
@@ -161,7 +164,7 @@
                 font-size: 18px;
                 margin-right: 10px;
                 cursor: pointer;
-                transition: 0.3s;
+                transition: 0.15s;
             }
 
             .middleContent__box__edit-icon:hover {
@@ -172,7 +175,7 @@
             .container__altBox-doneClick {
                 cursor: pointer;
                 font-size: 18px;
-                transition: 0.3s;
+                transition: 0.15s;
 
             }
 

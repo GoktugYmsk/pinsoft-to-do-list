@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import './index.scss';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,28 +35,33 @@ const Login = () => {
   return (
     <div className="login__container">
       <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="email">E-posta:</label>
+        <div className='form-group mb-3'>
+          <label htmlFor="email">E-mail</label>
           <input
             type="email"
             id="email"
+            className='form-control'
             value={email}
             onChange={handleUserChange}
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Şifre:</label>
+        <div className='form-group mb-3'>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
+            className='form-control'
             value={password}
             onChange={handlePasswordChange}
             required
           />
         </div>
         {error && <div>{error}</div>}
-        <button type="submit">Giriş Yap</button>
+        <div className="button-container d-flex justify-content-center">
+        <button type="submit" className='login-button'>Login</button>
+        </div>
+        
       </form>
     </div>
   );
