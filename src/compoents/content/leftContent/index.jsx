@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+
+import { doc, updateDoc, collection } from 'firebase/firestore';
+import { getDocs } from 'firebase/firestore';
+import { deleteDoc } from 'firebase/firestore';
+
 import { FaTrashAlt } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaEdit } from 'react-icons/fa';
-import { doc, updateDoc, collection } from 'firebase/firestore';
-import { deleteDoc } from 'firebase/firestore';
+
 import { db } from '../../../firebase';
-import { getDocs } from 'firebase/firestore';
 import { setAddTasks } from '../../configure';
+
 import './index.scss';
 
 function LeftContent() {
-  const addTask = useSelector((state) => state.addTodo.addTask);
-  const active = useSelector((state) => state.darkActive.active);
-  const dispatch = useDispatch();
-
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
 
+  const addTask = useSelector((state) => state.addTodo.addTask);
+  const active = useSelector((state) => state.darkActive.active);
+
+  const dispatch = useDispatch();
+
   const handleDeleteClick = async (taskId) => {
+
     try {
       const taskDocRef = doc(db, 'todos', taskId);
       await deleteDoc(taskDocRef);
-
       const updatedAddTask = addTask.filter((task) => task.id !== taskId);
       dispatch(setAddTasks(updatedAddTask));
     } catch (error) {

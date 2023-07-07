@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { setPopupModal, setAddTasks, setDoingTask } from '../configure';
 import { collection, addDoc } from 'firebase/firestore';
+
+import { setPopupModal, setAddTasks } from '../configure';
 import { db } from '../../firebase';
+
 import './index.scss';
 
-function Popup({ setSelectedTasks }) {
-  const [input, setInput] = useState('');
+function Popup() {
   const active = useSelector((state) => state.darkActive.active);
   const popupModal = useSelector((state) => state.modal.popupModal);
   const addTask = useSelector((state) => state.addTodo.addTask);
-  const doingTask = useSelector((state) => state.doing.doingTask);
+
+  const [input, setInput] = useState('');
+
   const dispatch = useDispatch();
 
   const handleChange = (event) => {
@@ -46,7 +50,6 @@ function Popup({ setSelectedTasks }) {
       }
     }
   };
-  
 
   const handleHideModal = () => {
     dispatch(setPopupModal(false));

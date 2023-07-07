@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
+
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
-import { setAddTasks } from '../../configure';
+
 import { db } from '../../../firebase';
+import { setAddTasks } from '../../configure';
 
 import './index.scss';
 
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
+  
   const dispatch = useDispatch();
 
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -155,38 +159,3 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
 
 export default MiddleContent;
 
-
-/*
-
-const handleEditClick = async (id) => {
-  // Firestore'da belgeyi al
-  const todoDocRef = doc(db, 'todos', id);
-  const todoDocSnapshot = await getDoc(todoDocRef);
-  
-  // Belge verisini al
-  if (todoDocSnapshot.exists()) {
-    const todoData = todoDocSnapshot.data();
-    setEditedTask(todoData.text); // Düzenlenen metni ayarla
-    setEditingIndex(id); // Düzenleme indeksini ayarla
-  }
-};
-
-const handleSaveEdit = async () => {
-  try {
-    const todoDocRef = doc(db, 'todos', editingIndex);
-    await updateDoc(todoDocRef, {
-      text: editedTask
-    });
-    
-    // Güncellenen veriyi yerel todo listesinde de güncelle
-    setTodos(todos.map(todo => (todo.id === editingIndex ? { ...todo, text: editedTask } : todo)));
-    
-    // Düzenleme durumunu sıfırla
-    setEditingIndex(-1);
-    setEditedTask('');
-  } catch (error) {
-    console.error('Error updating todo: ', error);
-  }
-};
-
-*/

@@ -1,18 +1,21 @@
 import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
+
 import { useSelector, useDispatch } from 'react-redux';
+
+import { FaTrashAlt } from 'react-icons/fa';
+import { IoReturnDownBack } from 'react-icons/io5';
 import { updateDoc, doc } from 'firebase/firestore';
+
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
 import { deleteDoc } from 'firebase/firestore';
-
-import { IoReturnDownBack } from 'react-icons/io5';
 
 import './index.scss';
 
 function RightContent() {
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
+
   const dispatch = useDispatch();
 
   const filteredTasks = addTask.filter((task) => task.status === 2);

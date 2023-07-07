@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import './index.scss';
 
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
+import './index.scss';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -16,9 +18,7 @@ const Login = () => {
     try {
       const auth = getAuth();
       await signInWithEmailAndPassword(auth, email, password);
-
-      console.log('giriş başarılı');
-      navigate('/mainpage');
+      navigate('/home');
     } catch (error) {
       setError(error.message);
     }
