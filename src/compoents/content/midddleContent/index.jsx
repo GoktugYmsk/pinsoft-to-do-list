@@ -5,6 +5,8 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { collection, updateDoc, doc, getDocs } from 'firebase/firestore';
 import { setAddTasks } from '../../configure';
 import { db } from '../../../firebase';
+import { deleteDoc } from 'firebase/firestore';
+
 
 import './index.scss';
 
@@ -15,20 +17,28 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
 
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
+  const handleDeleteTask = async (taskId) => {
+    try {
+      const taskDocRef = doc(db, 'todos', taskId);
+      await deleteDoc(taskDocRef);
 
-  const handleDeleteTask = (taskId) => {
-    const updatedSelectedTasks = selectedTasks.filter((task) => task !== taskId);
-    setSelectedTasks(updatedSelectedTasks);
+      const updatedAddTask = addTask.filter((task) => task.id !== taskId);
+      dispatch(setAddTasks(updatedAddTask));
+      setSelectedTasks(selectedTasks.filter((task) => task !== taskId));
+    } catch (error) {
+      console.error('Error deleting task: ', error);
+    }
   };
+
 
   const handleTaskDoneClick = async (taskId) => {
     const taskDocRef = doc(db, 'todos', taskId);
-  
+
     try {
       await updateDoc(taskDocRef, {
         status: 2
       });
-  
+
       const updatedAddTask = addTask.map((task) => {
         if (task.id === taskId) {
           return {
@@ -38,14 +48,13 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
         }
         return task;
       });
-  
+
       dispatch(setAddTasks(updatedAddTask));
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
   };
-  
-  
+
   const handleEditClick = async (index) => {
     setEditingIndex(index);
     const task = addTask.find((task) => task.id === selectedTasks[index]);
@@ -53,7 +62,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       setEditedTask(task.text);
     }
   };
-  
+
   const handleSaveEdit = async () => {
     if (editedTask.trim() !== '') {
       const updatedAddTask = addTask.map((task, index) =>
@@ -62,7 +71,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       dispatch(setAddTasks(updatedAddTask));
       setSelectedTasks(updatedAddTask.map((task) => task.id));
       setEditingIndex(-1);
-  
+
       try {
         const taskDocRef = doc(db, 'todos', selectedTasks[editingIndex]);
         await updateDoc(taskDocRef, {
@@ -73,8 +82,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       }
     }
   };
-  
-  
+
+
 
   useEffect(() => {
     const fetchTasks = async () => {

@@ -34,20 +34,19 @@ function Popup({ setSelectedTasks }) {
 
   const handleDoingClick = async () => {
     if (input.trim() !== '') {
-      const updatedDoingTasks = [...doingTask, input];
-      dispatch(setDoingTask(updatedDoingTasks));
-      setSelectedTasks(updatedDoingTasks);
-      setInput('');
-
       try {
-        const collectionRef = collection(db, 'doingList');
-        const docRef = await addDoc(collectionRef, { task: input });
+        const todoCollection = collection(db, 'todos');
+        const docRef = await addDoc(todoCollection, { text: input, status: 1 });
+        const updatedTasks = [...addTask, { id: docRef.id, text: input, status: 1 }];
+        dispatch(setAddTasks(updatedTasks));
+        setInput('');
         console.log('Veri Firebase\'e gönderildi. Doküman ID:', docRef.id);
       } catch (error) {
         console.error('Veri gönderme hatası:', error);
       }
     }
   };
+  
 
   const handleHideModal = () => {
     dispatch(setPopupModal(false));
