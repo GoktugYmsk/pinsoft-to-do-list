@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
 import './index.scss';
 
@@ -9,8 +8,24 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate('/home');
+      } else {
+        setIsLoading(false);
+      }
+    });
+
+    return () => {
+      unsubscribe(); 
+    };
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -31,6 +46,10 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="login__container">
@@ -59,9 +78,8 @@ const Login = () => {
         </div>
         {error && <div>{error}</div>}
         <div className="button-container d-flex justify-content-center">
-        <button type="submit" className='login-button'>Login</button>
+          <button type="submit" className='login-button'>Login</button>
         </div>
-        
       </form>
     </div>
   );
