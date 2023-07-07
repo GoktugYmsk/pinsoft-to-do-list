@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaTrashAlt } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaEdit } from 'react-icons/fa';
-import { collection, updateDoc, doc } from 'firebase/firestore';
+import { doc, updateDoc, collection } from 'firebase/firestore';
+import { deleteDoc } from 'firebase/firestore';
 import { db } from '../../../firebase';
 import { getDocs } from 'firebase/firestore';
 import { setAddTasks } from '../../configure';
 import './index.scss';
 
-function LeftContent({ selectedTasks }) {
+function LeftContent() {
   const addTask = useSelector((state) => state.addTodo.addTask);
   const active = useSelector((state) => state.darkActive.active);
   const dispatch = useDispatch();
@@ -17,9 +18,16 @@ function LeftContent({ selectedTasks }) {
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
 
-  const handleDeleteClick = (taskID) => {
-    const updatedAddTask = addTask.filter((task) => task.id !== taskID);
-    dispatch(setAddTasks(updatedAddTask));
+  const handleDeleteClick = async (taskId) => {
+    try {
+      const taskDocRef = doc(db, 'todos', taskId);
+      await deleteDoc(taskDocRef);
+
+      const updatedAddTask = addTask.filter((task) => task.id !== taskId);
+      dispatch(setAddTasks(updatedAddTask));
+    } catch (error) {
+      console.error('Error deleting task: ', error);
+    }
   };
 
   const handleTaskClick = async (taskId) => {
@@ -37,34 +45,29 @@ function LeftContent({ selectedTasks }) {
     }
   };
 
-  const handleEditClick = (index) => {
+  const handleEditClick = (index, taskText) => {
     setEditingIndex(index);
-    const task = addTask.find((task) => task.id === selectedTasks[index]);
-    if (task) {
-      setEditedTask(task.text);
-    }
+    setEditedTask(taskText);
   };
 
-  const handleSaveEdit = async () => {
-    if (editedTask.trim() !== '') {
-      try {
-        const taskDocRef = doc(db, 'todos', addTask[editingIndex].id);
-        await updateDoc(taskDocRef, {
-          text: editedTask
-        });
-  
-        const updatedTask = { ...addTask[editingIndex], text: editedTask };
-        const updatedAddTask = addTask.map((task, index) =>
-          index === editingIndex ? updatedTask : task
-        );
-        dispatch(setAddTasks(updatedAddTask));
-        setEditingIndex(-1);
-      } catch (error) {
-        console.error('Error updating task: ', error);
-      }
+  const handleSaveEdit = async (taskId) => {
+    try {
+      const taskDocRef = doc(db, 'todos', taskId);
+      await updateDoc(taskDocRef, {
+        text: editedTask,
+      });
+
+      const updatedAddTask = addTask.map((task) =>
+        task.id === taskId ? { ...task, text: editedTask } : task
+      );
+      dispatch(setAddTasks(updatedAddTask));
+
+      setEditingIndex(-1);
+      setEditedTask('');
+    } catch (error) {
+      console.error('Error updating task: ', error);
     }
   };
-  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,9 +107,9 @@ function LeftContent({ selectedTasks }) {
                           type="text"
                           value={editedTask}
                           onChange={(e) => setEditedTask(e.target.value)}
-                          onBlur={handleSaveEdit}
+                          onBlur={() => handleSaveEdit(task.id)}
                           onKeyPress={(e) => {
-                            if (e.key === 'Enter') handleSaveEdit();
+                            if (e.key === 'Enter') handleSaveEdit(task.id);
                           }}
                         />
                       </>
@@ -122,7 +125,7 @@ function LeftContent({ selectedTasks }) {
                           />
                           <FaEdit
                             className="todoCheck__box__edit-icon"
-                            onClick={() => handleEditClick(index)}
+                            onClick={() => handleEditClick(index, task.text)}
                           />
                           <BsCheckCircleFill
                             className="todoCheck__box-icon__rigth"
