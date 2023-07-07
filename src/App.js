@@ -12,9 +12,11 @@ function App() {
 
   useEffect(() => {
       if (active) {
-        document.body.style.backgroundColor = '#dfe2e7 '; 
+        document.body.style.backgroundColor = '#dfe2e7 ';
+        document.body.style.transition = '0.3s';
       } else {
         document.body.style.backgroundColor = '#242424';
+        document.body.style.transition = '0.3s';
       }
   
       
