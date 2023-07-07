@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import Content from "../compoents/content";
@@ -12,6 +13,7 @@ import Form from 'react-bootstrap/Form';
 function Components() {
 
     const active = useSelector((state) => state.darkActive.active);
+
     const dispatch = useDispatch()
 
     const switchClick = () => {
