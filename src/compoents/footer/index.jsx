@@ -23,6 +23,7 @@ function Footer() {
         >
           <div className="footer-container">
             <button onClick={handleSubmit}>Add Task</button>
+            <button>Logout</button>
           </div>
         </div>
       </div>

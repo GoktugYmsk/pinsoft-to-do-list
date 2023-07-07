@@ -5,6 +5,7 @@ import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firesto
 
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { IoReturnDownBack } from 'react-icons/io5';
 
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
@@ -14,7 +15,7 @@ import './index.scss';
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
-  
+
   const dispatch = useDispatch();
 
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -81,8 +82,30 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     }
   };
 
-
-
+  const handleTurnClick = async (taskId) => {
+    try {
+      const taskDocRef = doc(db, 'todos', taskId);
+  
+      await updateDoc(taskDocRef, {
+        status: 0
+      });
+  
+      const updatedAddTask = addTask.map((task) => {
+        if (task.id === taskId) {
+          return {
+            ...task,
+            status: 0
+          };
+        }
+        return task;
+      });
+  
+      dispatch(setAddTasks(updatedAddTask));
+    } catch (error) {
+      console.error('Error updating task status: ', error);
+    }
+  };
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -133,6 +156,10 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                       </span>
                     </div>
                     <div className="iconcontainer">
+                      <IoReturnDownBack
+                        className='leftContnent__box-icon__rigth'
+                        onClick={() => handleTurnClick(task.id)}
+                      />
                       <FaTrashAlt
                         className="middleContent__box-icon__left"
                         onClick={() => handleDeleteTask(task.id)}

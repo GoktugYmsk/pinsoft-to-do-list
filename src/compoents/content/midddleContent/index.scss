@@ -1,16 +1,16 @@
-.middle-conent-active{
-    background-color: #dfe2e7  !important;
-    border: solid #2a52f0  5px !important;
-    box-shadow: 0 2px 2px 4px rgb(42,82,240,0.3) !important;
+.middle-conent-active {
+    background-color: #dfe2e7 !important;
+    border: solid #2a52f0 5px !important;
+    box-shadow: 0 2px 2px 4px rgb(42, 82, 240, 0.3) !important;
 
 
-    .headercontent{
-        background-color: #2a52f0 !important ;
+    .headercontent {
+        background-color: #2a52f0 !important;
         color: #dfe2e7 !important;
     }
 
 
-    .middlecontent__list{
+    .middlecontent__list {
 
         .middlecontent__list__todoCheck {
             color: #dfe2e7 !important;
@@ -19,32 +19,32 @@
         .middleContent__box {
             background-color: #777879 !important;
             color: #dfe2e7 !important;
-        
+
             input {
-                background-color:#7ea2e0 !important ;
+                background-color: #7ea2e0 !important;
                 color: #dfe2e7;
-                
+
             }
 
-            
+
 
             .middleContent__box-icon__left:hover {
                 color: #7ea2e0 !important;
                 opacity: 0.7;
             }
 
-          
+
             .middleContent__box__edit-icon:hover {
                 color: #7ea2e0 !important;
                 opacity: 0.7;
             }
 
-            .container__altBox-doneClick:hover{
-                color: #7ea2e0 !important; 
+            .container__altBox-doneClick:hover {
+                color: #7ea2e0 !important;
                 opacity: 0.7;
             }
+        }
     }
-}
 }
 
 
@@ -61,7 +61,7 @@
     border: solid #121212 5px;
     box-shadow: 0 2px 2px 4px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
-    
+
 
 
     .headercontent {
@@ -130,6 +130,19 @@
                     align-items: center;
                     justify-content: center;
                 }
+
+                .leftContnent__box-icon__rigth {
+                    cursor: pointer;
+                    font-size: 18px;
+                    transition: 0.15s;
+                    position: relative;
+                    right: 20px;
+                }
+
+                .leftContnent__box-icon__rigth:hover {
+                    color: #7ea2e0 !important;
+                    opacity: 0.7;
+                }
             }
 
             div {
@@ -181,12 +194,12 @@
 
 
 
-            .container__altBox-doneClick:hover{
+            .container__altBox-doneClick:hover {
                 color: white;
                 opacity: 0.7;
             }
 
-            
+
 
         }
     }
@@ -194,27 +207,27 @@
 
 @media (max-width:1367px) {
 
-    .middleconent{
+    .middleconent {
         width: 430px;
-        
 
 
-        .headercontent{
+
+        .headercontent {
             width: 430px;
         }
 
-        .middlecontent__list{
+        .middlecontent__list {
 
-            .middleContent__box{
-    
+            .middleContent__box {
+
                 input {
                     width: 367.47px;
 
                 }
-        
-                div{
-    
-                    span{
+
+                div {
+
+                    span {
                         max-width: 300.48px;
                         min-width: 300.48px;
                         font-size: 1.2rem;
@@ -222,7 +235,7 @@
                 }
             }
         }
-     
+
 
     }
 
@@ -231,26 +244,26 @@
 
 @media (max-width:1281px) {
 
-    .middleconent{
+    .middleconent {
         width: 400px;
-        
 
 
-        .headercontent{
+
+        .headercontent {
             width: 400px;
         }
 
-        .middlecontent__list{
+        .middlecontent__list {
 
-            .middleContent__box{
-    
+            .middleContent__box {
+
                 input {
                     width: 337.47px;
                 }
-        
-                div{
-    
-                    span{
+
+                div {
+
+                    span {
                         max-width: 270.48px;
                         min-width: 270.48px;
                         font-size: 1.2rem;
@@ -258,7 +271,7 @@
                 }
             }
         }
-     
+
 
     }
 
@@ -266,7 +279,7 @@
 
 @media (max-width:992px) {
 
-    .middleconent{
+    .middleconent {
         margin-left: 25%;
 
     }
@@ -275,7 +288,7 @@
 
 @media (max-width:769px) {
 
-    .middleconent{
+    .middleconent {
         margin-left: 6%;
 
     }
@@ -286,7 +299,7 @@
 
 @media (max-width:601px) {
 
-    .middleconent{
+    .middleconent {
         margin-left: 6%;
     }
 
@@ -295,9 +308,9 @@
 
 @media (max-width:481px) {
 
-    .middleconent{
+    .middleconent {
         margin-left: 1.8%;
-        
+
     }
 
 }
@@ -309,28 +322,28 @@
 
 @media (max-width:415px) {
 
-    .middleconent{
+    .middleconent {
         width: 350px;
         margin-left: 1%;
 
 
-        .headercontent{
+        .headercontent {
             width: 350px;
         }
 
-        .middlecontent__list{
+        .middlecontent__list {
 
-            .middleContent__box{
+            .middleContent__box {
 
-    
-    
+
+
                 input {
                     width: 280.47px;
                 }
-        
-                div{
-    
-                    span{
+
+                div {
+
+                    span {
                         max-width: 220.48px;
                         min-width: 220.48px;
                         font-size: 1rem;
@@ -338,7 +351,7 @@
                 }
             }
         }
-     
+
 
     }
 
@@ -346,28 +359,28 @@
 
 @media (max-width:376px) {
 
-    .middleconent{
+    .middleconent {
         width: 325px;
         margin-left: 1%;
 
 
-        .headercontent{
+        .headercontent {
             width: 325px;
         }
 
-        .middlecontent__list{
+        .middlecontent__list {
 
-            .middleContent__box{
+            .middleContent__box {
 
-    
-    
+
+
                 input {
                     width: 255.47px;
                 }
-        
-                div{
-    
-                    span{
+
+                div {
+
+                    span {
                         max-width: 195.48px;
                         min-width: 195.48px;
                         font-size: 1rem;
@@ -375,7 +388,7 @@
                 }
             }
         }
-     
+
 
     }
 
@@ -383,27 +396,27 @@
 
 @media (max-width:321px) {
 
-    .middleconent{
+    .middleconent {
         width: 270px;
-        
 
 
-        .headercontent{
+
+        .headercontent {
             width: 270px;
         }
 
-        .middlecontent__list{
+        .middlecontent__list {
 
-            .middleContent__box{
-    
-    
+            .middleContent__box {
+
+
                 input {
                     width: 200.47px;
                 }
-        
-                div{
-    
-                    span{
+
+                div {
+
+                    span {
                         max-width: 140.48px;
                         min-width: 140.48px;
                         font-size: 1rem;
@@ -411,7 +424,7 @@
                 }
             }
         }
-     
+
 
     }
 
