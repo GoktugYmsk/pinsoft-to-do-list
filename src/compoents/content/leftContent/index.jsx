@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
-import { FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
-import { IoReturnDownBack } from 'react-icons/io5';
+import { FaEdit } from 'react-icons/fa';
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
-
 import './index.scss';
 
 function LeftContent() {
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
+  const [draggedTask, setDraggedTask] = useState(null);
 
   const addTask = useSelector((state) => state.addTodo.addTask);
   const active = useSelector((state) => state.darkActive.active);
@@ -68,6 +68,41 @@ function LeftContent() {
     }
   };
 
+  const handleDragStart = (event, task) => {
+    setDraggedTask(task);
+  };
+
+  const handleDragEnd = async (event) => {
+    event.preventDefault();
+    if (draggedTask && draggedTask.status !== 1) {
+      try {
+        const taskDocRef = doc(db, 'todos', draggedTask.id);
+
+        await updateDoc(taskDocRef, {
+          status: 1
+        });
+
+        const updatedAddTask = addTask.map((t) => {
+          if (t.id === draggedTask.id) {
+            return {
+              ...t,
+              status: 1
+            };
+          }
+          return t;
+        });
+
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
+    }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -87,25 +122,6 @@ function LeftContent() {
   }, []);
 
   const filteredTasks = addTask.filter((task) => task.status === 0);
-  const handleDragStart = (e, taskId) => {
-    e.dataTransfer.setData('taskId', taskId);
-    e.dataTransfer.setData('sourceContainer', 'middleContent');
-  };
-
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const handleDrop = async (e) => {
-    e.preventDefault();
-    const taskId = e.dataTransfer.getData('taskId');
-    const targetClassList = e.target.classList;
-
-    if (targetClassList.contains('leftcontent__list') || targetClassList.contains('todoCheck__box')) {
-      handleTaskClick(taskId);
-    }
-  };
 
   return (
     <div className="row">
@@ -114,11 +130,7 @@ function LeftContent() {
           <div className="headercontent">
             <h2>TODO</h2>
           </div>
-          <div
-            className="leftcontent__list"
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-          >
+          <div className="leftcontent__list" onDragOver={handleDragOver} onDrop={handleDragEnd}>
             <div className="todoCheck">
               <ul>
                 {filteredTasks.map((task, index) => (
@@ -126,7 +138,8 @@ function LeftContent() {
                     className="todoCheck__box"
                     key={index}
                     draggable
-                    onDragStart={(e) => handleDragStart(e, task.id)}
+                    onDragStart={(event) => handleDragStart(event, task)}
+                    onDragEnd={handleDragEnd}
                   >
                     {editingIndex === index ? (
                       <>
@@ -147,15 +160,15 @@ function LeftContent() {
                         </div>
                         <div>
                           <FaTrashAlt
-                            className="todoCheck__box-icon__left"
+                            className="todoCheck_box-icon_left"
                             onClick={() => handleDeleteClick(task.id)}
                           />
                           <FaEdit
-                            className="todoCheck__box__edit-icon"
+                            className="todoCheck_box_edit-icon"
                             onClick={() => handleEditClick(index, task.text)}
                           />
                           <BsCheckCircleFill
-                            className="todoCheck__box-icon__rigth"
+                            className="todoCheck_box-icon_rigth"
                             onClick={() => handleTaskClick(task.id)}
                           />
                         </div>

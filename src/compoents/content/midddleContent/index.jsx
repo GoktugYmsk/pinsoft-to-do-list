@@ -6,16 +6,17 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { IoReturnDownBack } from 'react-icons/io5';
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
-
 import './index.scss';
 
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
+
   const dispatch = useDispatch();
 
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
+  const [draggedTask, setDraggedTask] = useState(null);
 
   const handleDeleteTask = async (taskId) => {
     try {
@@ -120,51 +121,80 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     fetchData();
   }, []);
 
+  const handleDragStart = (event, task) => {
+    setDraggedTask(task);
+  };
+
+  const handleDragEnd = async (event) => {
+    event.preventDefault();
+    if (draggedTask && draggedTask.status !== 1) {
+      try {
+        const taskDocRef = doc(db, 'todos', draggedTask.id);
+
+        await updateDoc(taskDocRef, {
+          status: 1
+        });
+
+        const updatedAddTask = addTask.map((t) => {
+          if (t.id === draggedTask.id) {
+            return {
+              ...t,
+              status: 1
+            };
+          }
+          return t;
+        });
+
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
+    } else if (draggedTask && draggedTask.status === 1) {
+      try {
+        const taskDocRef = doc(db, 'todos', draggedTask.id);
+
+        await updateDoc(taskDocRef, {
+          status: 0
+        });
+
+        const updatedAddTask = addTask.map((t) => {
+          if (t.id === draggedTask.id) {
+            return {
+              ...t,
+              status: 0
+            };
+          }
+          return t;
+        });
+
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
+    }
+  };
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
   const filteredTasks = addTask.filter((task) => task.status === 1);
-
-  const handleDragStart = (e, taskId) => {
-    e.dataTransfer.setData('taskId', taskId);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const handleDrop = async (e) => {
-    e.preventDefault();
-    const taskId = e.dataTransfer.getData('taskId');
-    const targetClassList = e.target.classList;
-
-    const sourceContainer = e.dataTransfer.getData('sourceContainer');
-
-    if (sourceContainer === 'todoCheck') {
-      return; // Do nothing if dragging from the todoCheck container
-    }
-
-    if (targetClassList.contains('middlecontent__list') || targetClassList.contains('middleContent__box')) {
-      handleTurnClick(taskId);
-    }
-  };
-
 
   return (
     <div className={`middleconent ${active ? 'middle-conent-active' : 'middleconent'}`}>
       <div className="headercontent">
         <h2>DOING</h2>
       </div>
-      <div
-        className="middlecontent__list"
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-      >
-        <div className="middlecontent__list__todoCheck">
+      <div className="middlecontent__list" onDragOver={handleDragOver} onDrop={handleDragEnd}>
+        <div className="middlecontent_list_todoCheck">
           <ul>
             {filteredTasks.map((task, index) => (
               <div
                 className="middleContent__box"
                 key={index}
                 draggable
-                onDragStart={(e) => handleDragStart(e, task.id)}
+                onDragStart={(event) => handleDragStart(event, task)}
+                onDragEnd={handleDragEnd}
               >
                 {editingIndex === index ? (
                   <>
@@ -181,22 +211,27 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                 ) : (
                   <>
                     <div>
-                      <span style={{ textDecoration: selectedTasks.includes(task.id) ? 'line-through' : 'none' }}>
+                      <span
+                        style={{
+                          textDecoration: selectedTasks.includes(task.id) ? 'line-through' : 'none'
+                        }}
+                      >
                         {task.text}
                       </span>
                     </div>
                     <div className="iconcontainer">
                       <IoReturnDownBack
-                        className='leftContnent__box-icon__rigth'
+                        className="leftContnent_box-icon_rigth"
                         onClick={() => handleTurnClick(task.id)}
                       />
                       <FaTrashAlt
-                        className="middleContent__box-icon__left"
+                        className="middleContent_box-icon_left"
                         onClick={() => handleDeleteTask(task.id)}
                       />
                       <FaEdit
-                        className="middleContent__box__edit-icon"
-                        onClick={() => handleEditClick(index, task.text)}
+                        className="middleContent_box_edit-icon"
+                        onClick={() => handleEditClick(index, task.textF
+)}
                       />
                       <BsCheckCircleFill
                         className="container__altBox-doneClick"
