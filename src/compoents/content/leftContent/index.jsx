@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-
-import { doc, updateDoc, collection } from 'firebase/firestore';
-import { getDocs } from 'firebase/firestore';
-import { deleteDoc } from 'firebase/firestore';
-
-import { FaTrashAlt } from 'react-icons/fa';
+import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
+import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
-import { FaEdit } from 'react-icons/fa';
-
+import { IoReturnDownBack } from 'react-icons/io5';
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
 
@@ -25,7 +19,6 @@ function LeftContent() {
   const dispatch = useDispatch();
 
   const handleDeleteClick = async (taskId) => {
-
     try {
       const taskDocRef = doc(db, 'todos', taskId);
       await deleteDoc(taskDocRef);
@@ -94,6 +87,25 @@ function LeftContent() {
   }, []);
 
   const filteredTasks = addTask.filter((task) => task.status === 0);
+  const handleDragStart = (e, taskId) => {
+    e.dataTransfer.setData('taskId', taskId);
+    e.dataTransfer.setData('sourceContainer', 'middleContent');
+  };
+
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = async (e) => {
+    e.preventDefault();
+    const taskId = e.dataTransfer.getData('taskId');
+    const targetClassList = e.target.classList;
+
+    if (targetClassList.contains('leftcontent__list') || targetClassList.contains('todoCheck__box')) {
+      handleTaskClick(taskId);
+    }
+  };
 
   return (
     <div className="row">
@@ -102,11 +114,20 @@ function LeftContent() {
           <div className="headercontent">
             <h2>TODO</h2>
           </div>
-          <div className="leftcontent__list">
+          <div
+            className="leftcontent__list"
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+          >
             <div className="todoCheck">
               <ul>
                 {filteredTasks.map((task, index) => (
-                  <div className="todoCheck__box" key={index}>
+                  <div
+                    className="todoCheck__box"
+                    key={index}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, task.id)}
+                  >
                     {editingIndex === index ? (
                       <>
                         <input
