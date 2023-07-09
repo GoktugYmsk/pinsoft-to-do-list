@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-
+import { useSelector } from 'react-redux';
 import './index.scss';
 
 const Login = () => {
@@ -11,6 +11,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
+  const active = useSelector((state) => state.darkActive.active);
 
   useEffect(() => {
     const auth = getAuth();
@@ -52,7 +53,7 @@ const Login = () => {
   }
 
   return (
-    <div className="login__container">
+    <div className={`login__container' ${active ? 'login__container-active' : 'login__container'}`}>
       <form onSubmit={handleLogin}>
         <div className='form-group mb-3'>
           <label htmlFor="email">E-mail</label>
