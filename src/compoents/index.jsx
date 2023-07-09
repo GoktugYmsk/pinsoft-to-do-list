@@ -1,32 +1,26 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import Content from "../compoents/content";
-import Footer from "../compoents/footer";
-import Popup from "../compoents/popup";
-import { Helmet } from "react-helmet";
-import { setActive } from './configure';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signOut } from 'firebase/auth';
-
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { FiLogOut } from 'react-icons/fi';
 import Form from 'react-bootstrap/Form';
+import { setActive } from './configure';
 
+import Content from '../compoents/content';
+import Footer from '../compoents/footer';
+import Popup from '../compoents/popup';
 
 function Components() {
-
     const active = useSelector((state) => state.darkActive.active);
     const popupModel = useSelector((state) => state.modal.popupModal);
-
     const navigate = useNavigate();
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const switchClick = () => {
-        dispatch(setActive(!active))
-    }
-
+        dispatch(setActive(!active));
+    };
 
     const handleLogout = async () => {
         const auth = getAuth();
@@ -34,23 +28,32 @@ function Components() {
             await signOut(auth);
             navigate('/');
         } catch (error) {
-            console.error("Error logging out:", error);
+            console.error('Error logging out:', error);
         }
     };
 
     const [selectedTasks, setSelectedTasks] = useState([]);
+
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                navigate('/');
+            }
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, [navigate]);
+
     return (
         <>
             <Helmet>
                 <title>Pinsoft To-Do-List</title>
             </Helmet>
-            <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`} >
-                <Form.Check
-                    type="switch"
-                    id="custom-switch"
-                    className="custom-switch "
-                    onClick={switchClick}
-                />
+            <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`}>
+                <Form.Check type="switch" id="custom-switch" className="custom-switch " onClick={switchClick} />
                 <FiLogOut className={`logout__switch ${!active ? 'logout__switch__acitive' : ''}`} onClick={handleLogout} />
             </div>
             <div className="row header-container mb-3">
@@ -65,7 +68,7 @@ function Components() {
                 <Popup setSelectedTasks={setSelectedTasks} />
             </div>
         </>
-    )
+    );
 }
 
-export default Components
+export default Components;

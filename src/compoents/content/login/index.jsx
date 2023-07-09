@@ -17,6 +17,7 @@ const Login = () => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        localStorage.setItem('token', 'valid-token'); // Geçerli bir tokeni localStorage'a kaydediyoruz
         navigate('/home');
       } else {
         setIsLoading(false);
@@ -53,7 +54,7 @@ const Login = () => {
   }
 
   return (
-    <div className={`login__container' ${active ? 'login__container-active' : 'login__container'}`}>
+    <div className={`login__container ${active ? 'login__container-active' : ''}`}>
       <form onSubmit={handleLogin}>
         <div className='form-group mb-3'>
           <label htmlFor="email">E-mail</label>
