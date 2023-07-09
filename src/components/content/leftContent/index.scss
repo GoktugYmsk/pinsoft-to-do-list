@@ -21,16 +21,16 @@
             background-color: #57585a !important;
 
 
-            .todoCheck__box-icon__left:hover{
+            .todoCheck_box-icon_left:hover{
                 color: #7ea2e0 !important;
                
             }
           
-            .todoCheck__box-icon__rigth:hover{
+            .todoCheck_box-icon_rigth:hover{
                 color: #7ea2e0 !important;
             }
 
-            .todoCheck__box__edit-icon:hover{
+            .todoCheck_box_edit-icon:hover{
                 color:#7ea2e0  !important;
             }
         }
@@ -93,7 +93,7 @@
             border-style: none;
             height: 30px;
             border-radius: 20px;
-            width: 400px;
+            width: 394px;
             
         }
 
@@ -115,8 +115,8 @@
 
         .todoCheck__box {
             display: flex;
-            align-content: flex-start;
-            justify-content: flex-start;
+            align-content: center;
+            justify-content: space-around;
             border-radius: 15px;
             background: rgb(245, 56, 56);
             padding: 10px;
@@ -126,37 +126,37 @@
             transition: 0.3s;
 
 
-            .todoCheck__box-icon__left {
+            .todoCheck_box-icon_left {
                 cursor: pointer;
                 font-size: 18px !important;
                 margin-right: 10px;
                 transition: 0.15s;
             }
 
-            .todoCheck__box-icon__left:hover{
+            .todoCheck_box-icon_left:hover{
                 color: white;
                 opacity: 0.7;
             }
 
-            .todoCheck__box-icon__rigth {
+            .todoCheck_box-icon_rigth {
                 cursor: pointer;
                 font-size: 18px !important;
                 transition: 0.15s;
             }
 
-            .todoCheck__box-icon__rigth:hover{
+            .todoCheck_box-icon_rigth:hover{
                 color: white;
                 opacity: 0.7;
             }
 
-            .todoCheck__box__edit-icon{
+            .todoCheck_box_edit-icon{
                 cursor: pointer;
                 font-size: 18px;
                 margin-right: 10px;
                 transition: 0.15s;
             }
 
-            .todoCheck__box__edit-icon:hover{
+            .todoCheck_box_edit-icon:hover{
                 color: white;
                 opacity: 0.7;
             }
@@ -175,6 +175,10 @@
         
 
         .headercontent{
+            width: 430px;
+        }
+
+        .leftcontent__list {
             width: 430px;
         }
 
@@ -220,6 +224,10 @@
         
 
         .headercontent{
+            width: 400px;
+        }
+
+        .leftcontent__list {
             width: 400px;
         }
 
@@ -299,6 +307,10 @@
             width: 350px;
         }
 
+        .leftcontent__list {
+            width: 350px;
+        }
+
         .todoCheck__box{
 
              
@@ -327,6 +339,10 @@
         margin-left: 1%;
 
         .headercontent{
+            width: 325px;
+        }
+
+        .leftcontent__list {
             width: 325px;
         }
 
@@ -362,6 +378,10 @@
         
 
         .headercontent{
+            width: 270px;
+        }
+
+        .leftcontent__list {
             width: 270px;
         }
 

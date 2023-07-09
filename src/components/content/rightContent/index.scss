@@ -68,6 +68,13 @@
         height: 100%;
         overflow: auto;
 
+        .rightcontent_list_todoCheck {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start !important;
+            height: 40px;
+            color: #121212;
+        }
 
 
         .rightcontent__list-box {
@@ -80,17 +87,8 @@
             border-radius: 15px;
             margin-top: 10px;
             position: relative;
-            width: 414.48px;
             transition: 0.3s;
-
-
-
-
-            .rightcontent__list-check {
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-
+            right: 20px !important;
 
                 div {
                     display: flex;
@@ -98,8 +96,8 @@
                     justify-content: center;
 
                     span {
-                        max-width: 320px;
-                        min-width: 320px;
+                        max-width: 348.48px;
+                        min-width: 348.48px;
                         font-size: 1.2rem;
                         text-decoration: line-through;
                     }
@@ -133,7 +131,7 @@
                 }
 
             }
-        }
+        
     }
 }
 
@@ -149,20 +147,18 @@
         }
 
         .rightcontent__list {
+            width: 430px;
+            
+            .rightcontent_list_todoCheck {
 
-            .rightcontent__list-box {
-
-                width: 394.47px;
-                height: 48.8px;
-
-                .rightcontent__list-check {
+                .rightcontent__list-box{
 
 
                     div {
                         span {
-                            max-width: 220.48px;
-                            min-width: 220.48px;
-                            font-size: 1rem;
+                            max-width: 328.48px;
+                            min-width: 328.48px;
+                            font-size: 1.2rem;
                         }
                     }
 
@@ -188,19 +184,17 @@
         }
 
         .rightcontent__list {
-
-            .rightcontent__list-box {
-
-                width: 364.47px;
-
-                .rightcontent__list-check {
+            width: 400px;
+            
+            .rightcontent_list_todoCheck {
+                .rightcontent__list-box{
 
 
                     div {
                         span {
-                            max-width: 190.48px;
-                            min-width: 190.48px;
-                            font-size: 1rem;
+                            max-width:298.48px;
+                            min-width: 298.48px;
+                            font-size: 1.2rem;
                         }
                     }
 
@@ -265,19 +259,18 @@
             width: 350px;
         }
 
+        
         .rightcontent__list {
-
-            .rightcontent__list-box {
-
-                width: 314.47px;
-
-                .rightcontent__list-check {
+            width: 350px;
+            
+            .rightcontent_list_todoCheck {
+                .rightcontent__list-box{
 
 
                     div {
                         span {
-                            max-width: 220.48px;
-                            min-width: 220.48px;
+                            max-width:248.48px;
+                            min-width: 248.48px;
                             font-size: 1rem;
                         }
                     }
@@ -299,19 +292,18 @@
             width: 325px;
         }
 
+       
         .rightcontent__list {
-
-            .rightcontent__list-box {
-
-                width: 289.47px;
-
-                .rightcontent__list-check {
+            width: 325px;
+            
+            .rightcontent_list_todoCheck {
+                .rightcontent__list-box{
 
 
                     div {
                         span {
-                            max-width: 195.48px;
-                            min-width: 195.48px;
+                            max-width:223.48px;
+                            min-width: 223.48px;
                             font-size: 1rem;
                         }
                     }
@@ -334,19 +326,18 @@
             width: 270px;
         }
 
+        
         .rightcontent__list {
-
-            .rightcontent__list-box {
-
-                width: 234.47px;
-
-                .rightcontent__list-check {
+            width: 270px;
+            
+            .rightcontent_list_todoCheck {
+                .rightcontent__list-box{
 
 
                     div {
                         span {
-                            max-width: 140.48px;
-                            min-width: 140.48px;
+                            max-width:168.48px;
+                            min-width: 168.48px;
                             font-size: 1rem;
                         }
                     }
