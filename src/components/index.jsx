@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Content from "../compoents/content";
-import Footer from "../compoents/footer";
-import Popup from "../compoents/popup";
+import Content from ".//content";
+import Footer from ".//footer";
+import Popup from ".//popup";
 import { Helmet } from "react-helmet";
 import { setActive } from './configure';
 import { useNavigate } from 'react-router-dom';

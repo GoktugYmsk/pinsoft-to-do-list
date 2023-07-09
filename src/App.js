@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector } from 'react-redux';
 
-import Login from "./compoents/content/login";
-import Components from "./compoents";
+import Login from "./components/content/login";
+import Components from "./components";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
