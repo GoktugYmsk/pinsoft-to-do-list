@@ -250,11 +250,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                         {task.text}
                       </span>
                     </div>
-                    <div className="iconcontainer">
-                      <IoReturnDownBack
-                        className="leftContnent_box-icon_rigth"
-                        onClick={() => handleTurnClick(task.id)}
-                      />
+                    <div >
+                     
                       <FaTrashAlt
                         className="middleContent_box-icon_left"
                         onClick={() => handleDeleteTask(task.id)}
@@ -263,6 +260,10 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                         className="middleContent_box_edit-icon"
                         onClick={() => handleEditClick(index, task.textF
                         )}
+                      />
+                       <IoReturnDownBack
+                        className="leftContnent_box-icon_rigth"
+                        onClick={() => handleTurnClick(task.id)}
                       />
                       <BsCheckCircleFill
                         className="container__altBox-doneClick"

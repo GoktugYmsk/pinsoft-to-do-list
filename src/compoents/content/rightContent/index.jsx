@@ -95,6 +95,8 @@ function RightContent() {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
+         <div className="rightcontent_list_todoCheck">
+          <ul>
         {filteredTasks.map((task, index) => (
           <div
             key={index}
@@ -102,7 +104,6 @@ function RightContent() {
             draggable
             onDragStart={(event) => event.dataTransfer.setData('taskId', task.id)}
           >
-            <div className="rightcontent__list-check">
               <div>
                 <span>{task.text}</span>
               </div>
@@ -116,9 +117,11 @@ function RightContent() {
                   onClick={() => handleTurnClick(task.id)}
                 />
               </div>
-            </div>
+            
           </div>
         ))}
+        </ul>
+        </div>
       </div>
     </div>
   );

@@ -11,7 +11,6 @@
 
 
     .middlecontent__list {
-        width: 450px;
 
         .middlecontent__list__todoCheck {
             color: #dfe2e7 !important;
@@ -29,18 +28,23 @@
 
 
 
-            .middleContent__box-icon__left:hover {
+            .middleContent_box-icon_left:hover {
                 color: #7ea2e0 !important;
                 opacity: 0.7;
             }
 
 
-            .middleContent__box__edit-icon:hover {
+            .middleContent_box_edit-icon:hover {
                 color: #7ea2e0 !important;
                 opacity: 0.7;
             }
 
             .container__altBox-doneClick:hover {
+                color: #7ea2e0 !important;
+                opacity: 0.7;
+            }
+
+            .leftContnent_box-icon_rigth:hover{
                 color: #7ea2e0 !important;
                 opacity: 0.7;
             }
@@ -84,6 +88,7 @@
         height: 100%;
         overflow-x: none;
         overflow-y: auto !important;
+        width: 450px;
 
         .middlecontent__list__todoCheck {
             display: flex;
@@ -108,12 +113,13 @@
 
             input {
                 background-color: #121212;
-                height: 26px;
+                height: 30px;
                 width: 395.47px;
                 color: white;
                 text-align: center;
                 font-size: 1.2rem;
                 border-radius: 20px;
+                height: 30px;
             }
 
             input::placeholder {
@@ -122,29 +128,6 @@
             }
 
 
-            .iconcontainer {
-
-                .switch-label {
-                    display: none;
-                    font-size: 12px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .leftContnent__box-icon__rigth {
-                    cursor: pointer;
-                    font-size: 18px;
-                    transition: 0.15s;
-                    position: relative;
-                    right: 20px;
-                }
-
-                .leftContnent__box-icon__rigth:hover {
-                    color: #7ea2e0 !important;
-                    opacity: 0.7;
-                }
-            }
 
             div {
                 display: flex;
@@ -152,8 +135,8 @@
                 justify-content: center;
 
                 span {
-                    max-width: 320.48px;
-                    min-width: 320.48px;
+                    max-width: 292.48px;
+                    min-width: 292.48px;
                     font-size: 1.2rem;
                 }
             }
@@ -162,26 +145,38 @@
                 list-style: none;
             }
 
-            .middleContent__box-icon__left {
+            .middleContent_box-icon_left {
                 cursor: pointer;
                 font-size: 18px;
                 margin-right: 10px;
                 transition: 0.15s;
             }
 
-            .middleContent__box-icon__left:hover {
+            .middleContent_box-icon_left:hover {
                 color: white;
                 opacity: 0.7;
             }
 
-            .middleContent__box__edit-icon {
+            .middleContent_box_edit-icon {
                 font-size: 18px;
                 margin-right: 10px;
                 cursor: pointer;
                 transition: 0.15s;
             }
 
-            .middleContent__box__edit-icon:hover {
+            .middleContent_box_edit-icon:hover {
+                color: white;
+                opacity: 0.7;
+            }
+            
+            .leftContnent_box-icon_rigth{
+                font-size: 18px;
+                margin-right: 10px;
+                cursor: pointer;
+                transition: 0.15s;
+            }
+
+            .leftContnent_box-icon_rigth:hover{
                 color: white;
                 opacity: 0.7;
             }
@@ -218,19 +213,20 @@
         }
 
         .middlecontent__list {
+            width: 430px;
 
             .middleContent__box {
-
+                right: 20px !important;
                 input {
-                    width: 367.47px;
+                    width: 360.47px;
 
                 }
 
                 div {
 
                     span {
-                        max-width: 300.48px;
-                        min-width: 300.48px;
+                        max-width: 272.48px;
+                        min-width: 272.48px;
                         font-size: 1.2rem;
                     }
                 }
@@ -255,7 +251,7 @@
         }
 
         .middlecontent__list {
-
+            width: 400px;
             .middleContent__box {
 
                 input {
@@ -265,8 +261,8 @@
                 div {
 
                     span {
-                        max-width: 270.48px;
-                        min-width: 270.48px;
+                        max-width: 242.48px;
+                        min-width: 242.48px;
                         font-size: 1.2rem;
                     }
                 }
@@ -333,7 +329,7 @@
         }
 
         .middlecontent__list {
-
+            width: 350px;
             .middleContent__box {
 
 
@@ -345,8 +341,8 @@
                 div {
 
                     span {
-                        max-width: 220.48px;
-                        min-width: 220.48px;
+                        max-width: 192.48px;
+                        min-width: 192.48px;
                         font-size: 1rem;
                     }
                 }
@@ -370,7 +366,7 @@
         }
 
         .middlecontent__list {
-
+            width: 325px;
             .middleContent__box {
 
 
@@ -382,8 +378,8 @@
                 div {
 
                     span {
-                        max-width: 195.48px;
-                        min-width: 195.48px;
+                        max-width: 167.48px;
+                        min-width: 167.48px;
                         font-size: 1rem;
                     }
                 }
@@ -407,7 +403,7 @@
         }
 
         .middlecontent__list {
-
+            width: 270px;
             .middleContent__box {
 
 
@@ -418,8 +414,8 @@
                 div {
 
                     span {
-                        max-width: 140.48px;
-                        min-width: 140.48px;
+                        max-width: 112.48px;
+                        min-width: 112.48px;
                         font-size: 1rem;
                     }
                 }
