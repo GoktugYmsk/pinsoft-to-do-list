@@ -69,30 +69,50 @@ function LeftContent() {
   };
 
   const handleDragStart = (event, task) => {
+    event.dataTransfer.setData('taskId', task.id);
     setDraggedTask(task);
   };
 
+
   const handleDragEnd = async (event) => {
     event.preventDefault();
-    if (draggedTask && draggedTask.status !== 1) {
+    if (draggedTask) {
       try {
         const taskDocRef = doc(db, 'todos', draggedTask.id);
 
-        await updateDoc(taskDocRef, {
-          status: 1
-        });
+        let newStatus = null;
+        let updatedAddTask = null;
 
-        const updatedAddTask = addTask.map((t) => {
-          if (t.id === draggedTask.id) {
-            return {
-              ...t,
-              status: 1
-            };
-          }
-          return t;
-        });
+        if (event.currentTarget.classList.contains('middlecontent__list')) {
+          newStatus = 1;
+          updatedAddTask = addTask.map((t) => {
+            if (t.id === draggedTask.id) {
+              return {
+                ...t,
+                status: 1
+              };
+            }
+            return t;
+          });
+        } else if (event.currentTarget.classList.contains('rightconent')) {
+          newStatus = 2;
+          updatedAddTask = addTask.map((t) => {
+            if (t.id === draggedTask.id) {
+              return {
+                ...t,
+                status: 2
+              };
+            }
+            return t;
+          });
+        }
 
-        dispatch(setAddTasks(updatedAddTask));
+        if (newStatus !== null && updatedAddTask !== null) {
+          await updateDoc(taskDocRef, {
+            status: newStatus
+          });
+          dispatch(setAddTasks(updatedAddTask));
+        }
       } catch (error) {
         console.error('Error updating task status: ', error);
       }
@@ -121,6 +141,28 @@ function LeftContent() {
     fetchData();
   }, []);
 
+  const handleDrop = async (event) => {
+    event.preventDefault();
+    event.currentTarget.classList.remove('drag-over');
+
+    const taskId = event.dataTransfer.getData('taskId');
+
+    try {
+      const taskDocRef = doc(db, 'todos', taskId);
+      await updateDoc(taskDocRef, {
+        status: 0,
+      });
+
+      const updatedAddTask = addTask.map((task) =>
+        task.id === taskId ? { ...task, status: 0 } : task
+      );
+
+      dispatch(setAddTasks(updatedAddTask));
+    } catch (error) {
+      console.error('Error updating task status: ', error);
+    }
+  };
+
   const filteredTasks = addTask.filter((task) => task.status === 0);
 
   return (
@@ -130,7 +172,7 @@ function LeftContent() {
           <div className="headercontent">
             <h2>TODO</h2>
           </div>
-          <div className="leftcontent__list" onDragOver={handleDragOver} onDrop={handleDragEnd}>
+          <div className="leftcontent__list" onDragOver={handleDragOver} onDrop={handleDrop}>
             <div className="todoCheck">
               <ul>
                 {filteredTasks.map((task, index) => (
