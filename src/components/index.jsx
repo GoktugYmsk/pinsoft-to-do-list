@@ -7,9 +7,9 @@ import { FiLogOut } from 'react-icons/fi';
 import Form from 'react-bootstrap/Form';
 import { setActive } from './configure';
 
-import Content from '../compoents/content';
-import Footer from '../compoents/footer';
-import Popup from '../compoents/popup';
+import Content from '../components/content';
+import Footer from '../components/footer';
+import Popup from '../components/popup';
 
 function Components() {
     const active = useSelector((state) => state.darkActive.active);

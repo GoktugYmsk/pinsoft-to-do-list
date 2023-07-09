@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from 'react-redux';
 
-import Login from "./components/content/login";
+import Login from './components/content/login'
 import Components from "./components";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {getAuth, signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
 import {useSelector} from 'react-redux';
-import './index.scss';
+import './index.scss'
 
 const Login = () => {
     const [email, setEmail] = useState('');

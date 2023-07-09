@@ -44,7 +44,7 @@
                 opacity: 0.7;
             }
 
-            .leftContnent_box-icon_rigth:hover{
+            .leftContnent_box-icon_rigth:hover {
                 color: #7ea2e0 !important;
                 opacity: 0.7;
             }
@@ -86,12 +86,7 @@
         justify-content: flex-start;
         flex-direction: column;
         height: 100%;
-<<<<<<< HEAD:src/compoents/content/midddleContent/index.scss
         width: 450px;
-        overflow-x: none;
-=======
-        overflow-x: unset;
->>>>>>> 3bb492b24280416e664c4791354d018778b214ac:src/components/content/midddleContent/index.scss
         overflow-y: auto !important;
         width: 450px;
 
@@ -174,15 +169,15 @@
                 color: white;
                 opacity: 0.7;
             }
-            
-            .leftContnent_box-icon_rigth{
+
+            .leftContnent_box-icon_rigth {
                 font-size: 18px;
                 margin-right: 10px;
                 cursor: pointer;
                 transition: 0.15s;
             }
 
-            .leftContnent_box-icon_rigth:hover{
+            .leftContnent_box-icon_rigth:hover {
                 color: white;
                 opacity: 0.7;
             }
@@ -223,6 +218,7 @@
 
             .middleContent__box {
                 right: 20px !important;
+
                 input {
                     width: 360.47px;
 
@@ -258,6 +254,7 @@
 
         .middlecontent__list {
             width: 400px;
+
             .middleContent__box {
 
                 input {
@@ -336,6 +333,7 @@
 
         .middlecontent__list {
             width: 350px;
+
             .middleContent__box {
 
 
@@ -373,6 +371,7 @@
 
         .middlecontent__list {
             width: 325px;
+
             .middleContent__box {
 
 
@@ -410,6 +409,7 @@
 
         .middlecontent__list {
             width: 270px;
+
             .middleContent__box {
 
 
