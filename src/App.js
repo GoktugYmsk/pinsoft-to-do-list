@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Login from "./components/content/login";
 import Components from "./components";
+import NotFound from "./components/noutfound/NotFound";
+
 import "./App.scss";
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
       if (!isLoggedIn) {
         navigate("/");
       }
-    }, [ isLoggedIn,navigate]);
+    }, [isLoggedIn, navigate]);
 
     return children;
   };
@@ -36,6 +38,7 @@ function App() {
               </Protected>
             }
           />
+          <Route path="*" element={<NotFound />} /> {/* Tüm diğer yolları NotFound bileşenine yönlendir */}
         </Routes>
       </BrowserRouter>
     </div>
