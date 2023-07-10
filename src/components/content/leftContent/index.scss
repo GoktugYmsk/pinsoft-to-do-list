@@ -249,39 +249,35 @@
 
 }
 
-@media (max-width:1281px) {
+@media (max-width:1280px) {
 
     .leftconent{
-        width: 400px;
+        width: 385px;
         
 
         .headercontent{
-            width: 400px;
+            width: 385px;
         }
 
         .leftcontent__list {
-            width: 400px;
+            width: 385px;
         }
 
         .todoCheck__box{
              
             input{
-                width: 318.47px;
+                width: 313.47px;
                 
             }
 
             div{
                 span{
-                    max-width: 258.48px;
-                    min-width: 258.48px;
+                    max-width: 253.48px;
+                    min-width: 253.48px;
                     font-size: 1.2rem;
                 }
             }
-        }
-
-       
-
-       
+        }       
     }
 
 }
