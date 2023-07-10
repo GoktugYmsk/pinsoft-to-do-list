@@ -131,3 +131,41 @@
     }
 
 }
+
+
+
+@media (max-width:412px) {
+
+    .modal-container {
+        width: 300px;
+        height: 300px;
+        .modal-content {
+    
+            .modal-close {
+                position: absolute;
+                top: -80px;
+                right: 20px;
+            }
+
+            input {
+                width: 250px;        
+            }
+    
+        }
+    
+        .modal-content__options {
+            height: 100px;
+            width: 200px;
+
+    
+    
+            button {
+                height: 40px;
+                width: 100px;
+            }
+    
+        }
+    
+    }
+    
+}
