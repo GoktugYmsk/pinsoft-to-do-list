@@ -17,7 +17,7 @@ function Components() {
 
     const [popup, setPopup] = useState(false)
     const [selectedTasks, setSelectedTasks] = useState([]);
-    
+
     const navigate = useNavigate();
 
     const active = useSelector((state) => state.darkActive.active);
@@ -80,7 +80,7 @@ function Components() {
                 </Toast>
             </div>
             <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`}>
-                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" onClick={switchClick} />
+                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" onChange={switchClick} />
                 <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
             </div>
             <div className="row header-container mb-3">

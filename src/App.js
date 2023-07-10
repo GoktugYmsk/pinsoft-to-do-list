@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./components/content/login";
 import Components from "./components";
 import NotFound from "./components/noutfound/NotFound";
@@ -23,7 +23,20 @@ function App() {
     return children;
   };
 
-  console.log("app logged", isLoggedIn);
+  useEffect(() => {
+    if (active) {
+      document.body.style.backgroundColor = '#dfe2e7 ';
+      document.body.style.transition = '0.3s';
+    } else {
+      document.body.style.backgroundColor = '#242424';
+      document.body.style.transition = '0.3s';
+    }
+
+    return () => {
+      document.body.style.backgroundColor = null;
+      document.body.style.color = null;
+    };
+  }, [active]);
 
   return (
     <div className={`App ${active ? 'app-active' : 'App'}`}>
@@ -38,7 +51,7 @@ function App() {
               </Protected>
             }
           />
-          <Route path="*" element={<NotFound />} /> {/* Tüm diğer yolları NotFound bileşenine yönlendir */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
