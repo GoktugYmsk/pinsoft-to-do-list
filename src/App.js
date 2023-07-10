@@ -8,36 +8,38 @@ import "./App.scss";
 function App() {
   const active = useSelector((state) => state.darkActive.active);
   const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
-  const navigate = useNavigate()
 
-  const Protected = ({ isLoggedIn, children }) => {
+  const Protected = ({ children }) => {
+    const navigate = useNavigate();
 
     useEffect(() => {
       if (!isLoggedIn) {
-        navigate("/")
-        return
-      } 
-    }, [])
+        navigate("/");
+      }
+    }, [ isLoggedIn,navigate]);
 
     return children;
   };
 
-
-
-  console.log('app logged', isLoggedIn)
+  console.log("app logged", isLoggedIn);
 
   return (
-    <div className={`App  ${active ? 'app-active ' : 'App'}`}>
+    <div className={`App ${active ? 'app-active' : 'App'}`}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route exact path="/home" element={<Protected isLoggedIn={isLoggedIn}>  <Components />
-          </Protected>} />
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/home"
+            element={
+              <Protected>
+                <Components />
+              </Protected>
+            }
+          />
         </Routes>
       </BrowserRouter>
-    </div >
+    </div>
   );
 }
-
 
 export default App;

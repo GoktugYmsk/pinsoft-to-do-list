@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {getAuth, signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
-import {useSelector} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { useSelector } from 'react-redux';
 import { setIsLoggedIn } from '../../configure';
 import './index.scss'
 import { useDispatch } from 'react-redux';
@@ -13,9 +13,10 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
-    const active = useSelector((state) => state.darkActive.active);
 
     const dispatch = useDispatch()
+
+    const active = useSelector((state) => state.darkActive.active);
 
     const sendAuthRequest = (path) => {
         // axios veya ajax ile yapilabilir
@@ -43,6 +44,7 @@ const Login = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 navigate('/home');
+                dispatch(setIsLoggedIn(true))
             } else {
                 setIsLoading(false);
             }
@@ -54,7 +56,6 @@ const Login = () => {
     }, [navigate]);
 
     const handleLogin = async (e) => {
-        dispatch(setIsLoggedIn(true))
         e.preventDefault();
 
         try {

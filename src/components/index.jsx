@@ -17,6 +17,7 @@ function Components() {
 
     const [popup, setPopup] = useState(false)
     const [selectedTasks, setSelectedTasks] = useState([]);
+    
     const navigate = useNavigate();
 
     const active = useSelector((state) => state.darkActive.active);
@@ -42,7 +43,6 @@ function Components() {
             console.error('Error logging out:', error);
         }
     };
-
 
     useEffect(() => {
         const auth = getAuth();
