@@ -116,6 +116,7 @@
 
 
         .todoCheck__box {
+            cursor: pointer;
             display: flex;
             align-content: center;
             justify-content: space-around;
@@ -173,39 +174,69 @@
 @media (max-width:1367px) {
 
     .leftconent{
-        width: 430px;
+        width: 420px;
         
 
         .headercontent{
-            width: 430px;
+            width: 420px;
         }
 
         .leftcontent__list {
-            width: 430px;
+            width: 420px;
         }
 
         .todoCheck__box{
-            padding: 10px;
-            margin-top: 10px;
-            position: relative;
 
              
             input{
-                background-color: #121212;
-                text-align: center;
-                color: white;
-                font-size: 1.2rem;
-                border-style: none;
-                height: 30px;
-                border-radius: 20px;
-                width: 348.47px;
+               
+                width: 338.47px;
                 
             }
 
             div{
                 span{
-                    max-width: 288.48px;
-                    min-width: 288.48px;
+                    max-width: 278.48px;
+                    min-width: 278.48px;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+       
+
+       
+    }
+
+}
+
+@media (max-width:1347px) {
+
+    .leftconent{
+        width: 415px;
+        
+
+        .headercontent{
+            width: 415px;
+        }
+
+        .leftcontent__list {
+            width: 415px;
+        }
+
+        .todoCheck__box{
+  
+
+             
+            input{
+                width: 333.47px;
+                
+            }
+
+            div{
+                span{
+                    max-width: 273.48px;
+                    min-width: 273.48px;
                     font-size: 1.2rem;
                 }
             }

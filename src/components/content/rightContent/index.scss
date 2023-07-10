@@ -75,6 +75,7 @@
 
 
         .rightcontent__list-box {
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -133,18 +134,18 @@
 }
 
 
-@media (max-width:1367px) {
+@media (max-width:1366px) {
 
     .rightconent {
-        width: 430px;
+        width: 420px;
 
 
         .headercontent {
-            width: 430px;
+            width: 420px;
         }
 
         .rightcontent__list {
-            width: 430px;
+            width: 420px;
             
             .rightcontent_list_todoCheck {
 
@@ -153,8 +154,45 @@
 
                     div {
                         span {
-                            max-width: 316.48px;
-                            min-width: 316.48px;
+                            max-width: 306.48px;
+                            min-width: 306.48px;
+                            font-size: 1.2rem;
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+
+
+    }
+}
+
+
+@media (max-width:1347px) {
+
+    .rightconent {
+        width: 415px;
+
+
+        .headercontent {
+            width: 415px;
+        }
+
+        .rightcontent__list {
+            width: 415px;
+            
+            .rightcontent_list_todoCheck {
+
+                .rightcontent__list-box{
+
+
+                    div {
+                        span {
+                            max-width: 301.48px;
+                            min-width: 301.48px;
                             font-size: 1.2rem;
                         }
                     }

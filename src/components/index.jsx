@@ -80,8 +80,8 @@ function Components() {
                 </Toast>
             </div>
             <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`}>
-                <Form.Check type="switch" id="custom-switch" className="custom-switch " onClick={switchClick} />
-                <FiLogOut className={`logout__switch ${!active ? 'logout__switch__acitive' : ''}`} onClick={handleClosePage} />
+                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" onClick={switchClick} />
+                <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
             </div>
             <div className="row header-container mb-3">
                 <h1 id="header">To Do List</h1>
