@@ -66,11 +66,13 @@
     }
 
     .leftcontent__list {
-        width: 450px;
         display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
         flex-direction: column;
-        overflow: auto;
         height: 100%;
+        width: 450px;
+        overflow-y: auto !important;
     }
 
     p {
@@ -93,7 +95,7 @@
             border-style: none;
             height: 30px;
             border-radius: 20px;
-            width: 394px;
+            width: 382px;
             
         }
 
@@ -106,8 +108,8 @@
             align-items: center;
             justify-content: center;
             span{
-                max-width: 320.48px;
-                min-width: 320.48px;
+                max-width: 308.48px;
+                min-width: 308.48px;
                 font-size: 1.2rem;
             }
         }
@@ -122,7 +124,7 @@
             padding: 10px;
             margin-top: 10px;
             position: relative;
-            right: 20px !important;
+            right: 10px !important;
             transition: 0.3s;
 
 
@@ -186,7 +188,6 @@
             padding: 10px;
             margin-top: 10px;
             position: relative;
-            right: 20px !important;
 
              
             input{
@@ -197,14 +198,14 @@
                 border-style: none;
                 height: 30px;
                 border-radius: 20px;
-                width: 360.47px;
+                width: 348.47px;
                 
             }
 
             div{
                 span{
-                    max-width: 300.48px;
-                    min-width: 300.48px;
+                    max-width: 288.48px;
+                    min-width: 288.48px;
                     font-size: 1.2rem;
                 }
             }
@@ -234,14 +235,14 @@
         .todoCheck__box{
              
             input{
-                width: 330.47px;
+                width: 318.47px;
                 
             }
 
             div{
                 span{
-                    max-width: 270.48px;
-                    min-width: 270.48px;
+                    max-width: 258.48px;
+                    min-width: 258.48px;
                     font-size: 1.2rem;
                 }
             }
@@ -315,14 +316,14 @@
 
              
             input{
-                width: 280.47px;
+                width: 268.47px;
                 
             }
 
             div{
                 span{
-                    max-width: 220.48px;
-                    min-width: 220.48px;
+                    max-width: 208.48px;
+                    min-width: 208.48px;
                     font-size: 1rem;
                 }
             }
@@ -350,14 +351,14 @@
 
              
             input{
-                width: 255.47px;
+                width: 243.47px;
                 
             }
 
             div{
                 span{
-                    max-width: 195.48px;
-                    min-width: 195.48px;
+                    max-width: 183.48px;
+                    min-width: 183.48px;
                     font-size: 1rem;
                 }
             }
@@ -389,14 +390,14 @@
 
              
             input{
-                width: 200.47px;
+                width: 188.47px;
                 
             }
 
             div{
                 span{
-                    max-width: 140.48px;
-                    min-width: 140.48px;
+                    max-width: 128.48px;
+                    min-width: 128.48px;
                     font-size: 1rem;
                 }
             }

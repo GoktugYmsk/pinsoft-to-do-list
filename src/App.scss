@@ -56,57 +56,96 @@ body{
     
   }
 
-  #custom-switch{
-    font-size: 2rem;
+  .components__icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
     position: absolute;
     top: 50px;
-    right: 150px;
-    cursor: pointer;
-  }
-}
-
-.logout__switch{
-  font-size: 2rem;
-  position: absolute;
-  top: 60px;
-  right: 100px;
-  cursor: pointer;
-}
-.logout__switch__acitive{
-  color: white;
-}
-
-.components__icon__opacity{
-  opacity: 0.2;
-}
+    right: 120px;
 
 
-
-@media (max-width:415px){
-  .App{
     #custom-switch{
       font-size: 2rem;
-      right: 20px;
+      cursor: pointer;
+    }
+
+    .logout__switch{
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .logout__switch:hover{
+      color: #2a52f0 ;
+    }
+    .logout__switch__active{
+      color: white !important;
+    }
+
+    .logout__switch__active:hover{
+      color: #FFC107 !important;
+    }
+  
+    .components__icon__opacity{
+      opacity: 0.2;
     }
   }
+
 }
 
-@media (max-width:376px){
+@media (max-width:705px){
   .App{
-    #custom-switch{
-      font-size: 2rem;
-      right: 10px;
-    }
+    .components__icon{
+      right: 40%;
+      top: 100px;
+   }
   }
+ 
 }
 
-@media (max-width:321px){
+@media (max-width:505px){
   .App{
-    #custom-switch{
-      font-size: 2rem;
-      top: 5px;
-      right: 120px;
-    }
+    .components__icon{
+      right: 39%;
+      top: 100px;
+   }
   }
+ 
 }
+
+@media (max-width:414px){
+  .App{
+    .components__icon{
+      right: 37%;
+      top: 100px;
+   }
+  }
+ 
+}
+
+
+@media (max-width:390px){
+  .App{
+    .components__icon{
+      right: 35%;
+      top: 100px;
+   }
+  }
+ 
+}
+
+
+
+
+@media (max-width:305px){
+  .App{
+    .components__icon{
+      right: 33%;
+      top: 100px;
+   }
+  }
+ 
+}
+
 

@@ -15,9 +15,6 @@
             color: #dfe2e7 !important;
 
 
-            .rightcontent__list-check {
-
-
                 .rigthContnent__box-icon__left:hover {
                     color: #7ea2e0 !important;
                     opacity: 0.7;
@@ -27,7 +24,7 @@
                     color: #7ea2e0 !important;
                     opacity: 0.7;
                 }
-            }
+            
         }
 
     }
@@ -61,12 +58,12 @@
 
     .rightcontent__list {
         display: flex;
-        align-content: flex-start;
+        align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-        width: 450px;
         height: 100%;
-        overflow: auto;
+        width: 450px;
+        overflow-y: auto !important;
 
         .rightcontent_list_todoCheck {
             display: flex;
@@ -88,7 +85,7 @@
             margin-top: 10px;
             position: relative;
             transition: 0.3s;
-            right: 20px !important;
+            right: 10px !important;
 
                 div {
                     display: flex;
@@ -96,8 +93,8 @@
                     justify-content: center;
 
                     span {
-                        max-width: 348.48px;
-                        min-width: 348.48px;
+                        max-width: 336.48px;
+                        min-width: 336.48px;
                         font-size: 1.2rem;
                         text-decoration: line-through;
                     }
@@ -156,8 +153,8 @@
 
                     div {
                         span {
-                            max-width: 328.48px;
-                            min-width: 328.48px;
+                            max-width: 316.48px;
+                            min-width: 316.48px;
                             font-size: 1.2rem;
                         }
                     }
@@ -192,8 +189,8 @@
 
                     div {
                         span {
-                            max-width:298.48px;
-                            min-width: 298.48px;
+                            max-width:286.48px;
+                            min-width: 286.48px;
                             font-size: 1.2rem;
                         }
                     }
@@ -269,8 +266,8 @@
 
                     div {
                         span {
-                            max-width:248.48px;
-                            min-width: 248.48px;
+                            max-width:236.48px;
+                            min-width: 236.48px;
                             font-size: 1rem;
                         }
                     }
@@ -302,8 +299,8 @@
 
                     div {
                         span {
-                            max-width:223.48px;
-                            min-width: 223.48px;
+                            max-width:211.48px;
+                            min-width: 211.48px;
                             font-size: 1rem;
                         }
                     }
@@ -336,8 +333,8 @@
 
                     div {
                         span {
-                            max-width:168.48px;
-                            min-width: 168.48px;
+                            max-width:156.48px;
+                            min-width: 156.48px;
                             font-size: 1rem;
                         }
                     }
