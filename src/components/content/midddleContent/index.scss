@@ -88,7 +88,6 @@
         height: 100%;
         width: 450px;
         overflow-y: auto !important;
-        width: 450px;
 
         .middlecontent__list__todoCheck {
             display: flex;
@@ -109,18 +108,19 @@
             padding: 10px;
             margin-top: 10px;
             position: relative;
-            right: 20px !important;
+            right: 10px !important;
             transition: 0.3s;
 
             input {
                 background-color: #121212;
                 height: 30px;
-                width: 395.47px;
+                width: 383.47px;
                 color: white;
                 text-align: center;
                 font-size: 1.2rem;
                 border-radius: 20px;
                 height: 30px;
+                outline: none;
             }
 
             input::placeholder {
@@ -136,8 +136,8 @@
                 justify-content: center;
 
                 span {
-                    max-width: 292.48px;
-                    min-width: 292.48px;
+                    max-width: 280.48px;
+                    min-width: 280.48px;
                     font-size: 1.2rem;
                 }
             }
@@ -217,18 +217,18 @@
             width: 430px;
 
             .middleContent__box {
-                right: 20px !important;
+               
 
                 input {
-                    width: 360.47px;
+                    width: 348.47px;
 
                 }
 
                 div {
 
                     span {
-                        max-width: 272.48px;
-                        min-width: 272.48px;
+                        max-width: 260.48px;
+                        min-width: 260.48px;
                         font-size: 1.2rem;
                     }
                 }
@@ -258,14 +258,14 @@
             .middleContent__box {
 
                 input {
-                    width: 337.47px;
+                    width: 325.47px;
                 }
 
                 div {
 
                     span {
-                        max-width: 242.48px;
-                        min-width: 242.48px;
+                        max-width: 230.48px;
+                        min-width: 230.48px;
                         font-size: 1.2rem;
                     }
                 }
@@ -336,17 +336,15 @@
 
             .middleContent__box {
 
-
-
                 input {
-                    width: 280.47px;
+                    width: 268.47px;
                 }
 
                 div {
 
                     span {
-                        max-width: 192.48px;
-                        min-width: 192.48px;
+                        max-width: 180.48px;
+                        min-width: 180.48px;
                         font-size: 1rem;
                     }
                 }
@@ -377,14 +375,14 @@
 
 
                 input {
-                    width: 255.47px;
+                    width: 243.47px;
                 }
 
                 div {
 
                     span {
-                        max-width: 167.48px;
-                        min-width: 167.48px;
+                        max-width: 155.48px;
+                        min-width: 155.48px;
                         font-size: 1rem;
                     }
                 }
@@ -414,14 +412,14 @@
 
 
                 input {
-                    width: 200.47px;
+                    width: 188.47px;
                 }
 
                 div {
 
                     span {
-                        max-width: 112.48px;
-                        min-width: 112.48px;
+                        max-width: 100.48px;
+                        min-width: 100.48px;
                         font-size: 1rem;
                     }
                 }
