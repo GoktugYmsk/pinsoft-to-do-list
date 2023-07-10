@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import { FiLogOut } from 'react-icons/fi';
 import Form from 'react-bootstrap/Form';
-import { setActive } from './configure';
+import { setActive, setIsLoggedIn } from './configure';
 import Toast from 'react-bootstrap/Toast';
 
 
@@ -17,6 +17,7 @@ function Components() {
 
     const [popup, setPopup] = useState(false)
     const [selectedTasks, setSelectedTasks] = useState([]);
+    
     const navigate = useNavigate();
 
     const active = useSelector((state) => state.darkActive.active);
@@ -33,6 +34,7 @@ function Components() {
     }
 
     const handleLogout = async () => {
+        dispatch(setIsLoggedIn(false))
         const auth = getAuth();
         try {
             await signOut(auth);
@@ -41,7 +43,6 @@ function Components() {
             console.error('Error logging out:', error);
         }
     };
-
 
     useEffect(() => {
         const auth = getAuth();

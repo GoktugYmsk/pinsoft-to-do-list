@@ -7,5 +7,6 @@ export const store = configureStore({
         modal: configure,
         doing:configure,
         darkActive: configure,
+        loggedIn:configure,
     },
 })

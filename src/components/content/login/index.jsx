@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {getAuth, signInWithEmailAndPassword, onAuthStateChanged} from 'firebase/auth';
-import {useSelector} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { useSelector } from 'react-redux';
+import { setIsLoggedIn } from '../../configure';
 import './index.scss'
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,6 +13,9 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
+
+    const dispatch = useDispatch()
+
     const active = useSelector((state) => state.darkActive.active);
 
     const sendAuthRequest = (path) => {
@@ -39,6 +44,7 @@ const Login = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 navigate('/home');
+                dispatch(setIsLoggedIn(true))
             } else {
                 setIsLoading(false);
             }
