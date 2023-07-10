@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, createUserWithEmailAndPassword} from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { setIsLoggedIn } from '../../configure';
 import './index.scss'
 import { useDispatch } from 'react-redux';
 
-const Login = () => {
+
+const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -39,33 +40,32 @@ const Login = () => {
             .catch((error) => console.log(error))
     }
 
-    useEffect(() => {
-        const auth = getAuth();
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
+    // useEffect(() => {
+    //     const auth = getAuth();
+    //     const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //         if (user) {
+    //             navigate('/home');
+    //             dispatch(setIsLoggedIn(true))
+    //         } else {
+    //             setIsLoading(false);
+    //         }
+    //     });
+    //
+    //     return () => {
+    //         unsubscribe();
+    //     };
+    // }, [navigate]);
 
-                console.log("register control")
-                navigate('/home');
-                dispatch(setIsLoggedIn(true))
-            } else {
-                setIsLoading(false);
-            }
-        });
-
-        return () => {
-            unsubscribe();
-        };
-    }, [navigate]);
-
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
         try {
             const auth = getAuth();
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate('/home');
+            await createUserWithEmailAndPassword(auth, email, password);
+            navigate('/');
         } catch (error) {
             setError(error.message);
+            console.log(error.message)
         }
     };
 
@@ -83,7 +83,7 @@ const Login = () => {
 
     return (
         <div className={`login__container' ${active ? 'login__container-active' : 'login__container'}`}>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleRegister}>
                 <div className='form-group mb-3'>
                     <label htmlFor="email">E-mail</label>
                     <input
@@ -108,10 +108,10 @@ const Login = () => {
                 </div>
                 {error && <div>{error}</div>}
                 <div className="button-container d-flex justify-content-center">
-                    <button type="submit" className='login-button'>Login</button>
+                    <button type="submit" className='login-button'>Register</button>
                 </div>
             </form>
         </div>
     );
 };
-export default Login;
+export default Register;

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, Navigate, useNavigate } from "react-route
 import Login from "./components/content/login";
 import Components from "./components";
 import "./App.scss";
+import Register from "./components/content/register";
 
 function App() {
   const active = useSelector((state) => state.darkActive.active);
@@ -27,6 +28,7 @@ function App() {
     <div className={`App ${active ? 'app-active' : 'App'}`}>
       <BrowserRouter>
         <Routes>
+          <Route path="/register" element={<Register/>}/>
           <Route path="/" element={<Login />} />
           <Route
             path="/home"
