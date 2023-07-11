@@ -3,25 +3,12 @@ import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./components/content/login";
 import Components from "./components";
-import NotFound from "./components/noutfound/NotFound";
+import NotFound from "./components/notfound/NotFound";
 
 import "./App.scss";
 
 function App() {
   const active = useSelector((state) => state.darkActive.active);
-  const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
-
-  const Protected = ({ children }) => {
-    const navigate = useNavigate();
-
-    useEffect(() => {
-      if (!isLoggedIn) {
-        navigate("/");
-      }
-    }, [isLoggedIn, navigate]);
-
-    return isLoggedIn ? children : null;
-  };
 
   useEffect(() => {
     if (active) {
@@ -43,7 +30,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Protected><Components /></Protected>} />
+          <Route path="/home" element={<Components />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

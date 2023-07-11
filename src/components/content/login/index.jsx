@@ -13,6 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch()
+  const active = useSelector((state) => state.darkActive.active);
 
 
   useEffect(() => {
