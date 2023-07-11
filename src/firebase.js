@@ -3,12 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDSoU9WuRU7wPoLvAyvWxV4N3Q_NuFQtT4",
-  authDomain: "fir-tutorial-todo.firebaseapp.com",
-  projectId: "fir-tutorial-todo",
-  storageBucket: "fir-tutorial-todo.appspot.com",
-  messagingSenderId: "80899110532",
-  appId: "1:80899110532:web:b974f7ecec90a9e1e1f4d1"
+  apiKey: "AIzaSyDWtq-KzKrVHDmisZzXdVMHVQEAgYiiLuQ",
+  authDomain: "todolistdeneme-dc860.firebaseapp.com",
+  projectId: "todolistdeneme-dc860",
+  storageBucket: "todolistdeneme-dc860.appspot.com",
+  messagingSenderId: "797899765675",
+  appId: "1:797899765675:web:2aaededc6024ebf645c4ee",
+  measurementId: "G-TPXGN7HB4M"
 };
 
 const app = initializeApp(firebaseConfig);

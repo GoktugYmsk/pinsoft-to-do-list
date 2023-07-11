@@ -4,30 +4,25 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./components/content/login";
 import Components from "./components";
 import NotFound from "./components/notfound/NotFound";
-
 import "./App.scss";
+import Register from "./components/content/register";
 
 function App() {
   const active = useSelector((state) => state.darkActive.active);
-
   const logoutPopup = useSelector((state) => state.logout.logoutPopup);
 
-
   useEffect(() => {
-    const spanElement = document.getElementById("components-span");
-    const mainPopupElement = document.getElementById("mainPopup");
+    // const spanElement = document.getElementById("components-span");
+    // const mainPopupElement = document.getElementById("mainPopup");
     if(logoutPopup){
-      spanElement.style.opacity = "0.2";
-      mainPopupElement.style.opacity = "0.2";
+      // spanElement.style.opacity = "0.2";
+      // mainPopupElement.style.opacity = "0.2";
     }
-
     else{
-      spanElement.style.opacity = "1";
-      mainPopupElement.style.opacity = "1";
-  
+      // spanElement.style.opacity = "1";
+      // mainPopupElement.style.opacity = "1";
     }
   }, [logoutPopup])
-
 
   useEffect(() => {
     if (active) {
@@ -49,6 +44,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/home" element={<Components />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -56,5 +52,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

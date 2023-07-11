@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
+import { doc, updateDoc, deleteDoc, collection, getDocs, where, query } from 'firebase/firestore';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { IoReturnDownBack } from 'react-icons/io5';
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
 import './index.scss';
+import {getAuth} from "firebase/auth";
 
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
+  const user = getAuth().currentUser
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
-
   const dispatch = useDispatch();
-
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
   const [draggedTask, setDraggedTask] = useState(null);
@@ -106,8 +106,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const todoCollection = collection(db, 'todos');
-        const snapshot = await getDocs(todoCollection);
+        const q = query(collection(db, 'todos'), where('userId', '==', user.uid));
+        const snapshot = await getDocs(q);
         const todoList = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -118,8 +118,10 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       }
     };
 
-    fetchData();
-  }, []);
+    if (user.uid) {
+      fetchData();
+    }
+  }, [user.uid]);
 
   const handleDragStart = (event, task) => {
     event.dataTransfer.setData('taskId', task.id);
