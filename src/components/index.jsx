@@ -7,6 +7,7 @@ import { FiLogOut } from 'react-icons/fi';
 import Form from 'react-bootstrap/Form';
 import { setActive, setIsLoggedIn } from './configure';
 import Toast from 'react-bootstrap/Toast';
+import { setLogoutPopup } from './configure';
 
 
 import Content from '../components/content';
@@ -14,8 +15,6 @@ import Footer from '../components/footer';
 import Popup from '../components/popup';
 
 function Components() {
-
-    const [popup, setPopup] = useState(false)
     const [selectedTasks, setSelectedTasks] = useState([]);
     const [isChecked, setIsChecked] = useState(true)
 
@@ -23,6 +22,7 @@ function Components() {
 
     const active = useSelector((state) => state.darkActive.active);
     const popupModel = useSelector((state) => state.modal.popupModal);
+    const logoutPopup = useSelector((state) => state.logout.logoutPopup);
 
     const dispatch = useDispatch();
 
@@ -32,17 +32,22 @@ function Components() {
         dispatch(setActive(!active));
     };
 
-
     useEffect(() => {
         setIsChecked(active);
     }, [active]);
 
     const handleClosePage = () => {
-        setPopup(true)
+        dispatch(setLogoutPopup(true))
     }
+
+    const closePopup = () =>{
+        dispatch(setLogoutPopup(false))
+    }
+ 
 
     const handleLogout = async () => {
         dispatch(setIsLoggedIn(false))
+        dispatch(setLogoutPopup(false))
         const auth = getAuth();
         try {
             await signOut(auth);
@@ -71,13 +76,13 @@ function Components() {
                 <title>Pinsoft To-Do-List</title>
             </Helmet>
             <div className="toast-container">
-                <Toast className='toast-container__box' onClose={() => setPopup(false)} show={popup} delay={3000} autohide>
+                <Toast className='toast-container__box' show={logoutPopup}>
                     <Toast.Header className='toast-container__header' >
                         <strong>Are you sure</strong>
                     </Toast.Header>
                     <Toast.Body>
                         <div className="d-flex justify-content-end">
-                            <button className="btn btn-secondary mx-1" onClick={() => setPopup(false)}>
+                            <button className="btn btn-secondary mx-1" onClick={closePopup}>
                                 Cancel
                             </button>
                             <button className="btn btn-primary mx-1" onClick={handleLogout}>
