@@ -10,11 +10,11 @@ import Toast from 'react-bootstrap/Toast';
 import { setLogoutPopup } from './configure';
 
 
-import Content from '../components/content';
-import Footer from '../components/footer';
-import Popup from '../components/popup';
+import Content from './content';
+import Footer from './footer';
+import Popup from './popup';
 
-function Components() {
+function CustomComponent() {
     const [selectedTasks, setSelectedTasks] = useState([]);
     const [isChecked, setIsChecked] = useState(true)
 
@@ -25,8 +25,6 @@ function Components() {
     const logoutPopup = useSelector((state) => state.logout.logoutPopup);
 
     const dispatch = useDispatch();
-
-    console.log('ischecked', isChecked)
 
     const switchClick = () => {
         dispatch(setActive(!active));
@@ -48,6 +46,7 @@ function Components() {
     const handleLogout = async () => {
         dispatch(setIsLoggedIn(false))
         dispatch(setLogoutPopup(false))
+        sessionStorage.removeItem('auth')
         const auth = getAuth();
         try {
             await signOut(auth);
@@ -59,16 +58,9 @@ function Components() {
 
     useEffect(() => {
         const auth = getAuth();
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (!user) {
-                navigate('/');
-            }
-        });
 
-        return () => {
-            unsubscribe();
-        };
-    }, [navigate]);
+
+    }, []);
 
     return (
         <>
@@ -111,4 +103,4 @@ function Components() {
     );
 }
 
-export default Components;
+export default CustomComponent;

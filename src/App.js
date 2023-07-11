@@ -1,26 +1,35 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./components/content/login";
-import Components from "./components";
+import CustomComponent from "./components/CustomComponent";
 import NotFound from "./components/notfound/NotFound";
 
 import "./App.scss";
 
+
+
 function App() {
   const active = useSelector((state) => state.darkActive.active);
-  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
 
+  const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
 
-  useEffect(() => {
-    if(logoutPopup){
-      //document.body.style.opacity = "0.2";
-    }
+  const Protected = ({children}) => {
 
-    else{
-      document.body.style.opacity = "1";
-    }
-  }, [logoutPopup])
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+      if (sessionStorage.getItem("auth")) {
+        navigate("/home");
+      }
+      else {
+        navigate('/')
+      }
+      
+    }, []);
+    return isLoggedIn ? children : <Navigate to="/" />;
+  };
 
   useEffect(() => {
     if (active) {
@@ -42,7 +51,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Components />} />
+
+          <Route path="/home" element={<Protected><CustomComponent /></Protected>} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

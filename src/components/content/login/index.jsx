@@ -12,36 +12,36 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const active = useSelector((state) => state.darkActive.active);
-
+  const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate("/home");
-        dispatch(setIsLoggedIn(true));
-      } else {
-        setIsLoading(false);
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate, dispatch]);
+
+    if (sessionStorage.getItem("auth")) {
+      dispatch(setIsLoggedIn(true));
+    } else {
+      setIsLoading(false);
+    }
+    //sessionStorage.removeItem('auth')
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
+    const auth = getAuth();
+    
     try {
-      const auth = getAuth();
       await signInWithEmailAndPassword(auth, email, password);
+      sessionStorage.setItem("auth", JSON.stringify(auth));
+      dispatch(setIsLoggedIn(true));
       navigate("/home");
     } catch (error) {
-      setError(error.message);
+      setError("Invalid email or password.");
     }
   };
+  
+  
 
   const handleUserChange = (e) => {
     setEmail(e.target.value);
@@ -85,3 +85,7 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
