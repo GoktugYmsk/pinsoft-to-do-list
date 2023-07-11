@@ -29,12 +29,21 @@ body {
   background-color: #242424;
   transition: 0.3s;
 
+<<<<<<< HEAD
   .components-span-opacity {
     opacity: 0.2 !important;
   }
 
   .toast-container {
     .toast-container__box {
+=======
+  .components-span-opacity{
+    opacity: 0.2 !important;
+  }
+
+  .toast-container{
+    .toast-container__box{
+>>>>>>> 48b14c82ddc54c3d0fb8a668c63cda0cbb8e65a1
       border-radius: 20px;
       width: 400px;
       height: 150px;
@@ -150,6 +159,11 @@ body {
     .logout__switch__active:hover {
       color: #FFC107 !important;
     }
+<<<<<<< HEAD
+=======
+
+  }
+>>>>>>> 48b14c82ddc54c3d0fb8a668c63cda0cbb8e65a1
 
   }
 

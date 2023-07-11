@@ -13,7 +13,11 @@ function Footer() {
 
 
   const handleAddTask = () => {
+<<<<<<< HEAD
     if(!logoutPopup) 
+=======
+    if(!logoutPopup) // Logout popup açık durumda task popup açılmıyor.
+>>>>>>> 48b14c82ddc54c3d0fb8a668c63cda0cbb8e65a1
     {
       dispatch(setPopupModal(true));
     }
