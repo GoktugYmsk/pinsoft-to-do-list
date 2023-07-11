@@ -20,16 +20,16 @@ function App() {
       }
     }, [isLoggedIn, navigate]);
 
-    return children;
+    return isLoggedIn ? children : null;
   };
 
   useEffect(() => {
     if (active) {
-      document.body.style.backgroundColor = '#dfe2e7 ';
-      document.body.style.transition = '0.3s';
+      document.body.style.backgroundColor = "#dfe2e7";
+      document.body.style.transition = "0.3s";
     } else {
-      document.body.style.backgroundColor = '#242424';
-      document.body.style.transition = '0.3s';
+      document.body.style.backgroundColor = "#242424";
+      document.body.style.transition = "0.3s";
     }
 
     return () => {
@@ -39,18 +39,11 @@ function App() {
   }, [active]);
 
   return (
-    <div className={`App ${active ? 'app-active' : 'App'}`}>
+    <div className={`App ${active ? "app-active" : "App"}`}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route
-            path="/home"
-            element={
-              <Protected>
-                <Components />
-              </Protected>
-            }
-          />
+          <Route path="/home" element={<Protected><Components /></Protected>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
