@@ -15,15 +15,12 @@ function App() {
 
   useEffect(() => {
     const spanElement = document.getElementById("components-span");
-    const mainPopupElement = document.getElementById("mainPopup");
     if(logoutPopup){
       spanElement.style.opacity = "0.2";
-      mainPopupElement.style.opacity = "0.2";
     }
 
     else{
       spanElement.style.opacity = "1";
-      mainPopupElement.style.opacity = "1";
   
     }
   }, [logoutPopup])

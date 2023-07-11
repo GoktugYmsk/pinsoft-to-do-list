@@ -10,12 +10,15 @@ function Footer() {
   const dispatch = useDispatch();
 
   
-
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
   const active = useSelector((state) => state.darkActive.active);
-  const popupModel = useSelector((state) => state.modal.popupModal);
+
 
   const handleAddTask = () => {
-    dispatch(setPopupModal(true));
+    if(!logoutPopup) // Logout popup açık durumda task popup açılmıyor.
+    {
+      dispatch(setPopupModal(true));
+    }
   };
 
 

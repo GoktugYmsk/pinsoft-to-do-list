@@ -37,7 +37,10 @@ function Components() {
     }, [active]);
 
     const handleClosePage = () => {
-        dispatch(setLogoutPopup(true))
+        if(!popupModel) // Task popup açık durumda logout popup açılmıyor.
+        {
+            dispatch(setLogoutPopup(true))
+        } 
     }
 
     const closePopup = () =>{
@@ -96,7 +99,7 @@ function Components() {
             
             <span className={`components-span  ${popupModel ? 'components-span-opacity' : ''}`} id='components-span'>
             <div className={`components__icon`}>
-                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick} />
+                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick}/>
                 <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
             </div>
             <div className="row header-container mb-3">
