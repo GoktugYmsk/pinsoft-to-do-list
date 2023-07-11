@@ -23,8 +23,7 @@ function Footer() {
     <div className={`row  ${active ? 'row-active' : 'row'}`}>
       <div className="col-md-12">
         <div
-          className={`footer-container ${popupModel ? "footer-container__opacity" : ""
-            }`}
+          className={`footer-container`}
         >
           <button onClick={handleAddTask}>Add Task</button>
         </div>

@@ -61,6 +61,10 @@ body{
   background-color: #242424;
   transition: 0.3s;
 
+  .components-span-opacity{
+    opacity: 0.2 !important;
+  }
+
   .toast-container{
     .toast-container__box{
       border-radius: 20px;
@@ -176,10 +180,7 @@ body{
     .logout__switch__active:hover{
       color: #FFC107 !important;
     }
-  
-    .components__icon__opacity{
-      opacity: 0.2;
-    }
+
   }
 
  

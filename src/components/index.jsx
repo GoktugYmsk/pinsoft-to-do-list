@@ -93,8 +93,9 @@ function Components() {
                     </Toast.Body>
                 </Toast>
             </div>
-            <span id='components-span'>
-            <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`}>
+            
+            <span className={`components-span  ${popupModel ? 'components-span-opacity' : ''}`} id='components-span'>
+            <div className={`components__icon`}>
                 <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick} />
                 <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
             </div>
