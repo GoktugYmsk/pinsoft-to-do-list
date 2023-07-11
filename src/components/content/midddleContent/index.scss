@@ -1,7 +1,13 @@
+
+.middle-conent-active:hover{
+    box-shadow: 0 2px 2px 4px rgb(42, 82, 240, 0.3) !important;
+}
+
+
 .middle-conent-active {
     background-color: #dfe2e7 !important;
-    border: solid #2a52f0 5px !important;
-    box-shadow: 0 2px 2px 4px rgb(42, 82, 240, 0.3) !important;
+    border-color: #2a52f0  !important;
+    box-shadow: 0 2px 2px 0px rgb(42, 82, 240, 0.3) !important;
 
 
     .headercontent {
@@ -53,6 +59,10 @@
 }
 
 
+.middleconent:hover{
+    box-shadow: 0 2px 2px 4px #0000004d;
+}
+
 
 .middleconent {
     display: flex;
@@ -63,8 +73,8 @@
     height: 450px;
     width: 450px;
     border-radius: 20px 20px 0 0;
-    border: solid #121212 5px;
-    box-shadow: 0 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border:solid #121212 5px;
+    box-shadow: 0 2px 2px 0px #0000004d;
     transition: 0.3s;
 
 
@@ -359,6 +369,8 @@
 @media (max-width:481px) {
 
     .middleconent {
+        box-shadow: 0 2px 2px 4px;
+        border-width:3px;
         margin-left: 1.8%;
 
     }

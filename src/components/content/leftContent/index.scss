@@ -1,7 +1,11 @@
+.leftconent-active:hover{
+    box-shadow: 0 2px 2px 4px rgb(42,82,240,0.3) !important;
+}
+
 .leftconent-active{
     background-color: #dfe2e7 !important;
-    border:solid #2a52f0  5px !important;
-    box-shadow: 0 2px 2px 4px rgb(42,82,240,0.3) !important;
+    border-color: #2a52f0  !important;
+    box-shadow: 0 2px 2px 0px rgb(42,82,240,0.3) !important;
     
     .headercontent{
         background-color: #2a52f0   !important;
@@ -37,6 +41,12 @@
     }
 }
 
+
+.leftconent:hover{
+    
+    box-shadow: 0 2px 2px 4px #0000004d;
+}
+
 .leftconent {
     display: flex;
     flex-direction: column;
@@ -47,7 +57,7 @@
     background: #242424;
     border-radius: 20px 20px 0 0;
     border:solid #121212 5px;
-    box-shadow: 0 2px 2px 4px #0000004d;
+    box-shadow: 0 2px 2px 0px #0000004d;
     transition: 0.3s;
 
     .headercontent{
@@ -317,6 +327,8 @@
 @media (max-width:481px) {
 
     .leftconent{
+        box-shadow: 0 2px 2px 4px;
+        border-width:3px;
         margin-left: 1.8%;      
     }
 
