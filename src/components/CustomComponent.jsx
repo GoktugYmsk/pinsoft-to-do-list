@@ -38,29 +38,24 @@ function CustomComponent() {
         dispatch(setLogoutPopup(true))
     }
 
-    const closePopup = () =>{
+    const closePopup = () => {
         dispatch(setLogoutPopup(false))
     }
- 
+
 
     const handleLogout = async () => {
-        dispatch(setIsLoggedIn(false))
-        dispatch(setLogoutPopup(false))
-        sessionStorage.removeItem('auth')
         const auth = getAuth();
         try {
             await signOut(auth);
-            navigate('/');
+            dispatch(setIsLoggedIn(false))
+            dispatch(setLogoutPopup(false))
+            sessionStorage.removeItem('auth')
+
+            navigate('/login');
         } catch (error) {
             console.error('Error logging out:', error);
         }
     };
-
-    useEffect(() => {
-        const auth = getAuth();
-
-
-    }, []);
 
     return (
         <>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route,  Routes,  } from "react-router-dom";
 import Login from "./components/content/login";
 import CustomComponent from "./components/CustomComponent";
 import NotFound from "./components/notfound/NotFound";
@@ -8,28 +8,8 @@ import NotFound from "./components/notfound/NotFound";
 import "./App.scss";
 
 
-
 function App() {
   const active = useSelector((state) => state.darkActive.active);
-
-  const isLoggedIn = sessionStorage.getItem("auth")
-
-  const Protected = ({children}) => {
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-
-      if (sessionStorage.getItem("auth")) {
-        navigate("/home");
-      }
-      else {
-        navigate('/')
-      }
-      
-    }, []);
-    return isLoggedIn ? children : <Navigate to="/" />;
-  };
 
   useEffect(() => {
     if (active) {
@@ -50,15 +30,39 @@ function App() {
     <div className={`App ${active ? "app-active" : "App"}`}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-
-          <Route path="/home" element={<Protected><CustomComponent /></Protected>} />
-
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <CustomComponent />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
 
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.loggedIn.isLoggedIn);
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
+const PublicRoute = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.loggedIn.isLoggedIn);
+  return isAuthenticated ? <Navigate to="/home" replace /> : children;
+};
+
 export default App;
+

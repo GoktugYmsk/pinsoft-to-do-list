@@ -14,11 +14,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const active = useSelector((state) => state.darkActive.active);
-  const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
 
-  useEffect(() => {
-      setIsLoading(false);
-  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,6 +25,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       sessionStorage.setItem("auth", JSON.stringify(auth));
       dispatch(setIsLoggedIn(true));
+      
       navigate("/home");
     } catch (error) {
       setError("Invalid email or password.");
@@ -44,10 +41,6 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className={`login__container ${active ? "login__container-active" : "login__container"}`}>

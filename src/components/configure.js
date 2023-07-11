@@ -5,8 +5,9 @@ const initialState = {
     popupModal: false,
     doingTask: [],
     active: [true],
-    isLoggedIn: false,
+    isLoggedIn: !!sessionStorage.getItem('auth'),
     logoutPopup: false,
+
 }
 
 export const configure = createSlice({
@@ -34,6 +35,6 @@ export const configure = createSlice({
     }
 })
 
-export const {setAddTasks,setPopupModal,setDoingTask,setActive,setIsLoggedIn,setLogoutPopup} = configure.actions
+export const { setAddTasks, setPopupModal, setDoingTask, setActive, setIsLoggedIn, setLogoutPopup } = configure.actions
 
 export default configure.reducer
