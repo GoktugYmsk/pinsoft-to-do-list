@@ -29,7 +29,11 @@ function Components() {
     console.log('ischecked', isChecked)
 
     const switchClick = () => {
-        dispatch(setActive(!active));
+        if(!(popupModel || logoutPopup))
+        {
+            dispatch(setActive(!active));
+        }
+      
     };
 
     useEffect(() => {

@@ -12,10 +12,12 @@ function RightContent() {
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
   const dispatch = useDispatch();
-
+  const popupModel = useSelector((state) => state.modal.popupModal);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
   const filteredTasks = addTask.filter((task) => task.status === 2);
 
   const handleDeleteDone = async (taskId) => {
+    if(!(popupModel || logoutPopup)){
     try {
       const taskDocRef = doc(db, 'todos', taskId);
       await deleteDoc(taskDocRef);
@@ -25,9 +27,11 @@ function RightContent() {
     } catch (error) {
       console.error('Error deleting task: ', error);
     }
+  }
   };
 
   const handleTurnClick = async (taskId) => {
+    if(!(popupModel || logoutPopup)){
     try {
       const taskDocRef = doc(db, 'todos', taskId);
       await updateDoc(taskDocRef, {
@@ -41,6 +45,7 @@ function RightContent() {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+  }
   };
 
   const handleDragOver = (event) => {
@@ -102,7 +107,8 @@ function RightContent() {
             key={index}
             className="rightcontent__list-box"
             draggable
-            onDragStart={(event) => event.dataTransfer.setData('taskId', task.id)}
+            onDragStart={(event) => !(popupModel || logoutPopup) ? event.dataTransfer.setData('taskId', task.id) : null}
+            // Burası fonksiyon değildi direk üzerine yazdım.
           >
               <div>
                 <span>{task.text}</span>
