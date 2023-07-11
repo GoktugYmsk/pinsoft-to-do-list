@@ -13,6 +13,7 @@
     .headercontent {
         background-color: #2a52f0 !important;
         color: #dfe2e7 !important;
+        border-bottom-color:#2a52f0 !important ;
     }
 
 
@@ -60,7 +61,7 @@
 
 
 .middleconent:hover{
-    box-shadow: 0 2px 2px 4px #0000004d;
+    box-shadow: 0 2px 2px 4px #585858;
 }
 
 
@@ -88,6 +89,9 @@
         border-radius: 20px 20px 0 0;
         background-color: #121212;
         transition: 0.3s;
+        border-bottom-style:solid;
+        border-bottom-color:#121212 ;
+        border-bottom-width: 5px;
     }
 
     .middlecontent__list {
@@ -369,8 +373,6 @@
 @media (max-width:481px) {
 
     .middleconent {
-        box-shadow: 0 2px 2px 4px;
-        border-width:3px;
         margin-left: 1.8%;
 
     }

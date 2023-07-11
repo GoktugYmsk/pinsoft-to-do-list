@@ -72,15 +72,15 @@ function Components() {
             </Helmet>
             <div className="toast-container">
                 <Toast className='toast-container__box' onClose={() => setPopup(false)} show={popup} delay={3000} autohide>
-                    <Toast.Header className='toast-container__header' >
-                        <strong>Are you sure</strong>
-                    </Toast.Header>
+                    <div className='toast-container__header' >
+                        <strong>Are you sure ?</strong>
+                    </div>
                     <Toast.Body>
-                        <div className="d-flex justify-content-end">
-                            <button className="btn btn-secondary mx-1" onClick={() => setPopup(false)}>
+                        <div className="toast-container__body mt-2">
+                            <button className="btn-cancel" onClick={() => setPopup(false)}>
                                 Cancel
                             </button>
-                            <button className="btn btn-primary mx-1" onClick={handleLogout}>
+                            <button className="btn-continue" onClick={handleLogout}>
                                 Continue
                             </button>
                         </div>

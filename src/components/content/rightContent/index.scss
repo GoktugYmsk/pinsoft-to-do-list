@@ -10,6 +10,7 @@
     .headercontent {
         background-color: #2a52f0 !important;
         color: #dfe2e7 !important;
+        border-bottom-color:#2a52f0 !important ;
     }
 
     .rightcontent__list {
@@ -36,7 +37,7 @@
 
 
 .rightconent:hover{
-    box-shadow: 0 2px 2px 4px #0000004d;
+    box-shadow: 0 2px 2px 4px #585858;
 }
 
 .rightconent {
@@ -61,6 +62,10 @@
         border-radius: 20px 20px 0 0;
         background-color: #121212;
         transition: 0.3s;
+        border-bottom-style:solid;
+        border-bottom-color:#121212 ;
+        border-bottom-width: 5px;
+        
     }
 
     .rightcontent__list {
@@ -282,8 +287,6 @@
 @media (max-width:481px) {
 
     .rightconent {
-        border-width:3px;
-        box-shadow: 0 2px 2px 4px;
         margin-left: 1.8%;
     }
 }

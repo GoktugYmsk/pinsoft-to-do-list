@@ -10,6 +10,7 @@ import "./App.scss";
 function App() {
   const active = useSelector((state) => state.darkActive.active);
   const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
 
   const Protected = ({ children }) => {
     const navigate = useNavigate();
@@ -22,6 +23,16 @@ function App() {
 
     return children;
   };
+
+  useEffect(() => {
+    if(logoutPopup){
+      //document.body.style.opacity = "0.2";
+    }
+
+    else{
+      document.body.style.opacity = "1";
+    }
+  }, [logoutPopup])
 
   useEffect(() => {
     if (active) {
