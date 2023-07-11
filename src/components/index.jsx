@@ -93,6 +93,7 @@ function Components() {
                     </Toast.Body>
                 </Toast>
             </div>
+            <span id='components-span'>
             <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`}>
                 <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick} />
                 <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
@@ -105,9 +106,11 @@ function Components() {
                 setSelectedTasks={setSelectedTasks}
             />
             <Footer />
-            <div className="popup-container">
+            </span>
+            <div className="popup-container" id='mainPopup'>
                 <Popup setSelectedTasks={setSelectedTasks} />
             </div>
+            
         </>
     );
 }

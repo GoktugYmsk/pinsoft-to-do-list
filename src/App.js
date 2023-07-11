@@ -14,12 +14,17 @@ function App() {
 
 
   useEffect(() => {
+    const spanElement = document.getElementById("components-span");
+    const mainPopupElement = document.getElementById("mainPopup");
     if(logoutPopup){
-      // document.body.style.opacity = "0.2";
+      spanElement.style.opacity = "0.2";
+      mainPopupElement.style.opacity = "0.2";
     }
 
     else{
-      document.body.style.opacity = "1";
+      spanElement.style.opacity = "1";
+      mainPopupElement.style.opacity = "1";
+  
     }
   }, [logoutPopup])
 
