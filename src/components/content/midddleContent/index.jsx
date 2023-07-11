@@ -131,10 +131,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   }, []);
 
   const handleDragStart = (event, task) => {
-    if(!(popupModel || logoutPopup)){
     event.dataTransfer.setData('taskId', task.id);
     setDraggedTask(task);
-  }
   };
 
   const handleDragEnter = (event) => {
@@ -151,6 +149,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   };
 
   const handleDrop = async (event) => {
+    if(!(popupModel || logoutPopup)){
     event.preventDefault();
     event.currentTarget.classList.remove('drag-over');
 
@@ -170,6 +169,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+
+  }
   };
 
 

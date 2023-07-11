@@ -63,6 +63,7 @@ function RightContent() {
   };
 
   const handleDrop = async (event) => {
+    if(!(popupModel || logoutPopup)){
     event.preventDefault();
     event.currentTarget.classList.remove('drag-over');
 
@@ -82,6 +83,7 @@ function RightContent() {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+  }
   };
 
 
@@ -107,8 +109,8 @@ function RightContent() {
             key={index}
             className="rightcontent__list-box"
             draggable
-            onDragStart={(event) => !(popupModel || logoutPopup) ? event.dataTransfer.setData('taskId', task.id) : null}
-            // Burası fonksiyon değildi direk üzerine yazdım.
+            onDragStart={(event) =>event.dataTransfer.setData('taskId', task.id)}
+          
           >
               <div>
                 <span>{task.text}</span>

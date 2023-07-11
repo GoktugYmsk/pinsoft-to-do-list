@@ -154,6 +154,7 @@ function LeftContent() {
   }, []);
 
   const handleDrop = async (event) => {
+    if(!(popupModel || logoutPopup)){
     event.preventDefault();
     event.currentTarget.classList.remove('drag-over');
 
@@ -173,6 +174,7 @@ function LeftContent() {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+  }
   };
 
   const filteredTasks = addTask.filter((task) => task.status === 0);
