@@ -11,6 +11,20 @@ import "./App.scss";
 function App() {
   const active = useSelector((state) => state.darkActive.active);
 
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
+
+  useEffect(() => {
+    const spanElement = document.getElementById("components-span");
+    if(logoutPopup){
+      spanElement.style.opacity = "0.2";
+    }
+
+    else{
+      spanElement.style.opacity = "1";
+  
+    }
+  }, [logoutPopup])
+
   useEffect(() => {
     if (active) {
       document.body.style.backgroundColor = "#dfe2e7";

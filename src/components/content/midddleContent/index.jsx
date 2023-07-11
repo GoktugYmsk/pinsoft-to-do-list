@@ -11,7 +11,8 @@ import './index.scss';
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
-
+  const popupModel = useSelector((state) => state.modal.popupModal);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
   const dispatch = useDispatch();
 
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -19,6 +20,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const [draggedTask, setDraggedTask] = useState(null);
 
   const handleDeleteTask = async (taskId) => {
+    if(!(popupModel || logoutPopup)){
     try {
       const taskDocRef = doc(db, 'todos', taskId);
       await deleteDoc(taskDocRef);
@@ -29,9 +31,11 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     } catch (error) {
       console.error('Error deleting task: ', error);
     }
+  }
   };
 
   const handleTaskDoneClick = async (taskId) => {
+    if(!(popupModel || logoutPopup)){
     const taskDocRef = doc(db, 'todos', taskId);
 
     try {
@@ -53,11 +57,14 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+  }
   };
 
   const handleEditClick = (index, taskText) => {
+    if(!(popupModel || logoutPopup)){
     setEditingIndex(index);
     setEditedTask(taskText);
+  }
   };
 
   const handleSaveEdit = async (taskId) => {
@@ -80,6 +87,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   };
 
   const handleTurnClick = async (taskId) => {
+    if(!(popupModel || logoutPopup)){
     try {
       const taskDocRef = doc(db, 'todos', taskId);
 
@@ -101,6 +109,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+  }
   };
 
   useEffect(() => {
@@ -140,6 +149,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   };
 
   const handleDrop = async (event) => {
+    if(!(popupModel || logoutPopup)){
     event.preventDefault();
     event.currentTarget.classList.remove('drag-over');
 
@@ -159,6 +169,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+
+  }
   };
 
 

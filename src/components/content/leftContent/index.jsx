@@ -12,13 +12,15 @@ function LeftContent() {
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
   const [draggedTask, setDraggedTask] = useState(null);
-
+  const popupModel = useSelector((state) => state.modal.popupModal);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
   const addTask = useSelector((state) => state.addTodo.addTask);
   const active = useSelector((state) => state.darkActive.active);
 
   const dispatch = useDispatch();
 
   const handleDeleteClick = async (taskId) => {
+    if(!(popupModel || logoutPopup)){
     try {
       const taskDocRef = doc(db, 'todos', taskId);
       await deleteDoc(taskDocRef);
@@ -27,9 +29,11 @@ function LeftContent() {
     } catch (error) {
       console.error('Error deleting task: ', error);
     }
+  }
   };
 
   const handleTaskClick = async (taskId) => {
+    if(!(popupModel || logoutPopup)){
     try {
       const taskDocRef = doc(db, 'todos', taskId);
       await updateDoc(taskDocRef, {
@@ -42,11 +46,15 @@ function LeftContent() {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+  }
   };
 
   const handleEditClick = (index, taskText) => {
-    setEditingIndex(index);
-    setEditedTask(taskText);
+    if(!(popupModel || logoutPopup))
+    {
+      setEditingIndex(index);
+      setEditedTask(taskText);
+    }
   };
 
   const handleSaveEdit = async (taskId) => {
@@ -69,8 +77,12 @@ function LeftContent() {
   };
 
   const handleDragStart = (event, task) => {
-    event.dataTransfer.setData('taskId', task.id);
-    setDraggedTask(task);
+    if(!(popupModel || logoutPopup))
+    {
+      event.dataTransfer.setData('taskId', task.id);
+      setDraggedTask(task);
+    }
+ 
   };
 
 
@@ -142,6 +154,7 @@ function LeftContent() {
   }, []);
 
   const handleDrop = async (event) => {
+    if(!(popupModel || logoutPopup)){
     event.preventDefault();
     event.currentTarget.classList.remove('drag-over');
 
@@ -161,6 +174,7 @@ function LeftContent() {
     } catch (error) {
       console.error('Error updating task status: ', error);
     }
+  }
   };
 
   const filteredTasks = addTask.filter((task) => task.status === 0);
