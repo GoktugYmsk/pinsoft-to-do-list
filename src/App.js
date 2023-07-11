@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     if(logoutPopup){
-      //document.body.style.opacity = "0.2";
+      // document.body.style.opacity = "0.2";
     }
 
     else{
@@ -23,15 +23,6 @@ function App() {
     }
   }, [logoutPopup])
 
-  useEffect(() => {
-    if(logoutPopup){
-      //document.body.style.opacity = "0.2";
-    }
-
-    else{
-      document.body.style.opacity = "1";
-    }
-  }, [logoutPopup])
 
   useEffect(() => {
     if (active) {

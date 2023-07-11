@@ -76,15 +76,13 @@ function Components() {
                 <title>Pinsoft To-Do-List</title>
             </Helmet>
             <div className="toast-container">
-
-
                 <Toast className='toast-container__box' show={logoutPopup}>
-                    <Toast.Header className='toast-container__header' >
+                    <div className='toast-container__header' >
                         <strong>Are you sure</strong>
-                    </Toast.Header>
+                    </div>
                     <Toast.Body>
-                        <div className="d-flex justify-content-end">
-                            <button className="btn btn-secondary mx-1" onClick={closePopup}>
+                        <div className="toast-container__body">
+                            <button className="btn-cancel" onClick={closePopup}>
 
                                 Cancel
                             </button>
