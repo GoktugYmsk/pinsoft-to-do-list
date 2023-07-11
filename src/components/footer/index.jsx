@@ -2,8 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupModal } from "../configure";
 
-
-
 import "./index.scss";
 
 function Footer() {
@@ -15,7 +13,7 @@ function Footer() {
 
 
   const handleAddTask = () => {
-    if(!logoutPopup) // Logout popup açık durumda task popup açılmıyor.
+    if(!logoutPopup) 
     {
       dispatch(setPopupModal(true));
     }
