@@ -17,6 +17,7 @@ function Components() {
 
     const [popup, setPopup] = useState(false)
     const [selectedTasks, setSelectedTasks] = useState([]);
+    const [isChecked, setIsChecked] = useState(true)
 
     const navigate = useNavigate();
 
@@ -25,9 +26,16 @@ function Components() {
 
     const dispatch = useDispatch();
 
+    console.log('ischecked', isChecked)
+
     const switchClick = () => {
         dispatch(setActive(!active));
     };
+
+
+    useEffect(() => {
+        setIsChecked(active);
+    }, [active]);
 
     const handleClosePage = () => {
         setPopup(true)
@@ -80,7 +88,7 @@ function Components() {
                 </Toast>
             </div>
             <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`}>
-                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" onChange={switchClick} />
+                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick} />
                 <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
             </div>
             <div className="row header-container mb-3">
