@@ -12,7 +12,7 @@ import "./App.scss";
 function App() {
   const active = useSelector((state) => state.darkActive.active);
 
-  const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
+  const isLoggedIn = sessionStorage.getItem("auth")
 
   const Protected = ({children}) => {
 
