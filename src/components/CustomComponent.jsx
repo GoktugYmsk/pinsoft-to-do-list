@@ -27,11 +27,10 @@ function CustomComponent() {
     const dispatch = useDispatch();
 
     const switchClick = () => {
-        if(!(popupModel || logoutPopup))
-        {
+        if (!(popupModel || logoutPopup)) {
             dispatch(setActive(!active));
         }
-      
+
     };
 
     useEffect(() => {
@@ -39,10 +38,10 @@ function CustomComponent() {
     }, [active]);
 
     const handleClosePage = () => {
-        if(!popupModel) // Task popup açık durumda logout popup açılmıyor.
+        if (!popupModel) // Task popup açık durumda logout popup açılmıyor.
         {
             dispatch(setLogoutPopup(true))
-        } 
+        }
     }
 
     const closePopup = () => {
@@ -86,28 +85,25 @@ function CustomComponent() {
                     </Toast.Body>
                 </Toast>
             </div>
-<<<<<<< HEAD:src/components/CustomComponent.jsx
-            <div className={`components__icon ${popupModel ? 'components__icon__opacity' : ''}`}>
-                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick} />
-=======
-            
+
             <span className={`components-span  ${popupModel ? 'components-span-opacity' : ''}`} id='components-span'>
-            <div className={`components__icon`}>
-                <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick}/>
->>>>>>> 48b14c82ddc54c3d0fb8a668c63cda0cbb8e65a1:src/components/index.jsx
-                <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
-            </div>
-            <div className="row header-container mb-3">
-                <h1 id="header">To Do List</h1>
-            </div>
-            <Content
-                selectedTasks={selectedTasks}
-                setSelectedTasks={setSelectedTasks}
-            />
-            <Footer />
-            <div className="popup-container">
-                <Popup setSelectedTasks={setSelectedTasks} />
-            </div>
+                <div className={`components__icon`}>
+                    <Form.Check type="switch" id="custom-switch" className="custom-switch mb-2" checked={isChecked} onChange={switchClick} />
+                    <FiLogOut className={`logout__switch ${!active ? 'logout__switch__active' : ''}`} onClick={handleClosePage} />
+                </div>
+                <div className="row header-container mb-3">
+                    <h1 id="header">To Do List</h1>
+                </div>
+                <Content
+                    selectedTasks={selectedTasks}
+                    setSelectedTasks={setSelectedTasks}
+                />
+                <Footer />
+                <div className="popup-container">
+                    <Popup setSelectedTasks={setSelectedTasks} />
+                </div>
+            </span>
+
         </>
     );
 }

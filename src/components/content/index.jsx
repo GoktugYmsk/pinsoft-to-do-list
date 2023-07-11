@@ -10,10 +10,8 @@ import './index.scss';
 function Content({ selectedTasks, setSelectedTasks }) {
 
   const [doneTasks, setDoneTasks] = useState([]);
-  
-  const active = useSelector((state) => state.darkActive.active);
-  
 
+  const active = useSelector((state) => state.darkActive.active);
 
 
   return (

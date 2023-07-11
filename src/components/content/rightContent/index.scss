@@ -1,10 +1,10 @@
-.right-conent-active:hover{
+.right-conent-active:hover {
     box-shadow: 0 2px 2px 4px rgb(42, 82, 240, 0.3) !important;
 }
 
 .right-conent-active {
     background-color: #dfe2e7 !important;
-    border-color:  #2a52f0  !important;
+    border-color: #2a52f0 !important;
     box-shadow: 0 2px 2px 0px rgb(42, 82, 240, 0.3) !important;
 
     .headercontent {
@@ -19,23 +19,23 @@
             color: #dfe2e7 !important;
 
 
-                .rigthContnent__box-icon__left:hover {
-                    color: #7ea2e0 !important;
-                    opacity: 0.7;
-                }
+            .rigthContnent__box-icon__left:hover {
+                color: #7ea2e0 !important;
+                opacity: 0.7;
+            }
 
-                .rigthContnent__box-icon__rigth:hover {
-                    color: #7ea2e0 !important;
-                    opacity: 0.7;
-                }
-            
+            .rigthContnent__box-icon__rigth:hover {
+                color: #7ea2e0 !important;
+                opacity: 0.7;
+            }
+
         }
 
     }
 }
 
 
-.rightconent:hover{
+.rightconent:hover {
     box-shadow: 0 2px 2px 4px #0000004d;
 }
 
@@ -48,7 +48,7 @@
     height: 450px;
     width: 450px;
     border-radius: 20px 20px 0 0;
-    border:solid #121212 5px;
+    border: solid #121212 5px;
     box-shadow: 0 2px 2px 0px #0000004d;
     transition: 0.3s;
 
@@ -95,48 +95,48 @@
             transition: 0.3s;
             right: 10px !important;
 
-                div {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-                    span {
-                        max-width: 336.48px;
-                        min-width: 336.48px;
-                        font-size: 1.2rem;
-                        text-decoration: line-through;
-                    }
+                span {
+                    max-width: 336.48px;
+                    min-width: 336.48px;
+                    font-size: 1.2rem;
+                    text-decoration: line-through;
                 }
-
-
-
-
-
-                .rigthContnent__box-icon__left {
-                    cursor: pointer;
-                    font-size: 18px;
-                    margin-right: 10px;
-                    transition: 0.15s;
-                }
-
-                .rigthContnent__box-icon__left:hover {
-                    color: white;
-                    opacity: 0.7;
-                }
-
-                .rigthContnent__box-icon__rigth {
-                    cursor: pointer;
-                    font-size: 18px;
-                    transition: 0.15s;
-                }
-
-                .rigthContnent__box-icon__rigth:hover {
-                    color: white;
-                    opacity: 0.7;
-                }
-
             }
-        
+
+
+
+
+
+            .rigthContnent__box-icon__left {
+                cursor: pointer;
+                font-size: 18px;
+                margin-right: 10px;
+                transition: 0.15s;
+            }
+
+            .rigthContnent__box-icon__left:hover {
+                color: white;
+                opacity: 0.7;
+            }
+
+            .rigthContnent__box-icon__rigth {
+                cursor: pointer;
+                font-size: 18px;
+                transition: 0.15s;
+            }
+
+            .rigthContnent__box-icon__rigth:hover {
+                color: white;
+                opacity: 0.7;
+            }
+
+        }
+
     }
 }
 
@@ -153,10 +153,10 @@
 
         .rightcontent__list {
             width: 420px;
-            
+
             .rightcontent_list_todoCheck {
 
-                .rightcontent__list-box{
+                .rightcontent__list-box {
 
 
                     div {
@@ -190,10 +190,10 @@
 
         .rightcontent__list {
             width: 415px;
-            
+
             .rightcontent_list_todoCheck {
 
-                .rightcontent__list-box{
+                .rightcontent__list-box {
 
 
                     div {
@@ -227,14 +227,14 @@
 
         .rightcontent__list {
             width: 395px;
-            
+
             .rightcontent_list_todoCheck {
-                .rightcontent__list-box{
+                .rightcontent__list-box {
 
 
                     div {
                         span {
-                            max-width:281.48px;
+                            max-width: 281.48px;
                             min-width: 281.48px;
                             font-size: 1.2rem;
                         }
@@ -282,7 +282,7 @@
 @media (max-width:481px) {
 
     .rightconent {
-        border-width:3px;
+        border-width: 3px;
         box-shadow: 0 2px 2px 4px;
         margin-left: 1.8%;
     }
@@ -303,17 +303,17 @@
             width: 350px;
         }
 
-        
+
         .rightcontent__list {
             width: 350px;
-            
+
             .rightcontent_list_todoCheck {
-                .rightcontent__list-box{
+                .rightcontent__list-box {
 
 
                     div {
                         span {
-                            max-width:236.48px;
+                            max-width: 236.48px;
                             min-width: 236.48px;
                             font-size: 1rem;
                         }
@@ -336,17 +336,17 @@
             width: 325px;
         }
 
-       
+
         .rightcontent__list {
             width: 325px;
-            
+
             .rightcontent_list_todoCheck {
-                .rightcontent__list-box{
+                .rightcontent__list-box {
 
 
                     div {
                         span {
-                            max-width:211.48px;
+                            max-width: 211.48px;
                             min-width: 211.48px;
                             font-size: 1rem;
                         }
@@ -370,17 +370,17 @@
             width: 270px;
         }
 
-        
+
         .rightcontent__list {
             width: 270px;
-            
+
             .rightcontent_list_todoCheck {
-                .rightcontent__list-box{
+                .rightcontent__list-box {
 
 
                     div {
                         span {
-                            max-width:156.48px;
+                            max-width: 156.48px;
                             min-width: 156.48px;
                             font-size: 1rem;
                         }

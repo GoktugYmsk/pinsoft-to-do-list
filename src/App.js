@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Navigate, Route,  Routes,  } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, } from "react-router-dom";
 import Login from "./components/content/login";
 import CustomComponent from "./components/CustomComponent";
 import NotFound from "./components/notfound/NotFound";
@@ -13,17 +13,18 @@ function App() {
 
   const logoutPopup = useSelector((state) => state.logout.logoutPopup);
 
-  useEffect(() => {
-    const spanElement = document.getElementById("components-span");
-    if(logoutPopup){
-      spanElement.style.opacity = "0.2";
-    }
+  // useEffect(() => {
+  //   const spanElement = document.getElementById("components-span");
+    
+  //   if (logoutPopup) {
+  //     spanElement.style.opacity = "0.2";
+  //   }
 
-    else{
-      spanElement.style.opacity = "1";
-  
-    }
-  }, [logoutPopup])
+  //   else {
+  //     spanElement.style.opacity = "1";
+
+  //   }
+  // }, [logoutPopup])
 
   useEffect(() => {
     if (active) {
@@ -61,7 +62,7 @@ function App() {
               </PublicRoute>
             }
           />
-          <Route path="*" element={<NotFound/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
