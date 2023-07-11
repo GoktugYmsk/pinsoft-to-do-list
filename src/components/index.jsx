@@ -78,10 +78,10 @@ function Components() {
             <div className="toast-container">
                 <Toast className='toast-container__box' show={logoutPopup}>
                     <div className='toast-container__header' >
-                        <strong>Are you sure</strong>
+                        <strong>Are you sure ?</strong>
                     </div>
                     <Toast.Body>
-                        <div className="toast-container__body">
+                        <div className="toast-container__body mt-2">
                             <button className="btn-cancel" onClick={closePopup}>
 
                                 Cancel
