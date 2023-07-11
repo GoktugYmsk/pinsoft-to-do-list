@@ -13,31 +13,10 @@ const Login = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
-
+    
     const dispatch = useDispatch()
 
     const active = useSelector((state) => state.darkActive.active);
-
-    const sendAuthRequest = (path) => {
-        // axios veya ajax ile yapilabilir
-        fetch("/" + path, {
-            method: "POST",
-            headers: {
-                "Content type": "application/json",
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                localStorage.setItem("tokenKey", result.message); // auth response "Bearer " + jwtToken(Typei string) donecek
-                localStorage.setItem("currentUser", result.userId);
-                // localStorage.setItem("currentUser", result.userName); userName'i gormek istersek ekstra bir username inputu olusturulabilir
-            })
-            .catch((error) => console.log(error))
-    }
 
     useEffect(() => {
         const auth = getAuth();

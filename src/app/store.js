@@ -8,5 +8,6 @@ export const store = configureStore({
         doing:configure,
         darkActive: configure,
         loggedIn:configure,
+        logout:configure,
     },
 })
