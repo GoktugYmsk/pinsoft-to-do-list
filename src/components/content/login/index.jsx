@@ -17,13 +17,7 @@ const Login = () => {
   const isLoggedIn = useSelector((state) => state.loggedIn.isLoggedIn);
 
   useEffect(() => {
-
-    if (sessionStorage.getItem("auth")) {
-      dispatch(setIsLoggedIn(true));
-    } else {
       setIsLoading(false);
-    }
-    //sessionStorage.removeItem('auth')
   }, []);
 
   const handleLogin = async (e) => {
