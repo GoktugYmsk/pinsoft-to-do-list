@@ -9,6 +9,18 @@ import "./App.scss";
 
 function App() {
   const active = useSelector((state) => state.darkActive.active);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
+
+
+  useEffect(() => {
+    if(logoutPopup){
+      //document.body.style.opacity = "0.2";
+    }
+
+    else{
+      document.body.style.opacity = "1";
+    }
+  }, [logoutPopup])
 
   useEffect(() => {
     if (active) {
