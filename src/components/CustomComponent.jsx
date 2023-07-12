@@ -59,6 +59,20 @@ function CustomComponent() {
     };
 
     useEffect(() => {
+        const handleKeyDown = (event) => {
+          if (event.key === 'Escape') {
+            closePopup()
+          }
+        };
+    
+        window.addEventListener('keydown', handleKeyDown);
+    
+        return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+        };
+      }, []);
+
+    useEffect(() => {
         setIsChecked(active);
     }, [active]);
 
@@ -69,9 +83,9 @@ function CustomComponent() {
             </Helmet>
             <div className="toast-container">
                 <Toast className='toast-container__box' show={logoutPopup}>
-                    <span className='toast-container__header' >
+                    <span    className='toast-container__header' >
                         <strong>Are you sure</strong>
-                    </span>
+                    </span  >
                     <Toast.Body>
                         <div className="toast-container__box-buttons">
                             <button className="btn-cancel" onClick={closePopup}>

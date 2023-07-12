@@ -17,6 +17,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const addTask = useSelector((state) => state.addTodo.addTask);
   const popupModel = useSelector((state) => state.modal.popupModal);
   const logoutPopup = useSelector((state) => state.logout.logoutPopup);
+  
   const dispatch = useDispatch();
 
   const [editingIndex, setEditingIndex] = useState(-1);
