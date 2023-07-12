@@ -1,45 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
+
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 import { setIsLoggedIn } from "../../configure";
+
 import "./index.scss";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
   const active = useSelector((state) => state.darkActive.active);
-
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigate("/home");
-        dispatch(setIsLoggedIn(true));
-      } else {
-        setIsLoading(false);
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, [navigate, dispatch]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    const auth = getAuth();
+
     try {
-      const auth = getAuth();
       await signInWithEmailAndPassword(auth, email, password);
+      sessionStorage.setItem("auth", JSON.stringify(auth));
+      dispatch(setIsLoggedIn(true));
+
       navigate("/home");
     } catch (error) {
-      setError(error.message);
+      setError("Invalid email or password.");
     }
   };
 
@@ -50,10 +42,6 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className={`login__container ${active ? "login__container-active" : "login__container"}`}>
@@ -89,3 +77,7 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+

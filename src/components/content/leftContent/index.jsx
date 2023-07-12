@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
-import { FaTrashAlt } from 'react-icons/fa';
 import { BsCheckCircleFill } from 'react-icons/bs';
+import { FaTrashAlt } from 'react-icons/fa';
 import { FaEdit } from 'react-icons/fa';
+
+import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
+
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
+
 import './index.scss';
 
 function LeftContent() {
@@ -13,40 +16,48 @@ function LeftContent() {
   const [editedTask, setEditedTask] = useState('');
   const [draggedTask, setDraggedTask] = useState(null);
 
+  const popupModel = useSelector((state) => state.modal.popupModal);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
   const addTask = useSelector((state) => state.addTodo.addTask);
   const active = useSelector((state) => state.darkActive.active);
 
   const dispatch = useDispatch();
 
   const handleDeleteClick = async (taskId) => {
-    try {
-      const taskDocRef = doc(db, 'todos', taskId);
-      await deleteDoc(taskDocRef);
-      const updatedAddTask = addTask.filter((task) => task.id !== taskId);
-      dispatch(setAddTasks(updatedAddTask));
-    } catch (error) {
-      console.error('Error deleting task: ', error);
+    if (!(popupModel || logoutPopup)) {
+      try {
+        const taskDocRef = doc(db, 'todos', taskId);
+        await deleteDoc(taskDocRef);
+        const updatedAddTask = addTask.filter((task) => task.id !== taskId);
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error deleting task: ', error);
+      }
     }
   };
 
   const handleTaskClick = async (taskId) => {
-    try {
-      const taskDocRef = doc(db, 'todos', taskId);
-      await updateDoc(taskDocRef, {
-        status: 1,
-      });
-      const updatedAddTask = addTask.map((task) =>
-        task.id === taskId ? { ...task, status: 1 } : task
-      );
-      dispatch(setAddTasks(updatedAddTask));
-    } catch (error) {
-      console.error('Error updating task status: ', error);
+    if (!(popupModel || logoutPopup)) {
+      try {
+        const taskDocRef = doc(db, 'todos', taskId);
+        await updateDoc(taskDocRef, {
+          status: 1,
+        });
+        const updatedAddTask = addTask.map((task) =>
+          task.id === taskId ? { ...task, status: 1 } : task
+        );
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
     }
   };
 
   const handleEditClick = (index, taskText) => {
-    setEditingIndex(index);
-    setEditedTask(taskText);
+    if (!(popupModel || logoutPopup)) {
+      setEditingIndex(index);
+      setEditedTask(taskText);
+    }
   };
 
   const handleSaveEdit = async (taskId) => {
@@ -69,10 +80,12 @@ function LeftContent() {
   };
 
   const handleDragStart = (event, task) => {
-    event.dataTransfer.setData('taskId', task.id);
-    setDraggedTask(task);
-  };
+    if (!(popupModel || logoutPopup)) {
+      event.dataTransfer.setData('taskId', task.id);
+      setDraggedTask(task);
+    }
 
+  };
 
   const handleDragEnd = async (event) => {
     event.preventDefault();
@@ -142,24 +155,27 @@ function LeftContent() {
   }, []);
 
   const handleDrop = async (event) => {
-    event.preventDefault();
-    event.currentTarget.classList.remove('drag-over');
+    if (!(popupModel || logoutPopup)) {
 
-    const taskId = event.dataTransfer.getData('taskId');
+      event.preventDefault();
+      event.currentTarget.classList.remove('drag-over');
 
-    try {
-      const taskDocRef = doc(db, 'todos', taskId);
-      await updateDoc(taskDocRef, {
-        status: 0,
-      });
+      const taskId = event.dataTransfer.getData('taskId');
 
-      const updatedAddTask = addTask.map((task) =>
-        task.id === taskId ? { ...task, status: 0 } : task
-      );
+      try {
+        const taskDocRef = doc(db, 'todos', taskId);
+        await updateDoc(taskDocRef, {
+          status: 0,
+        });
 
-      dispatch(setAddTasks(updatedAddTask));
-    } catch (error) {
-      console.error('Error updating task status: ', error);
+        const updatedAddTask = addTask.map((task) =>
+          task.id === taskId ? { ...task, status: 0 } : task
+        );
+
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
     }
   };
 

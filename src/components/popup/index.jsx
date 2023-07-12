@@ -3,18 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { collection, addDoc } from 'firebase/firestore';
 
-import { setPopupModal, setAddTasks } from '../configure';
 import { db } from '../../firebase';
+import { setPopupModal, setAddTasks } from '../configure';
 
 import './index.scss';
 import {getAuth} from "firebase/auth";
 
 function Popup() {
+  const [input, setInput] = useState('');
+
+  const dispatch = useDispatch();
+
   const active = useSelector((state) => state.darkActive.active);
   const popupModal = useSelector((state) => state.modal.popupModal);
   const addTask = useSelector((state) => state.addTodo.addTask);
-  const [input, setInput] = useState('');
-  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setInput(event.target.value);

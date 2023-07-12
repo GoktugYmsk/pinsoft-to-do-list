@@ -1,28 +1,29 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, } from "react-router-dom";
+
 import Login from "./components/content/login";
-import Components from "./components";
+import CustomComponent from "./components/CustomComponent";
 import NotFound from "./components/notfound/NotFound";
+
 import "./App.scss";
 import Register from "./components/content/register";
 
 function App() {
   const active = useSelector((state) => state.darkActive.active);
-  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
 
-  useEffect(() => {
-    // const spanElement = document.getElementById("components-span");
-    // const mainPopupElement = document.getElementById("mainPopup");
-    if(logoutPopup){
-      // spanElement.style.opacity = "0.2";
-      // mainPopupElement.style.opacity = "0.2";
-    }
-    else{
-      // spanElement.style.opacity = "1";
-      // mainPopupElement.style.opacity = "1";
-    }
-  }, [logoutPopup])
+  // useEffect(() => {
+  //   const spanElement = document.getElementById("components-span");
+
+  //   if (logoutPopup) {
+  //     spanElement.style.opacity = "0.2";
+  //   }
+
+  //   else {
+  //     spanElement.style.opacity = "1";
+
+  //   }
+  // }, [logoutPopup])
 
   useEffect(() => {
     if (active) {
@@ -43,13 +44,47 @@ function App() {
     <div className={`App ${active ? "app-active" : "App"}`}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/home" element={<Components />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <CustomComponent />
+              </PrivateRoute>
+            }
+          />
+          <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
+
+const PrivateRoute = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.loggedIn.isLoggedIn);
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
+const PublicRoute = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.loggedIn.isLoggedIn);
+  return isAuthenticated ? <Navigate to="/home" replace /> : children;
+};
+
 export default App;
+

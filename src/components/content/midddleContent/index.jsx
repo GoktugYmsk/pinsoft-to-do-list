@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { doc, updateDoc, deleteDoc, collection, getDocs, where, query } from 'firebase/firestore';
+
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { IoReturnDownBack } from 'react-icons/io5';
+
+import { doc, updateDoc, deleteDoc, collection, getDocs, where, query } from 'firebase/firestore';
+
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
+
 import './index.scss';
 import {getAuth} from "firebase/auth";
 
@@ -13,51 +17,61 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const user = getAuth().currentUser
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
+  const popupModel = useSelector((state) => state.modal.popupModal);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
+  
   const dispatch = useDispatch();
+
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
   const [draggedTask, setDraggedTask] = useState(null);
 
   const handleDeleteTask = async (taskId) => {
-    try {
-      const taskDocRef = doc(db, 'todos', taskId);
-      await deleteDoc(taskDocRef);
+    if (!(popupModel || logoutPopup)) {
+      try {
+        const taskDocRef = doc(db, 'todos', taskId);
+        await deleteDoc(taskDocRef);
 
-      const updatedAddTask = addTask.filter((task) => task.id !== taskId);
-      dispatch(setAddTasks(updatedAddTask));
-      setSelectedTasks(selectedTasks.filter((task) => task !== taskId));
-    } catch (error) {
-      console.error('Error deleting task: ', error);
+        const updatedAddTask = addTask.filter((task) => task.id !== taskId);
+        dispatch(setAddTasks(updatedAddTask));
+        setSelectedTasks(selectedTasks.filter((task) => task !== taskId));
+      } catch (error) {
+        console.error('Error deleting task: ', error);
+      }
     }
   };
 
   const handleTaskDoneClick = async (taskId) => {
-    const taskDocRef = doc(db, 'todos', taskId);
+    if (!(popupModel || logoutPopup)) {
+      const taskDocRef = doc(db, 'todos', taskId);
 
-    try {
-      await updateDoc(taskDocRef, {
-        status: 2
-      });
+      try {
+        await updateDoc(taskDocRef, {
+          status: 2
+        });
 
-      const updatedAddTask = addTask.map((task) => {
-        if (task.id === taskId) {
-          return {
-            ...task,
-            status: 2
-          };
-        }
-        return task;
-      });
+        const updatedAddTask = addTask.map((task) => {
+          if (task.id === taskId) {
+            return {
+              ...task,
+              status: 2
+            };
+          }
+          return task;
+        });
 
-      dispatch(setAddTasks(updatedAddTask));
-    } catch (error) {
-      console.error('Error updating task status: ', error);
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
     }
   };
 
   const handleEditClick = (index, taskText) => {
-    setEditingIndex(index);
-    setEditedTask(taskText);
+    if (!(popupModel || logoutPopup)) {
+      setEditingIndex(index);
+      setEditedTask(taskText);
+    }
   };
 
   const handleSaveEdit = async (taskId) => {
@@ -66,7 +80,6 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       await updateDoc(taskDocRef, {
         text: editedTask,
       });
-
       const updatedAddTask = addTask.map((task) =>
         task.id === taskId ? { ...task, text: editedTask } : task
       );
@@ -80,26 +93,28 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   };
 
   const handleTurnClick = async (taskId) => {
-    try {
-      const taskDocRef = doc(db, 'todos', taskId);
+    if (!(popupModel || logoutPopup)) {
+      try {
+        const taskDocRef = doc(db, 'todos', taskId);
 
-      await updateDoc(taskDocRef, {
-        status: 0
-      });
+        await updateDoc(taskDocRef, {
+          status: 0
+        });
 
-      const updatedAddTask = addTask.map((task) => {
-        if (task.id === taskId) {
-          return {
-            ...task,
-            status: 0
-          };
-        }
-        return task;
-      });
+        const updatedAddTask = addTask.map((task) => {
+          if (task.id === taskId) {
+            return {
+              ...task,
+              status: 0
+            };
+          }
+          return task;
+        });
 
-      dispatch(setAddTasks(updatedAddTask));
-    } catch (error) {
-      console.error('Error updating task status: ', error);
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
     }
   };
 
@@ -142,27 +157,29 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   };
 
   const handleDrop = async (event) => {
-    event.preventDefault();
-    event.currentTarget.classList.remove('drag-over');
+    if (!(popupModel || logoutPopup)) {
+      event.preventDefault();
+      event.currentTarget.classList.remove('drag-over');
 
-    const taskId = event.dataTransfer.getData('taskId');
+      const taskId = event.dataTransfer.getData('taskId');
 
-    try {
-      const taskDocRef = doc(db, 'todos', taskId);
-      await updateDoc(taskDocRef, {
-        status: 1,
-      });
+      try {
+        const taskDocRef = doc(db, 'todos', taskId);
+        await updateDoc(taskDocRef, {
+          status: 1,
+        });
 
-      const updatedAddTask = addTask.map((task) =>
-        task.id === taskId ? { ...task, status: 1 } : task
-      );
+        const updatedAddTask = addTask.map((task) =>
+          task.id === taskId ? { ...task, status: 1 } : task
+        );
 
-      dispatch(setAddTasks(updatedAddTask));
-    } catch (error) {
-      console.error('Error updating task status: ', error);
+        dispatch(setAddTasks(updatedAddTask));
+      } catch (error) {
+        console.error('Error updating task status: ', error);
+      }
+
     }
   };
-
 
   const handleDragEnd = async (event) => {
     event.preventDefault();
@@ -209,7 +226,6 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
     }
   };
 
-
   const filteredTasks = addTask.filter((task) => task.status === 1);
 
   return (
@@ -253,7 +269,6 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                       </span>
                     </div>
                     <div >
-                     
                       <FaTrashAlt
                         className="middleContent_box-icon_left"
                         onClick={() => handleDeleteTask(task.id)}
@@ -263,7 +278,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
                         onClick={() => handleEditClick(index, task.textF
                         )}
                       />
-                       <IoReturnDownBack
+                      <IoReturnDownBack
                         className="leftContnent_box-icon_rigth"
                         onClick={() => handleTurnClick(task.id)}
                       />

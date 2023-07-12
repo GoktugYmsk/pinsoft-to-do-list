@@ -1,21 +1,16 @@
-
-.middle-conent-active:hover{
+.middle-conent-active:hover {
     box-shadow: 0 2px 2px 4px rgb(42, 82, 240, 0.3) !important;
 }
 
-
 .middle-conent-active {
     background-color: #dfe2e7 !important;
-    border-color: #2a52f0  !important;
+    border-color: #2a52f0 !important;
     box-shadow: 0 2px 2px 0px rgb(42, 82, 240, 0.3) !important;
-
 
     .headercontent {
         background-color: #2a52f0 !important;
         color: #dfe2e7 !important;
-        border-bottom-color:#2a52f0 !important ;
     }
-
 
     .middlecontent__list {
 
@@ -33,13 +28,10 @@
 
             }
 
-
-
             .middleContent_box-icon_left:hover {
                 color: #7ea2e0 !important;
                 opacity: 0.7;
             }
-
 
             .middleContent_box_edit-icon:hover {
                 color: #7ea2e0 !important;
@@ -59,11 +51,9 @@
     }
 }
 
-
-.middleconent:hover{
-    box-shadow: 0 2px 2px 4px #585858;
+.middleconent:hover {
+    box-shadow: 0 2px 2px 4px #0000004d;
 }
-
 
 .middleconent {
     display: flex;
@@ -74,11 +64,9 @@
     height: 450px;
     width: 450px;
     border-radius: 20px 20px 0 0;
-    border:solid #121212 5px;
+    border: solid #121212 5px;
     box-shadow: 0 2px 2px 0px #0000004d;
     transition: 0.3s;
-
-
 
     .headercontent {
         width: 450px;
@@ -89,9 +77,6 @@
         border-radius: 20px 20px 0 0;
         background-color: #121212;
         transition: 0.3s;
-        border-bottom-style:solid;
-        border-bottom-color:#121212 ;
-        border-bottom-width: 5px;
     }
 
     .middlecontent__list {
@@ -116,8 +101,6 @@
         //     opacity: 0 !important;
         // }
 
-       
-
         .middleContent__box {
             cursor: pointer;
             display: flex;
@@ -131,8 +114,6 @@
             position: relative;
             right: 10px !important;
             transition: 0.3s;
-            
-          
 
             input {
                 background-color: #121212;
@@ -150,8 +131,6 @@
                 text-align: center;
                 font-size: 1.2rem;
             }
-
-
 
             div {
                 display: flex;
@@ -212,15 +191,10 @@
 
             }
 
-
-
             .container__altBox-doneClick:hover {
                 color: white;
                 opacity: 0.7;
             }
-
-
-
         }
     }
 }
@@ -230,8 +204,6 @@
     .middleconent {
         width: 420px;
 
-
-
         .headercontent {
             width: 420px;
         }
@@ -240,7 +212,6 @@
             width: 420px;
 
             .middleContent__box {
-               
 
                 input {
                     width: 338.47px;
@@ -257,18 +228,13 @@
                 }
             }
         }
-
-
     }
-
 }
 
 @media (max-width:1347px) {
 
     .middleconent {
         width: 415px;
-
-
 
         .headercontent {
             width: 415px;
@@ -278,7 +244,6 @@
             width: 415px;
 
             .middleContent__box {
-               
 
                 input {
                     width: 333.47px;
@@ -295,22 +260,13 @@
                 }
             }
         }
-
-
     }
-
 }
-
-
-
-
 
 @media (max-width:1280px) {
 
     .middleconent {
         width: 395px;
-
-
 
         .headercontent {
             width: 395px;
@@ -335,10 +291,7 @@
                 }
             }
         }
-
-
     }
-
 }
 
 @media (max-width:992px) {
@@ -356,40 +309,29 @@
         margin-left: 6%;
 
     }
-
 }
-
-
 
 @media (max-width:601px) {
 
     .middleconent {
         margin-left: 6%;
     }
-
 }
-
 
 @media (max-width:481px) {
 
     .middleconent {
+        box-shadow: 0 2px 2px 4px;
+        border-width: 3px;
         margin-left: 1.8%;
-
     }
-
 }
-
-
-
-
-
 
 @media (max-width:415px) {
 
     .middleconent {
         width: 350px;
         margin-left: 1%;
-
 
         .headercontent {
             width: 350px;
@@ -414,10 +356,7 @@
                 }
             }
         }
-
-
     }
-
 }
 
 @media (max-width:376px) {
@@ -436,8 +375,6 @@
 
             .middleContent__box {
 
-
-
                 input {
                     width: 243.47px;
                 }
@@ -452,18 +389,13 @@
                 }
             }
         }
-
-
     }
-
 }
 
 @media (max-width:321px) {
 
     .middleconent {
         width: 270px;
-
-
 
         .headercontent {
             width: 270px;
@@ -473,7 +405,6 @@
             width: 270px;
 
             .middleContent__box {
-
 
                 input {
                     width: 188.47px;
@@ -489,8 +420,5 @@
                 }
             }
         }
-
-
     }
-
 }

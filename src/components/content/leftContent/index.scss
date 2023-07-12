@@ -1,51 +1,48 @@
-.leftconent-active:hover{
-    box-shadow: 0 2px 2px 4px rgb(42,82,240,0.3) !important;
+.leftconent-active:hover {
+    box-shadow: 0 2px 2px 4px rgb(42, 82, 240, 0.3) !important;
 }
 
-.leftconent-active{
+.leftconent-active {
     background-color: #dfe2e7 !important;
-    border-color: #2a52f0  !important;
-    box-shadow: 0 2px 2px 0px rgb(42,82,240,0.3) !important;
-    
-    .headercontent{
-        background-color: #2a52f0   !important;
-        color: #dfe2e7  !important ;
-        border-bottom-color:#2a52f0 !important ;
+    border-color: #2a52f0 !important;
+    box-shadow: 0 2px 2px 0px rgb(42, 82, 240, 0.3) !important;
+
+    .headercontent {
+        background-color: #2a52f0 !important;
+        color: #dfe2e7 !important;
     }
 
-    .todoCheck{
+    .todoCheck {
         color: #dfe2e7 !important;
 
-        input{
+        input {
             background-color: #7ea2e0 !important;
-            color: #dfe2e7   !important;
+            color: #dfe2e7 !important;
             outline: none !important;
         }
 
-        .todoCheck__box{
+        .todoCheck__box {
             background-color: #57585a !important;
 
+            .todoCheck_box-icon_left:hover {
+                color: #7ea2e0 !important;
 
-            .todoCheck_box-icon_left:hover{
-                color: #7ea2e0 !important;
-               
-            }
-          
-            .todoCheck_box-icon_rigth:hover{
-                color: #7ea2e0 !important;
             }
 
-            .todoCheck_box_edit-icon:hover{
-                color:#7ea2e0  !important;
+            .todoCheck_box-icon_rigth:hover {
+                color: #7ea2e0 !important;
+            }
+
+            .todoCheck_box_edit-icon:hover {
+                color: #7ea2e0 !important;
             }
         }
     }
 }
 
+.leftconent:hover {
 
-.leftconent:hover{
-    
-    box-shadow: 0 2px 2px 4px #585858;
+    box-shadow: 0 2px 2px 4px #0000004d;
 }
 
 .leftconent {
@@ -57,25 +54,22 @@
     width: 450px;
     background: #242424;
     border-radius: 20px 20px 0 0;
-    border:solid #121212 5px;
+    border: solid #121212 5px;
     box-shadow: 0 2px 2px 0px #0000004d;
     transition: 0.3s;
 
-    .headercontent{
+    .headercontent {
         width: 450px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #FFC107;
         border-radius: 20px 20px 0 0;
-        border-bottom-style:solid;
-        border-bottom-color:#121212 ;
-        border-bottom-width: 5px;
         background-color: #121212;
         transition: 0.3s;
     }
 
-    .active{
+    .active {
         background-color: aqua;
     }
 
@@ -99,9 +93,9 @@
         align-items: flex-start !important;
         height: 40px;
         color: #121212;
-        
 
-        input{
+
+        input {
             background-color: #121212;
             text-align: center;
             color: white;
@@ -110,24 +104,24 @@
             height: 30px;
             border-radius: 20px;
             width: 382px;
-            
+
         }
 
-        input::placeholder{
+        input::placeholder {
             text-align: center;
         }
 
-        div{
+        div {
             display: flex;
             align-items: center;
             justify-content: center;
-            span{
+
+            span {
                 max-width: 308.48px;
                 min-width: 308.48px;
                 font-size: 1.2rem;
             }
         }
-
 
         .todoCheck__box {
             cursor: pointer;
@@ -142,7 +136,6 @@
             right: 10px !important;
             transition: 0.3s;
 
-
             .todoCheck_box-icon_left {
                 cursor: pointer;
                 font-size: 18px !important;
@@ -150,7 +143,7 @@
                 transition: 0.15s;
             }
 
-            .todoCheck_box-icon_left:hover{
+            .todoCheck_box-icon_left:hover {
                 color: white;
                 opacity: 0.7;
             }
@@ -161,19 +154,19 @@
                 transition: 0.15s;
             }
 
-            .todoCheck_box-icon_rigth:hover{
+            .todoCheck_box-icon_rigth:hover {
                 color: white;
                 opacity: 0.7;
             }
 
-            .todoCheck_box_edit-icon{
+            .todoCheck_box_edit-icon {
                 cursor: pointer;
                 font-size: 18px;
                 margin-right: 10px;
                 transition: 0.15s;
             }
 
-            .todoCheck_box_edit-icon:hover{
+            .todoCheck_box_edit-icon:hover {
                 color: white;
                 opacity: 0.7;
             }
@@ -183,15 +176,12 @@
     }
 }
 
-
-
 @media (max-width:1367px) {
 
-    .leftconent{
+    .leftconent {
         width: 420px;
-        
 
-        .headercontent{
+        .headercontent {
             width: 420px;
         }
 
@@ -199,38 +189,30 @@
             width: 420px;
         }
 
-        .todoCheck__box{
+        .todoCheck__box {
+            input {
 
-             
-            input{
-               
                 width: 338.47px;
-                
+
             }
 
-            div{
-                span{
+            div {
+                span {
                     max-width: 278.48px;
                     min-width: 278.48px;
                     font-size: 1.2rem;
                 }
             }
         }
-
-       
-
-       
     }
-
 }
 
 @media (max-width:1347px) {
 
-    .leftconent{
+    .leftconent {
         width: 415px;
-        
 
-        .headercontent{
+        .headercontent {
             width: 415px;
         }
 
@@ -238,38 +220,30 @@
             width: 415px;
         }
 
-        .todoCheck__box{
-  
-
-             
-            input{
+        .todoCheck__box {
+            input {
                 width: 333.47px;
-                
+
             }
 
-            div{
-                span{
+            div {
+                span {
                     max-width: 273.48px;
                     min-width: 273.48px;
                     font-size: 1.2rem;
                 }
             }
         }
-
-       
-
-       
     }
-
 }
 
 @media (max-width:1280px) {
 
-    .leftconent{
+    .leftconent {
         width: 385px;
-        
 
-        .headercontent{
+
+        .headercontent {
             width: 385px;
         }
 
@@ -277,75 +251,66 @@
             width: 385px;
         }
 
-        .todoCheck__box{
-             
-            input{
+        .todoCheck__box {
+
+            input {
                 width: 313.47px;
-                
+
             }
 
-            div{
-                span{
+            div {
+                span {
                     max-width: 253.48px;
                     min-width: 253.48px;
                     font-size: 1.2rem;
                 }
             }
-        }       
+        }
     }
-
 }
-
 
 @media (max-width:992px) {
 
-    .leftconent{
-       
+    .leftconent {
+
         margin-left: 25%;
-        
+
     }
 }
-
 
 @media (max-width:769px) {
 
-    .leftconent{
+    .leftconent {
         margin-left: 6%;
-       
+
     }
-
 }
-
-
-
 
 @media (max-width:601px) {
 
-    .leftconent{
+    .leftconent {
         margin-left: 6%;
-       
+
     }
 
 }
 
 @media (max-width:481px) {
 
-    .leftconent{
-        margin-left: 1.8%;      
+    .leftconent {
+        box-shadow: 0 2px 2px 4px;
+        border-width: 3px;
+        margin-left: 1.8%;
     }
 
 }
 
-
-
-
 @media (max-width:415px) {
-    
-    .leftconent{
+    .leftconent {
         width: 350px;
         margin-left: 1%;
 
-        .headercontent{
+        .headercontent {
             width: 350px;
         }
 
@@ -353,34 +318,32 @@
             width: 350px;
         }
 
-        .todoCheck__box{
+        .todoCheck__box {
 
-             
-            input{
+
+            input {
                 width: 268.47px;
-                
+
             }
 
-            div{
-                span{
+            div {
+                span {
                     max-width: 208.48px;
                     min-width: 208.48px;
                     font-size: 1rem;
                 }
             }
         }
-
     }
-
 }
 
 @media (max-width:376px) {
-    
-    .leftconent{
+
+    .leftconent {
         width: 325px;
         margin-left: 1%;
 
-        .headercontent{
+        .headercontent {
             width: 325px;
         }
 
@@ -388,38 +351,30 @@
             width: 325px;
         }
 
-        .todoCheck__box{
+        .todoCheck__box {
 
-             
-            input{
+            input {
                 width: 243.47px;
-                
+
             }
 
-            div{
-                span{
+            div {
+                span {
                     max-width: 183.48px;
                     min-width: 183.48px;
                     font-size: 1rem;
                 }
             }
         }
-
     }
-
 }
 
-
-
-
-
 @media (max-width:321px) {
-    
-    .leftconent{
-        width: 270px;
-        
 
-        .headercontent{
+    .leftconent {
+        width: 270px;
+
+        .headercontent {
             width: 270px;
         }
 
@@ -427,16 +382,15 @@
             width: 270px;
         }
 
-        .todoCheck__box{
+        .todoCheck__box {
 
-             
-            input{
+            input {
                 width: 188.47px;
-                
+
             }
 
-            div{
-                span{
+            div {
+                span {
                     max-width: 128.48px;
                     min-width: 128.48px;
                     font-size: 1rem;
@@ -444,6 +398,4 @@
             }
         }
     }
-
 }
-
