@@ -11,12 +11,13 @@ import { setAddTasks } from '../../configure';
 import './index.scss';
 
 function RightContent() {
+  
+  const dispatch = useDispatch();
+
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
   const popupModel = useSelector((state) => state.modal.popupModal);
   const logoutPopup = useSelector((state) => state.logout.logoutPopup);
-
-  const dispatch = useDispatch();
 
   const handleDeleteDone = async (taskId) => {
     if (!(popupModel || logoutPopup)) {

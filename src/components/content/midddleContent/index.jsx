@@ -13,17 +13,18 @@ import { setAddTasks } from '../../configure';
 import './index.scss';
 
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
-  const active = useSelector((state) => state.darkActive.active);
-  const addTask = useSelector((state) => state.addTodo.addTask);
-  const popupModel = useSelector((state) => state.modal.popupModal);
-  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
-  
-  const dispatch = useDispatch();
 
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
   const [draggedTask, setDraggedTask] = useState(null);
 
+  const dispatch = useDispatch();
+
+  const active = useSelector((state) => state.darkActive.active);
+  const addTask = useSelector((state) => state.addTodo.addTask);
+  const popupModel = useSelector((state) => state.modal.popupModal);
+  const logoutPopup = useSelector((state) => state.logout.logoutPopup);
+  
   const handleDeleteTask = async (taskId) => {
     if (!(popupModel || logoutPopup)) {
       try {
