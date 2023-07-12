@@ -69,9 +69,9 @@ function CustomComponent() {
             </Helmet>
             <div className="toast-container">
                 <Toast className='toast-container__box' show={logoutPopup}>
-                    <Toast.Header className='toast-container__header' >
-                        <strong>Are you sure</strong>
-                    </Toast.Header>
+                    <div className='toast-container__header' >
+                        <strong>Are you sure ?</strong>
+                    </div>
                     <Toast.Body>
                         <div className="toast-container__box-buttons">
                             <button className="btn-cancel" onClick={closePopup}>

@@ -5,6 +5,38 @@ body {
 .app-active {
   background-color: #dfe2e7 !important;
 
+  .toast-container{
+    .toast-container__box{
+      background-color: #dfe2e7 !important;
+      .toast-container__header{
+        background-color: #6994df !important;
+        color: #dfe2e7  !important;
+      }
+
+      .toast-container__box-buttons{
+        background-color: #dfe2e7 !important;
+
+        button{
+          background-color: #6994df !important;
+          color: #dfe2e7 !important;
+        }
+
+
+        .btn-cancel:hover{
+          background-color: green !important;
+          opacity: 0.5;
+          color: #dfe2e7 !important;
+        }
+
+        .btn-continue:hover{
+          background-color: rgb(245, 56, 56) !important;
+          opacity: 0.5;
+          color: #dfe2e7 !important;
+        }
+      }
+    }
+  }
+
   .header-container {
     background-color: #dfe2e7 !important;
   }
@@ -37,7 +69,9 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 40px;
+        gap: 20px;
+        background-color: #242424;
+        height: 45px;
 
         button {
           width: 100px;
@@ -78,15 +112,6 @@ body {
         border-top-right-radius: 20px;
       }
 
-      .toast-container__body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        background-color: #242424;
-        height: 45px;
-
-      }
     }
   }
 
