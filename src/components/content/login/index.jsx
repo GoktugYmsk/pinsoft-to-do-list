@@ -67,10 +67,6 @@ const Login = () => {
             Login
           </button>
         </div>
-        <br/>
-        <div>
-          <p>Don't have an account? <a href="/register">Sign Up</a></p>
-        </div>
       </form>
     </div>
   );
