@@ -99,10 +99,10 @@ function CustomComponent() {
                     setSelectedTasks={setSelectedTasks}
                 />
                 <Footer />
-                <div className="popup-container">
-                    <Popup setSelectedTasks={setSelectedTasks} />
-                </div>
             </span>
+            <div className="popup-container">
+                <Popup />
+            </div>
 
         </>
     );
