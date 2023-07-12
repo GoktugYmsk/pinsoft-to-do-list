@@ -59,6 +59,20 @@ function CustomComponent() {
     };
 
     useEffect(() => {
+        const handleKeyDown = (event) => {
+          if (event.key === 'Escape') {
+            closePopup()
+          }
+        };
+    
+        window.addEventListener('keydown', handleKeyDown);
+    
+        return () => {
+          window.removeEventListener('keydown', handleKeyDown);
+        };
+      }, []);
+
+    useEffect(() => {
         setIsChecked(active);
     }, [active]);
 
