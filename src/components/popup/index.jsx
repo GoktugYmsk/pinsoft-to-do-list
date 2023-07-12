@@ -7,6 +7,7 @@ import { db } from '../../firebase';
 import { setPopupModal, setAddTasks } from '../configure';
 
 import './index.scss';
+import {getAuth} from "firebase/auth";
 
 function Popup() {
   const [input, setInput] = useState('');
@@ -24,12 +25,14 @@ function Popup() {
   const addTodo = async () => {
     if (input.trim() !== '') {
       try {
+        const user = getAuth().currentUser;
         const todoCollection = collection(db, 'todos');
-        const docRef = await addDoc(todoCollection, { text: input, status: 0 });
+        const docRef = await addDoc(todoCollection, { text: input, status: 0, userId: user.uid});
         const updatedTasks = [...addTask, { id: docRef.id, text: input, status: 0 }];
         dispatch(setAddTasks(updatedTasks));
         setInput('');
         console.log('Veri Firebase\'e gönderildi. Doküman ID:', docRef.id);
+        console.log('userId: ', user.uid);
       } catch (error) {
         console.error('Veri gönderme hatası:', error);
       }
@@ -39,9 +42,10 @@ function Popup() {
   const handleDoingClick = async () => {
     if (input.trim() !== '') {
       try {
+        const user = getAuth().currentUser;
         const todoCollection = collection(db, 'todos');
-        const docRef = await addDoc(todoCollection, { text: input, status: 1 });
-        const updatedTasks = [...addTask, { id: docRef.id, text: input, status: 1 }];
+        const docRef = await addDoc(todoCollection, { text: input, status: 1, userId: user.uid });
+        const updatedTasks = [...addTask, { id: docRef.id, text: input, status: 1, uid: user.uid }];
         dispatch(setAddTasks(updatedTasks));
         setInput('');
         console.log('Veri Firebase\'e gönderildi. Doküman ID:', docRef.id);

@@ -7,6 +7,7 @@ import CustomComponent from "./components/CustomComponent";
 import NotFound from "./components/notfound/NotFound";
 
 import "./App.scss";
+import Register from "./components/content/register";
 
 function App() {
   const active = useSelector((state) => state.darkActive.active);
@@ -40,6 +41,14 @@ function App() {
                 <CustomComponent />
               </PrivateRoute>
             }
+          />
+          <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              }
           />
           <Route
             path="/login"
