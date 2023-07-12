@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { setPopupModal } from "../configure";
 
 import "./index.scss";
@@ -7,18 +8,14 @@ import "./index.scss";
 function Footer() {
   const dispatch = useDispatch();
 
-  
   const logoutPopup = useSelector((state) => state.logout.logoutPopup);
   const active = useSelector((state) => state.darkActive.active);
 
-
   const handleAddTask = () => {
-    if(!logoutPopup) // Logout popup açık durumda task popup açılmıyor.
-    {
+    if (!logoutPopup) {
       dispatch(setPopupModal(true));
     }
   };
-
 
   return (
     <div className={`row  ${active ? 'row-active' : 'row'}`}>

@@ -12,7 +12,6 @@ function Content({ selectedTasks, setSelectedTasks }) {
   const [doneTasks, setDoneTasks] = useState([]);
   const active = useSelector((state) => state.darkActive.active);
 
-
   return (
     <div className={`container-content  ${active ? 'container-content-active' : 'container-content'}`}>
       <div className="row justify-content-center">

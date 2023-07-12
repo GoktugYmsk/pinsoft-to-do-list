@@ -24,7 +24,6 @@
         .todoCheck__box {
             background-color: #57585a !important;
 
-
             .todoCheck_box-icon_left:hover {
                 color: #7ea2e0 !important;
 
@@ -40,7 +39,6 @@
         }
     }
 }
-
 
 .leftconent:hover {
 
@@ -125,7 +123,6 @@
             }
         }
 
-
         .todoCheck__box {
             cursor: pointer;
             display: flex;
@@ -138,7 +135,6 @@
             position: relative;
             right: 10px !important;
             transition: 0.3s;
-
 
             .todoCheck_box-icon_left {
                 cursor: pointer;
@@ -180,13 +176,10 @@
     }
 }
 
-
-
 @media (max-width:1367px) {
 
     .leftconent {
         width: 420px;
-
 
         .headercontent {
             width: 420px;
@@ -197,8 +190,6 @@
         }
 
         .todoCheck__box {
-
-
             input {
 
                 width: 338.47px;
@@ -213,19 +204,13 @@
                 }
             }
         }
-
-
-
-
     }
-
 }
 
 @media (max-width:1347px) {
 
     .leftconent {
         width: 415px;
-
 
         .headercontent {
             width: 415px;
@@ -236,9 +221,6 @@
         }
 
         .todoCheck__box {
-
-
-
             input {
                 width: 333.47px;
 
@@ -252,12 +234,7 @@
                 }
             }
         }
-
-
-
-
     }
-
 }
 
 @media (max-width:1280px) {
@@ -290,9 +267,7 @@
             }
         }
     }
-
 }
-
 
 @media (max-width:992px) {
 
@@ -303,18 +278,13 @@
     }
 }
 
-
 @media (max-width:769px) {
 
     .leftconent {
         margin-left: 6%;
 
     }
-
 }
-
-
-
 
 @media (max-width:601px) {
 
@@ -335,11 +305,7 @@
 
 }
 
-
-
-
 @media (max-width:415px) {
-
     .leftconent {
         width: 350px;
         margin-left: 1%;
@@ -368,9 +334,7 @@
                 }
             }
         }
-
     }
-
 }
 
 @media (max-width:376px) {
@@ -389,7 +353,6 @@
 
         .todoCheck__box {
 
-
             input {
                 width: 243.47px;
 
@@ -403,17 +366,13 @@
                 }
             }
         }
-
     }
-
 }
-
 
 @media (max-width:321px) {
 
     .leftconent {
         width: 270px;
-
 
         .headercontent {
             width: 270px;
@@ -424,7 +383,6 @@
         }
 
         .todoCheck__box {
-
 
             input {
                 width: 188.47px;
@@ -440,5 +398,4 @@
             }
         }
     }
-
 }

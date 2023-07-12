@@ -5,9 +5,9 @@ export const store = configureStore({
     reducer: {
         addTodo: configure,
         modal: configure,
-        doing:configure,
+        doing: configure,
         darkActive: configure,
-        loggedIn:configure,
-        logout:configure,
+        loggedIn: configure,
+        logout: configure,
     },
 })
