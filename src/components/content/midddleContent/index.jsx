@@ -5,16 +5,14 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { IoReturnDownBack } from 'react-icons/io5';
 
-import { doc, updateDoc, deleteDoc, collection, getDocs, where, query } from 'firebase/firestore';
+import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
 
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
 
 import './index.scss';
-import {getAuth} from "firebase/auth";
 
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
-  const user = getAuth().currentUser
   const active = useSelector((state) => state.darkActive.active);
   const addTask = useSelector((state) => state.addTodo.addTask);
   const popupModel = useSelector((state) => state.modal.popupModal);
@@ -121,8 +119,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const q = query(collection(db, 'todos'), where('userId', '==', user.uid));
-        const snapshot = await getDocs(q);
+        const todoCollection = collection(db, 'todos');
+        const snapshot = await getDocs(todoCollection);
         const todoList = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -133,10 +131,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       }
     };
 
-    if (user.uid) {
-      fetchData();
-    }
-  }, [user.uid]);
+    fetchData();
+  }, []);
 
   const handleDragStart = (event, task) => {
     event.dataTransfer.setData('taskId', task.id);
