@@ -8,12 +8,9 @@ import NotFound from "./components/notfound/NotFound";
 
 import "./App.scss";
 
-
 function App() {
   const active = useSelector((state) => state.darkActive.active);
-
-
-
+  
   useEffect(() => {
     if (active) {
       document.body.style.backgroundColor = "#dfe2e7";
