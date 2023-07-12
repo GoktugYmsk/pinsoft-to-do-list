@@ -11,18 +11,7 @@ import "./App.scss";
 function App() {
   const active = useSelector((state) => state.darkActive.active);
 
-  // useEffect(() => {
-  //   const spanElement = document.getElementById("components-span");
 
-  //   if (logoutPopup) {
-  //     spanElement.style.opacity = "0.2";
-  //   }
-
-  //   else {
-  //     spanElement.style.opacity = "1";
-
-  //   }
-  // }, [logoutPopup])
 
   useEffect(() => {
     if (active) {
