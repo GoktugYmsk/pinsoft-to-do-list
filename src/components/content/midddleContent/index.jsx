@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { IoReturnDownBack } from 'react-icons/io5';
+import {getAuth} from "firebase/auth";
 
-import { doc, updateDoc, deleteDoc, collection, getDocs } from 'firebase/firestore';
+import { doc, updateDoc, deleteDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
 import { db } from '../../../firebase';
 import { setAddTasks } from '../../configure';
@@ -13,7 +14,6 @@ import { setAddTasks } from '../../configure';
 import './index.scss';
 
 function MiddleContent({ selectedTasks, setSelectedTasks }) {
-
   const [editingIndex, setEditingIndex] = useState(-1);
   const [editedTask, setEditedTask] = useState('');
   const [draggedTask, setDraggedTask] = useState(null);
@@ -24,6 +24,7 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   const addTask = useSelector((state) => state.addTodo.addTask);
   const popupModel = useSelector((state) => state.modal.popupModal);
   const logoutPopup = useSelector((state) => state.logout.logoutPopup);
+  const user = getAuth().currentUser
   
   const handleDeleteTask = async (taskId) => {
     if (!(popupModel || logoutPopup)) {
@@ -120,8 +121,8 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const todoCollection = collection(db, 'todos');
-        const snapshot = await getDocs(todoCollection);
+        const q = query(collection(db, 'todos'), where('userId', '==', user?.uid));
+        const snapshot = await getDocs(q);
         const todoList = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -132,8 +133,10 @@ function MiddleContent({ selectedTasks, setSelectedTasks }) {
       }
     };
 
-    fetchData();
-  }, []);
+    if (user?.uid) {
+      fetchData();
+    }
+  }, [user]);
 
   const handleDragStart = (event, task) => {
     event.dataTransfer.setData('taskId', task.id);
